@@ -1,0 +1,345 @@
+import type { Product } from "@/types/product";
+
+
+export const WINTER_MAKEUP: Product[] = [
+ {
+   id: "149",
+   name: "4U2 BLENDING LIP LINER",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-blending-lip-liner-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-blending-lip-liner-2.jpg" },
+     { url: "/products/winter/makeup/4u2-blending-lip-liner-3.jpg" },
+     { url: "/products/winter/makeup/4u2-blending-lip-liner-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-blending-lip-liner-hydrangea.jpg",
+       color: "HYDRANGEA",
+       colorHex: "#B04A5A",
+       finish: "liner",
+     },
+   ],
+ },
+ {
+   id: "150",
+   name: "4U2 BLUSH ON MATTE",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-blush-on-matte-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-blush-on-matte-2.jpg" },
+     { url: "/products/winter/makeup/4u2-blush-on-matte-3.jpg" },
+     { url: "/products/winter/makeup/4u2-blush-on-matte-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-blush-on-matte-god-mama.jpg",
+       color: "GOD MAMA",
+       colorHex: "#d7846f",
+       finish: "blush",
+     },
+   ],
+ },
+ {
+   id: "151",
+   name: "4U2 BLUSH ON SHIMMER",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-blush-on-shimmer-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-blush-on-shimmer-2.jpg" },
+     { url: "/products/winter/makeup/4u2-blush-on-shimmer-3.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-blush-on-shimmer-emily-rose.jpg",
+       color: "EMILY ROSE",
+       colorHex: "#D66E86",
+       finish: "blush",
+     },
+   ],
+ },
+ {
+   id: "152",
+   name: "4U2 DEAR ME LIQUID BLUSH",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-dear-me-liquid-blush-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-dear-me-liquid-blush-2.jpg" },
+     { url: "/products/winter/makeup/4u2-dear-me-liquid-blush-3.jpg" },
+     { url: "/products/winter/makeup/4u2-dear-me-liquid-blush-4.jpg" },
+     { url: "/products/winter/makeup/4u2-dear-me-liquid-blush-5.jpg" },
+
+
+     {
+       url: "/products/winter/makeup/4u2-dear-me-liquid-blush-wake-up.jpg",
+       color: "WAKE UP",
+       colorHex: "#C98BC8",
+       finish: "blush",
+     },
+   ],
+ },
+ {
+   id: "153",
+   name: "4U2 fruity tint",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-fruity-tint-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-fruity-tint-2.jpg" },
+     { url: "/products/winter/makeup/4u2-fruity-tint-3.jpg" },
+     { url: "/products/winter/makeup/4u2-fruity-tint-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-fruity-tint-plum.jpg",
+       color: "PLUM",
+       colorHex: "#8F1F3A",
+       finish: "gloss",
+     },
+     {
+       url: "/products/winter/makeup/4u2-fruity-tint-berry.jpg",
+       color: "BERRY",
+       colorHex: "#C44B6B",
+       finish: "gloss",
+     },
+   ],
+ },
+ {
+   id: "154",
+   name: "4U2 GIRLFRIENDS' MOUSSE LIP CUP",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-girlfriends-mousse-lip-cup-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-girlfriends-mousse-lip-cup-2.jpg" },
+     { url: "/products/winter/makeup/4u2-girlfriends-mousse-lip-cup-3.jpg" },
+     { url: "/products/winter/makeup/4u2-girlfriends-mousse-lip-cup-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-girlfriends-mousse-lip-cup-boyfriend.jpg",
+       color: "Boyfriend",
+       colorHex: "#C24C5A",
+       finish: "matte",
+     },
+   ],
+ },
+ {
+   id: "155",
+   name: "4U2 GLASSY BABE",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-glassy-babe-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-glassy-babe-2.jpg" },
+     { url: "/products/winter/makeup/4u2-glassy-babe-3.jpg" },
+     { url: "/products/winter/makeup/4u2-glassy-babe-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-glassy-babe-bikini-mood.jpg",
+       color: "Bikini Mood",
+       colorHex: "#9E2F44",
+       finish: "gloss",
+     },
+     {
+       url: "/products/winter/makeup/4u2-glassy-babe-endless-summer.jpg",
+       color: "Endless Summer",
+       colorHex: "#C4151C",
+       finish: "gloss",
+     },
+   ],
+ },
+ {
+   id: "156",
+   name: "4U2 JEWELRY BOX",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-jewelry-box-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-jewelry-box-2.jpg" },
+     { url: "/products/winter/makeup/4u2-jewelry-box-3.jpg" },
+     { url: "/products/winter/makeup/4u2-jewelry-box-4.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-jewelry-box-diamond.jpg",
+       color: "DIAMOND",
+       colorHex: "#c4e5ff",
+     },
+     {
+       url: "/products/winter/makeup/4u2-jewelry-box-mother-of-pearl.jpg",
+       color: "MOTHER OF PEARL",
+       colorHex: "#ffc8d7",
+     },
+   ],
+ },
+ {
+   id: "157",
+   name: "4U2 LIP OIL",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-lip-oil-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-lip-oil-2.jpg" },
+     { url: "/products/winter/makeup/4u2-lip-oil-3.jpg" },
+     { url: "/products/winter/makeup/4u2-lip-oil-4.jpg" },
+     { url: "/products/winter/makeup/4u2-lip-oil-5.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-lip-oil-little-cat.jpg",
+       color: "LITTLE CAT",
+       colorHex: "#E83B6E",
+       finish: "gloss",
+     },
+   ],
+ },
+ {
+   id: "158",
+   name: "4U2 MAKE ME WATER TINT",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-make-me-water-tint-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-make-me-water-tint-2.jpg" },
+     { url: "/products/winter/makeup/4u2-make-me-water-tint-3.jpg" },
+     { url: "/products/winter/makeup/4u2-make-me-water-tint-4.jpg" },
+     { url: "/products/winter/makeup/4u2-make-me-water-tint-5.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-make-me-water-tint-rainy-days.jpg",
+       color: "RAINY DAYS",
+       colorHex: "#BF3254",
+       finish: "gloss",
+     },
+     {
+       url: "/products/winter/makeup/4u2-make-me-water-tint-glow-of-sweat.jpg",
+       color: "GLOW OF SWEAT",
+       colorHex: "#D23955",
+       finish: "gloss",
+     },
+     {
+       url: "/products/winter/makeup/4u2-make-me-water-tint-daydreaming.jpg",
+       color: "DAYDREAMING",
+       colorHex: "#EB4769",
+       finish: "gloss",
+     },
+   ],
+ },
+ {
+   id: "159",
+   name: "4U2 SERUM TINT OIL",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-serum-tint-oil-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-serum-tint-oil-2.jpg" },
+     { url: "/products/winter/makeup/4u2-serum-tint-oil-3.jpg" },
+     { url: "/products/winter/makeup/4u2-serum-tint-oil-4.jpg" },
+     { url: "/products/winter/makeup/4u2-serum-tint-oil-5.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-serum-tint-oil-shining-red.jpg",
+       color: "SHINING RED",
+       colorHex: "#C4161C",
+       finish: "gloss",
+     },
+   ],
+ },
+ {
+   id: "160",
+   name: "4U2 SKIN CONTOUR STICK",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-skin-contour-stick-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-skin-contour-stick-2.jpg" },
+     { url: "/products/winter/makeup/4u2-skin-contour-stick-3.jpg" },
+     { url: "/products/winter/makeup/4u2-skin-contour-stick-4.jpg" },
+     { url: "/products/winter/makeup/4u2-skin-contour-stick-5.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-skin-contour-stick-cool-tone.jpg",
+       color: "COOL TONE",
+       colorHex: "#9E8C82",
+     },
+   ],
+ },
+ {
+   id: "161",
+   name: "4U2 THE GLITTERING",
+   brand: "4U2",
+   type: "makeup",
+   choice: true,
+   season: "winter",
+   images: [
+     {
+       url: "/products/winter/makeup/4u2-the-glittering-1.jpg",
+       isPrimary: true,
+     },
+     { url: "/products/winter/makeup/4u2-the-glittering-2.jpg" },
+     { url: "/products/winter/makeup/4u2-the-glittering-3.jpg" },
+     { url: "/products/winter/makeup/4u2-the-glittering-4.jpg" },
+     { url: "/products/winter/makeup/4u2-the-glittering-5.jpg" },
+     {
+       url: "/products/winter/makeup/4u2-the-glittering-pony-glitter.jpg",
+       color: "PONY GLITTER",
+       colorHex: "#C98BCF",
+     },
+     {
+       url: "/products/winter/makeup/4u2-the-glittering-bling-sisters.jpg",
+       color: "BLING SISTERS",
+       colorHex: "#F3F6F7",
+     },
+   ],
+ },
+];
+
+
+

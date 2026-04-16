@@ -1,0 +1,58 @@
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal {
+  width: 90%;
+  max-width: 420px;
+  background: #fff;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+}
+
+.modal h2 {
+  font-weight:bold;
+  font-size: 22px;
+  margin-bottom: 16px;
+}
+
+
+.desc {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 16px;
+  text-align: left;
+}
+
+.checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+  font-size: 13px;
+  margin-bottom: 20px;
+  font-weight: bold ;
+}
+
+.ok-btn {
+  width: 100%;
+  padding: 14px;
+  border-radius: 999px;
+  border: none;
+  background: #7b1f1f;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.ok-btn:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
