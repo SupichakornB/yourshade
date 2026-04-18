@@ -7,7 +7,7 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
   const [checked, setChecked] = useState(false)
 
   return (
-    <div className="modal-backdrop">
+<div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-3xl rounded-3xl overflow-hidden border border-gray">
       <div className="modal">
         <h2>VIRTUAL ANALYSIS</h2>
 
@@ -23,8 +23,8 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
             onChange={(e) => setChecked(e.target.checked)}
           />
           <span>
-            I consent to the scanning of my face and the processing of my images, as described in the Facial Analysis Data Notice, and agree to all terms and conditions, including data retention, data deletion, data usage, processing, and storage.
-          </span>
+            I consent to the scanning of my face and the processing of my images, as described in the Facial Analysis Data Notice, and agree to all terms and conditions, including data retention, data deletion, data usage, processing, and storage.          
+            </span>
         </label>
 
         <button

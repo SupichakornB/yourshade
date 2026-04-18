@@ -111,15 +111,15 @@ const ProductPage = () => {
 
 
 
-<div className="absolute left-8 md:left-52 top-[50%] -translate-y-1/2">
-            <div className="text-[16px] xl:text-[36px] 2xl:text-[56px] text-center">
+<div className="absolute pl-4 xl:pl-6 2xl:pl-6 xl:left-52 2xl:left-52 top-[50%] -translate-y-1/2 justify-center items-center flex flex-col">
+            <div className="text-[16px] xl:text-[36px] 2xl:text-[56px] text-center pb-4">
               Try your perfect <br />
               shades in real time
             </div>
 
             <div
               onClick={() => navigate("/tryon", { state: { season } })}
-              className="inline-flex items-center justify-center bg-[#8E1616] text-[16px] xl:text-[24px] 2xl:text-[32px] mt-4 text-white rounded-full px-6 py-2 md:px-10 md:py-4 shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition cursor-pointer"
+              className="inline-flex bg-[#8E1616] text-[16px] xl:text-[24px] 2xl:text-[32px] text-white rounded-full px-6 py-2 xl:px-10 xl:py-4 2xl:px-10 2xl:py-4 shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition cursor-pointer"
             >
               Virtual Try-On
             </div>
@@ -163,7 +163,7 @@ const ProductPage = () => {
             className="p-2 rounded-full border-2 border-gray-300 focus:outline-none xl:hidden 2xl:hidden"
             aria-label="Toggle View Mode"
           >
-            {viewMode === 'grid-2' ? <FiGrid className="w-5 h-5" /> : <FiList className="w-5 h-5" />}
+            {viewMode === 'grid-2' ? <FiGrid className="w-4 h-4" /> : <FiList className="w-4 h-4" />}
           </button>
         </div>
 
@@ -179,7 +179,7 @@ const ProductPage = () => {
               to={`/products/${product.season}/${product.id}?tab=${activeTab}`}
             >
               <div className="grid gap-2 md:gap-6 mt-4 md:mt-1">
-                <div className="w-full aspect-[384/346] overflow-hidden rounded-xl group">
+                <div className="w-full aspect-[350/350] overflow-hidden rounded-xl group">
                   <img
                     src={getPrimaryImage(product)?.url}
                     className="w-full h-full object-cover object-center transition-transform duration-300 group-hover:scale-110"

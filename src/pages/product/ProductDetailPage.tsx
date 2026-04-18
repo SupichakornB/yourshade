@@ -56,9 +56,15 @@ const ProductDetailPage = () => {
             />
 
             <div className="mt-6 text-[16px] xl:text-[24px] 2xl:text-[32px] font-semibold">
-              {product.choice && selectedImage?.color && (
-                <>Color : {selectedImage.color}</>
-              )}
+
+              <p className="text-gray-500">
+  Color : {product.choice && selectedImage?.color &&(
+    <span className="text-[#8E1616]">
+      {selectedImage.color}
+    </span>
+  )}
+</p>
+
             </div>
             {product.choice && (
               <div className="flex gap-6 mt-2">

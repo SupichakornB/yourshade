@@ -745,8 +745,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
     let rvfcId: number | null = null;
 
     const faceMesh = new window.FaceMesh({
-      locateFile: (file: string) => `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/${file}`,
-    });
+  locateFile: (file) =>
+    `https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/${file}`,
+});
     faceMesh.setOptions({ maxNumFaces: 1, refineLandmarks: true, minDetectionConfidence: 0.5, minTrackingConfidence: 0.5 });
     faceMesh.onResults(drawFace);
 
@@ -893,9 +894,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         </div>
 
       {/* Camera */}
-      <div className="px-3 sm:px-0">
+      <div className="px-3 sm:px-0 py-4">
 <div
-  className="relative w-[382px] h-[510px] xl:w-[752px] xl:h-[501px] 2xl:w-[752px] 2xl:h-[501px] mx-auto rounded-3xl overflow-hidden border border-gray"
+  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[1096px] 2xl:h-[720px] mx-auto rounded-3xl overflow-hidden border border-gray"
 >
   <video
     ref={videoRef}
@@ -926,13 +927,13 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 </div>
 
       {/* Controls */}
-      <div className="mx-auto w-full max-w-2xl bg-white rounded-2xl shadow-md px-4 py-4">
+      <div className="mx-auto w-[382px] h-[200px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[328px] bg-white rounded-2xl shadow-md px-4 py-4">
         {/* Tabs */}
-        <div className="flex gap-2 mb-3">
+        <div className="flex gap-2 mb-3 xl:px-32 2xl:px-32">
           {tabConfig.map(({ key, label}) => (
             <button key={key} onClick={() => handleSetActiveTab(key)}
-              className={`flex-1 py-1.5 rounded-full text-[20px] xl:text-[24px] 2xl:text-[32px] font-medium capitalize transition ${
-                activeTab === key ? "bg-[#8E1616] text-white" : "bg-gray-100 text-gray-600 hover:bg-gray-200"
+              className={`flex-1 py-2 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
+                activeTab === key ? "bg-[#8E1616] text-white" : "bg-gray-100 text-gray-400 hover:bg-gray-200"
               }`}
             >
               <span className="mr-1"></span>{label}
@@ -943,10 +944,14 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         {/* ── Hair Color Panel ── */}
         {activeTab === "haircolor" && (
           <div>
-            <div className="flex items-center justify-between mb-2">
-              <p className="text-xs text-gray-500 font-medium">
-               {seasonLabel[season]} Hair Colors
-              </p>
+  <div className="flex items-center justify-between mb-2">
+<p className="text-xs text-gray-500 font-medium">
+  Color : {selectedHairColor && (
+    <span className="text-xs text-[#8E1616] font-medium">
+      {selectedHairColor.name}
+    </span>
+  )}
+</p>
             </div>
 
 <div className="overflow-x-auto py-2 scrollbar-hide">
@@ -989,11 +994,6 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
             </div>
             </div>
 
-            {selectedHairColor && (
-              <p className="text-center text-xs text-[#8E1616] mt-2 font-medium">
-                {selectedHairColor.name}
-              </p>
-            )}
             
           </div>
         )}
@@ -1048,9 +1048,14 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
               <div className="mt-3 pt-3 border-t border-gray-100">
-                <p className="text-xs text-gray-500 mb-2 font-medium">
-                  {selectedProduct.variants[0]?.finish === "blush" ? "Blush Color" : "Lip Color"} — {selectedProduct.name}
-                </p>
+<p className="text-xs text-gray-500 font-medium">
+  Color : {selectedProduct.variants[activeVariantIdx] && (
+    <span className="text-xs text-[#8E1616] font-medium">
+      {selectedProduct.variants[activeVariantIdx].name}
+    </span>
+  )}
+</p>
+
                 <div className="flex flex-wrap gap-3 justify-center">
                   {selectedProduct.variants.map((variant, idx) => (
                     <button key={idx} title={variant.name}
@@ -1066,11 +1071,7 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
                     </button>
                   ))}
                 </div>
-                {activeVariantIdx !== null && (
-                  <p className="text-center text-xs text-[#8E1616] mt-2 font-medium">
-                    {selectedProduct.variants[activeVariantIdx].name}
-                  </p>
-                )}
+
               </div>
             )}
 
@@ -1088,9 +1089,16 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 
             {/* Header row */}
             <div className="flex items-center justify-between mb-2">
-              <p className="text-xs text-gray-500 font-medium">
-                {seasonLabel[season]} Clothes Colors
-              </p>
+<p className="text-xs text-gray-500 font-medium">
+  Color : {selectedClothesColor && (
+    <span className="text-xs text-[#8E1616] font-medium">
+      {selectedClothesColor.name}
+    </span>
+  )}
+</p>
+
+
+  
             </div>
 
             {/* Swatches */}
@@ -1104,6 +1112,8 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
                   selectedClothesColor === null ? "border-[#8E1616] scale-110" : "border-white"
                 }`}
               >
+
+                
                 <svg viewBox="0 0 36 36" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="18" cy="18" r="14" stroke="#9CA3AF" strokeWidth="2.5"/>
                   <line x1="7" y1="29" x2="29" y2="7" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round"/>
@@ -1112,6 +1122,7 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
                   <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
                 )}
               </button>
+
 
               {seasonClothesColors.map((cc) => (
                 <button
@@ -1131,10 +1142,6 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
             </div>
             </div>
 
-            {selectedClothesColor
-              ? <p className="text-center text-xs text-[#8E1616] mt-2 font-medium">{selectedClothesColor.name}</p>
-              : null
-            }
           </div>
         )}
       </div>

@@ -21,6 +21,7 @@
   font-weight:bold;
   font-size: 22px;
   margin-bottom: 16px;
+  font: inter;
 }
 
 
@@ -29,6 +30,8 @@
   color: #444;
   margin-bottom: 16px;
   text-align: left;
+  font-weight: regular;
+  font: inter;
 }
 
 .checkbox {
@@ -38,7 +41,8 @@
   text-align: left;
   font-size: 13px;
   margin-bottom: 20px;
-  font-weight: bold ;
+  font-weight: regular;
+  font: inter;
 }
 
 .ok-btn {

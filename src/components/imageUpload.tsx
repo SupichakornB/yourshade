@@ -55,7 +55,7 @@ export default function ImageUpload({
         <div className="m-5 min-w-full md:min-w-325">
           <div className="flex justify-center">
             {value ? (
-<div className="relative w-[384px] h-[512px] xl:w-[838px] xl:h-[512px] 2xl:w-[838px] 2xl:h-[512px] mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-gray">             {noDetectFaceAlert && (
+<div className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[1096px] 2xl:h-[720px] mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-gray">             {noDetectFaceAlert && (
                   <div className="rounded-3xl absolute inset-0 z-10 flex items-start justify-center p-4">
                     <div className="relative rounded-[24px] bg-white/60 py-3 px-6 text-center shadow-lg">
             <span
@@ -64,18 +64,20 @@ export default function ImageUpload({
             >
               ✕
             </span>                   
-                      <p className="text-[12px] xl:text-[16px] 2xl:text-[20px] pr-4 text-center">
-                        Please try again. We couldn't detect a face in the image.
-                      </p>
+<p className="text-[12px] xl:text-[16px] 2xl:text-[20px] pr-4 text-center">
+  Please try again.{" "}
+  <br className="xl:hidden" />
+  <span className="text-[12px] xl:text-[16px] 2xl:text-[20px]">We couldn't detect a face in the image.</span>
+</p>
                     </div>
                   </div>
                 )}
 
                 {unsupportFileAlert && (
                   <div className="rounded-3xl absolute inset-0 z-10 flex items-start justify-center p-4">
-                    <div className="relative rounded-[24px] bg-white/60 py-3 px-6 text-center shadow-lg w-full md:w-[165px] xl:w-[488px] 2xl:w-[650px]">
+                    <div className="relative bg-white/60 rounded-[24px] py-4 px-2 xl:py-4 2xl:py-4 xl:px-6 2xl:px-6 shadow-lg text-left flex flex-col justify-center max-h-[84px] xl:max-h-[120px] 2xl:max-h-[170px] w-full max-w-[396px] xl:max-w-[484px] 2xl:max-w-[576px]">
             <span
-              className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer text-sm font-semibold"
+              className="absolute top-1 xl:top-2 2xl:top-3 right-1 xl:right-2 2xl:right-2 cursor-pointer pr-[8px] xl:pr-[24px] 2xl:pr-[24px] text-[16px] xl:text-[20px] 2xl:text-[24px] font-semibold"
               onClick={onClear}
             >
               ✕
@@ -101,13 +103,12 @@ export default function ImageUpload({
 </button>
               </div>
             ) : (
-              <div className="">
-                {openConsentModal ? (
-                  <ConsentModal onClose={() => setOpenConsentModal(false)} />
-                ) : (
-                  <CameraModal startCapture={openCamera} onCapture={onSelect} />
-                )}
-              </div>
+<div className="relative">
+  <CameraModal startCapture={openCamera} onCapture={onSelect} />
+  {openConsentModal && (
+    <ConsentModal onClose={() => setOpenConsentModal(false)} />
+  )}
+</div>
             )}
           </div>
         </div>

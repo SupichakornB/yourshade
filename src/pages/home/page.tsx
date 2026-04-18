@@ -39,7 +39,7 @@ export default function Home() {
             to="/upload"
             className="bg-[#8E1616] px-6 py-4 font-thin text-[20px] xl:text-[28px] 2xl:text-[36px] text-white rounded-full shadow-lg shadow-[#8E1616]/20bg-[#8E1616] font rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
           >
-            Discover Your Personal Color
+            Discover Your Personal Color →
           </Link>
         </div>
         <div className="text-[24px] xl:text-[40px] 2xl:text-[56px] text-center font-bold text-[#8E1616]">

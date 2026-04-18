@@ -210,15 +210,15 @@ export default function ResultPage() {
           ))}
         </div>
       </div>
-      <div className="px-4 md:px-32 mt-11 py-20 md:py-40 bg-[url(@/assets/result/bg.png)] bg-cover bg-center bg-no-repeat min-h-95 md:min-h-280">
+      <div className="px-4 md:px-32 mt-11 py-20 md:py-40 bg-[url(@/assets/result/bg.png)] bg-cover bg-center bg-no-repeat min-h-95 md:min-h-280 ">
         <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
           {/* Make up */}
-          <div className="grid text-center">
+          <div className="grid text-center justify-center">
             <h3 className="text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-4">
               Make up
             </h3>
-            <div className="w-full h-90 md:h-140 rounded-3xl bg-white shadow-md">
-              <div className="grid grid-cols-2 w-full h-full gap-5 md:gap-10 p-5 md:p-10">
+            <div className="h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white shadow-md">
+              <div className="grid grid-cols-2 w-full h-full gap-5 xl:gap-10 2xl:gap-10 p-5 xl:p-10 2xl:p-10">
                 {data.makeup.map((color: string, i: number) => (
                   <div
                     key={i}
@@ -231,12 +231,12 @@ export default function ResultPage() {
           </div>
 
           {/* Accessories */}
-          <div className="text-center h-full flex flex-col">
+          <div className="grid text-center justify-center">
             <h3 className="text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-4 mt-11 md:mt-0">
               Accessories
             </h3>
 
-            <div className="h-full flex items-center justify-center shadow-md rounded-3xl">
+            <div className="h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white shadow-md object-cover">
               <img
                 src={
                   state.result === "summer"
@@ -248,14 +248,13 @@ export default function ResultPage() {
                         : springAccsessories
                 }
                 alt="Accessories"
-                className="w-full h-90 md:h-140 rounded-3xl"
+                className="w-full h-full rounded-3xl object-cover"
               />
             </div>
           </div>
         </div>
       </div>
       <div className="w-full max-w-6xl mx-auto space-y-10 mt-10">
-        {/* ---------- SECTION 2 ---------- */}
         <div className="mt-12">
           <h3 className="text-center text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-6">
             Color of good fortune

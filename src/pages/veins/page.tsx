@@ -49,7 +49,7 @@ export default function VeinsPage() {
         what color do your veins appear?
       </h1>
       <div className="md:m-5 justify-items-center w-full">
-        <div className="grid md:flex md:justify-center py-4 xl:gap-10 xl:mt-10 2xl:gap-10 2xl:mt-10">
+        <div className="grid md:flex md:justify-center py-4 xl:pb-0 2xl:pb-0 xl:gap-10  2xl:gap-10">
           <div className="grid text-center" onClick={() => selectVein("cool")}>
             <img
               src={veinCoolTone}

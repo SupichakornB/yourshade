@@ -96,7 +96,7 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
   };
 
   return (
-    <div className="relative w-[384px] h-[512px] xl:w-[838px] xl:h-[512px] 2xl:w-[838px] 2xl:h-[512px] mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-gray">
+    <div className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[1096px] 2xl:h-[720px] mx-auto aspect-[4/3] rounded-3xl overflow-hidden border border-gray">
       {!previewImage && (
         <video
           ref={videoRef}
@@ -120,14 +120,14 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
 {/* Tips - top overlay */}
 {showTips && (
   <div className="absolute inset-0 z-20 flex items-start justify-center p-4">
-    <div className="relative bg-white/60 rounded-[24px] py-4 px-4 xl:py-3 2xl:py-3 xl:px-6 2xl:px-6 shadow-lg text-left flex flex-col justify-center max-h-[84px] xl:max-h-[100px] 2xl:max-h-[144px] w-full max-w-[372px] xl:max-w-[484px] 2xl:max-w-[640px]">
+    <div className="relative bg-white/60 rounded-[24px] py-4 px-4 xl:py-4 2xl:py-6 xl:px-6 2xl:px-6 shadow-lg text-left flex flex-col justify-center max-h-[84px] xl:max-h-[120px] 2xl:max-h-[170px] w-full max-w-[372px] xl:max-w-[484px] 2xl:max-w-[660px]">
       <span
-        className="absolute top-2 xl:top-2 2xl:top-2 right-2 xl:right-5 2xl:right-5 cursor-pointer pr-[12px] xl:pr-[24px] 2xl:pr-[24px] text-[16px] xl:text-[20px] 2xl:text-[24px] font-semibold"
+        className="absolute top-2 xl:top-2 2xl:top-6 right-2 xl:right-3 2xl:right-3 cursor-pointer pr-[12px] xl:pr-[24px] 2xl:pr-[24px] text-[16px] xl:text-[20px] 2xl:text-[24px] font-semibold"
         onClick={() => setShowTips(false)}
       >
         ✕
       </span>
-      <ul className="text-[12px] xl:text-[16px] 2xl:text-[24px] pr-4 text-left leading-4 xl:leading-6 2xl:leading-6">
+      <ul className="font-inter font-Regular text-[12px] xl:text-[16px] 2xl:text-[24px] pr-4 text-left leading-4 xl:leading-6 2xl:leading-8">
         <li>• Clean face (bare-faced, no foundation or lipstick)</li>
         <li>• If you have bangs, pin them back</li>
         <li>• Wear a white shirt if possible</li>

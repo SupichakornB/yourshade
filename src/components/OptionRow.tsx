@@ -30,7 +30,7 @@ export default function OptionRow<T extends OptionValue>({
                 key={opt.value}
                 onClick={() => onSelect(opt.value)}
                 className={clsx(
-                  "cursor-pointer rounded-2xl w-75 h-100 md:w-[384px] md:h-127.5 flex items-center justify-center shadow-xl transition-all border",
+                  "cursor-pointer rounded-2xl w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[1096px] 2xl:h-[720px] flex items-center justify-center shadow-xl transition-all border",
                   selected ? "border-2 border-[#8E1616]" : "border-[#7E7F83]",
                 )}
                 style={{ backgroundColor: opt.bgColor }}
