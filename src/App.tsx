@@ -6,6 +6,7 @@ import VeinsPage from "@/pages/veins/page";
 import StepsPage from "./pages/steps/page";
 import LoadingPage from "./pages/loading/page";
 import ResultPage from "./pages/result/page";
+import Privacy from "@/pages/upload/privacy";
 
 import ProductPage from "./pages/product/page";
 import ProductDetailPage from "./pages/product/ProductDetailPage";
@@ -26,6 +27,7 @@ function App() {
           <Route path="/tryon" element={<TryOnPage />} />
           <Route path="/product/:resultData" element={<ProductPage />} />
           <Route path="/products/:season/:productId" element={<ProductDetailPage />} />
+          <Route path="/upload/privacy" element={<Privacy />} />
         </Route>
       </Routes>
     </BrowserRouter>

@@ -26,7 +26,7 @@ export default function Home() {
         <img
           src={logo}
           alt="logo"
-          className="absolute top-4 left-1/2 -translate-x-1/2 w-32 h-7 md:w-60 md:h-13 z-10"
+          className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13"
         />
       </div>
 

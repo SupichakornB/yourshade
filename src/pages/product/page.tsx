@@ -88,8 +88,8 @@ const ProductPage = () => {
         </button>
           </div>
           <Link to="/">
-            <div className="flex justify-center py-4">
-              <img src={logo} alt="logo" className="w-40 h-7 md:w-60 md:h-13" />
+            <div className="py-4 xl:py-6 2xl:py-6 2xl:py-6 flex justify-center">
+              <img src={logo} alt="logo" className="w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13" />
             </div>
           </Link>
         </div>

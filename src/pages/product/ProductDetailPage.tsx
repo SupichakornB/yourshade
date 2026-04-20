@@ -33,41 +33,44 @@ const ProductDetailPage = () => {
   if (!product) return <div>Product not found</div>;
 
   return (
-    <div className="pb-10">
+    <div>
       <div className="w-full mx-auto">
         <div className="grid grid-cols-3">
           <div className="self-center p-3">
-          <button onClick={() => navigate(-1)} className="p-2 rounded-full hover:bg-gray-200 transition">
-          <img src={backIcon} alt="back" className="max-w-9 cursor-pointer" />
-        </button>
+            <button onClick={() => navigate(-1)} className="p-2 rounded-full hover:bg-gray-200 transition">
+              <img src={backIcon} alt="back" className="max-w-9 cursor-pointer" />
+            </button>
           </div>
           <Link to="/">
-            <div className="py-4 flex justify-center">
-              <img src={logo} alt="logo" className="w-40 h-7 md:w-60 md:h-13" />
+            <div className="py-4 xl:py-6 2xl:py-6 2xl:py-6 flex justify-center">
+              <img src={logo} alt="logo" className="w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13" />
             </div>
           </Link>
         </div>
-        <div className="w-full flex justify-center pt-8 px-4 md:px-6">
-          <div className="w-full max-w-147.5">
+        <div className="w-full flex justify-center py-4 xl:py-6 2xl:py-6 px-4 xl:px-6 2xl:px-6">
+          <div className="w-[382px] h-[382px] xl:w-[534px] xl:h-[534px] 2xl:w-[590px] 2xl:h-[590px]">
             <ProductImageSlider
               images={product.images}
               selectedIndex={selectedIndex}
               onChange={setSelectedIndex}
             />
 
-            <div className="mt-6 text-[16px] xl:text-[24px] 2xl:text-[32px] font-semibold">
+            <div className="mt-6">
 
-              <p className="text-gray-500">
-  Color : {product.choice && selectedImage?.color &&(
-    <span className="text-[#8E1616]">
-      {selectedImage.color}
-    </span>
-  )}
-</p>
+{product.choice && (
+  <p className="text-[14px] xl:text-[20px] 2xl:text-[24px] font-semibold">
+    Color :{" "}
+    {selectedImage?.color && (
+      <span className="text-[#8E1616]">
+        {selectedImage.color}
+      </span>
+    )}
+  </p>
+)}
 
             </div>
             {product.choice && (
-              <div className="flex gap-6 mt-2">
+              <div className="flex gap-6">
                 {colorImages && colorImages?.length > 0 && (
                   <div className="flex gap-4 mt-3">
                     {colorImages.map((img) => {
@@ -92,10 +95,10 @@ const ProductDetailPage = () => {
                 )}
               </div>
             )}
-            <div className="my-6 text-[16px] xl:text-[24px] 2xl:text-[32px] font-semibold">
+            <div className=" text-[16px] xl:text-[24px] 2xl:text-[28px] font-semibold">
               {product.name}
             </div>
-            <div className="text-[16px] xl:text-[24px] 2xl:text-[32px] font-semibold">
+            <div className="text-[16px] xl:text-[24px] 2xl:text-[28px] font-semibold">
               Brand: {product.brand}
             </div>
           </div>

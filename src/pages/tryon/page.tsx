@@ -887,16 +887,16 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         </button>
           </div>
           <Link to="/">
-            <div className="flex justify-center py-4">
-              <img src={logo} alt="logo" className="w-40 h-7 md:w-60 md:h-13" />
+            <div className="py-4 xl:py-6 2xl:py-6 2xl:py-6 flex justify-center">
+              <img src={logo} alt="logo" className="w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13" />
             </div>
           </Link>
         </div>
 
       {/* Camera */}
-      <div className="px-3 sm:px-0 py-4">
+      <div>
 <div
-  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[1096px] 2xl:h-[720px] mx-auto rounded-3xl overflow-hidden border border-gray"
+  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[976px] 2xl:h-[674px] mx-auto rounded-3xl overflow-hidden border border-gray"
 >
   <video
     ref={videoRef}
@@ -927,12 +927,12 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 </div>
 
       {/* Controls */}
-      <div className="mx-auto w-[382px] h-[200px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[328px] bg-white rounded-2xl shadow-md px-4 py-4">
+      <div className="mx-auto w-[382px] h-[200px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[330px] bg-white rounded-2xl shadow-md px-4 py-4 xl:px-6 xl:py-6 2xl:py-6 2xl:px-6 mt-4 xl:mt-6 2xl:mt-6 flex flex-col">
         {/* Tabs */}
         <div className="flex gap-2 mb-3 xl:px-32 2xl:px-32">
           {tabConfig.map(({ key, label}) => (
             <button key={key} onClick={() => handleSetActiveTab(key)}
-              className={`flex-1 py-2 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
+              className={`flex-1 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
                 activeTab === key ? "bg-[#8E1616] text-white" : "bg-gray-100 text-gray-400 hover:bg-gray-200"
               }`}
             >
@@ -942,20 +942,20 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         </div>
 
         {/* ── Hair Color Panel ── */}
-        {activeTab === "haircolor" && (
-          <div>
-  <div className="flex items-center justify-between mb-2">
-<p className="text-xs text-gray-500 font-medium">
-  Color : {selectedHairColor && (
-    <span className="text-xs text-[#8E1616] font-medium">
-      {selectedHairColor.name}
-    </span>
-  )}
-</p>
-            </div>
-
-<div className="overflow-x-auto py-2 scrollbar-hide">
-  <div className="flex justify-center gap-3 px-4 min-w-max mx-auto">
+{activeTab === "haircolor" && (
+  <div className="flex-1 flex flex-col">
+    <div className="flex items-center justify-between mb-2">
+      <p className="text-xs font-medium">
+        Color : {selectedHairColor && (
+          <span className="text-xs text-[#8E1616] font-medium">
+            {selectedHairColor.name}
+          </span>
+        )}
+      </p>
+    </div>
+    <div className="flex-1 flex items-center justify-center overflow-x-auto scrollbar-hide">
+      <div className="flex gap-3 px-4 min-w-max">
+        {/* No Filter */}
               {/* No Filter swatch */}
               <button
                 title="No Filter"
@@ -1002,11 +1002,11 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         {activeTab !== "haircolor" && activeTab !== "clothes" && (
           <>
             {products.length === 0 ? (
-              <p className="text-center text-gray-400 text-sm py-4">
+              <p className="text-center text-sm py-4">
                 No {activeTab} products for {season} season
               </p>
             ) : (
-              <div className="flex gap-3 overflow-x-auto py-2 scrollbar-hide mx-auto px-4">
+              <div className="flex gap-3 overflow-x-auto py-4 xl:py-6 2xl:py-6 scrollbar-hide mx-auto px-4">
                 {/* No Filter card */}
                 <button
                   onClick={handleClearMakeup}
@@ -1037,7 +1037,7 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
                   >
                     <img src={product.primaryImage} alt={product.name}
                       className="w-[75px] h-[75px] rounded-lg object-cover border border-gray-100" />
-                    <span className="text-[10px] text-gray-600 max-w-[60px] text-center leading-tight line-clamp-2">
+                    <span className="text-[10px] max-w-[60px] text-center leading-tight line-clamp-2">
                       {product.name.replace(/^4U2 /i, "")}
                     </span>
                   </button>
@@ -1047,8 +1047,8 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
-              <div className="mt-3 pt-3 border-t border-gray-100">
-<p className="text-xs text-gray-500 font-medium">
+              <div className="pt-4 xl:pt-6 2xl:pt-6 border-t border-gray-100">
+<p className="text-xs font-medium">
   Color : {selectedProduct.variants[activeVariantIdx] && (
     <span className="text-xs text-[#8E1616] font-medium">
       {selectedProduct.variants[activeVariantIdx].name}
@@ -1084,26 +1084,20 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
         )}
 
         {/* ── Clothes Color Panel ── */}
-        {activeTab === "clothes" && (
-          <div>
-
-            {/* Header row */}
-            <div className="flex items-center justify-between mb-2">
-<p className="text-xs text-gray-500 font-medium">
-  Color : {selectedClothesColor && (
-    <span className="text-xs text-[#8E1616] font-medium">
-      {selectedClothesColor.name}
-    </span>
-  )}
-</p>
-
-
-  
-            </div>
-
-            {/* Swatches */}
-<div className="overflow-x-auto py-2 scrollbar-hide">
-  <div className="flex justify-center gap-3 px-4 min-w-max mx-auto">
+{activeTab === "clothes" && (
+  <div className="flex-1 flex flex-col">
+    <div className="flex items-center justify-between mb-2">
+      <p className="text-xs font-medium">
+        Color : {selectedClothesColor && (
+          <span className="text-xs text-[#8E1616] font-medium">
+            {selectedClothesColor.name}
+          </span>
+        )}
+      </p>
+    </div>
+    <div className="flex-1 flex items-center justify-center overflow-x-auto scrollbar-hide">
+      <div className="flex gap-3 px-4 min-w-max">
+        {/* No Color */}
               {/* No Color */}
               <button
                 title="No Color"

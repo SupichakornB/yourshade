@@ -10,7 +10,7 @@
 
 .modal {
   width: 90%;
-  max-width: 420px;
+  max-width: 400px;
   background: #fff;
   border-radius: 20px;
   padding: 24px;
@@ -29,6 +29,8 @@
   font-size: 14px;
   color: #444;
   margin-bottom: 16px;
+    margin-left: 8px;
+  margin-right: 8px;
   text-align: left;
   font-weight: regular;
   font: inter;
@@ -37,12 +39,14 @@
 .checkbox {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
   text-align: left;
   font-size: 13px;
   margin-bottom: 20px;
   font-weight: regular;
   font: inter;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .ok-btn {

@@ -7,7 +7,7 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
   const [checked, setChecked] = useState(false)
 
   return (
-<div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-3xl rounded-3xl overflow-hidden border border-gray">
+    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray">
       <div className="modal">
         <h2>VIRTUAL ANALYSIS</h2>
 
@@ -16,16 +16,26 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
           and Chrome on Android.
         </p>
 
-        <label className="checkbox">
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={(e) => setChecked(e.target.checked)}
-          />
-          <span>
-            I consent to the scanning of my face and the processing of my images, as described in the Facial Analysis Data Notice, and agree to all terms and conditions, including data retention, data deletion, data usage, processing, and storage.          
-            </span>
-        </label>
+<label className="checkbox">
+  <input
+    type="checkbox"
+    checked={checked}
+    onChange={(e) => setChecked(e.target.checked)}
+  />
+  <p style={{ margin: 0 }}>
+    I consent to the use of my camera and facial image for Personal Color analysis. My image will be processed temporarily and will not be stored or retained after analysis.
+    <br />
+    <br />
+    By continuing, I agree to the{' '}
+    <span
+      className="underline cursor-pointer hover:opacity-70 transition-opacity"
+      onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open('/upload/privacy', '_blank') }}
+    >
+      Privacy Policy
+    </span>
+    .
+  </p>
+</label>
 
         <button
           className="ok-btn"

@@ -82,33 +82,7 @@ const handleSnap = () => {
 
   return (
   <div className="min-h-screen overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
-      {showConsent && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm">
-          <div className="bg-white rounded-2xl p-6 mx-6 shadow-xl max-w-sm w-full">
-            <h2 className="font-playfair font-semibold text-[#8E1616] text-xl mb-3">
-              Before we begin
-            </h2>
-            <p className="text-sm text-gray-600 mb-6">
-              We'll use your camera to analyze your features. 
-              Your photo won't be stored or shared.
-            </p>
-            <div className="flex gap-3">
-              <button
-                onClick={() => setShowConsent(false)}
-                className="flex-1 py-2 rounded-xl border border-gray-300 text-sm text-gray-600"
-              >
-                Cancel
-              </button>
-<button
-  onClick={() => setShowConsent(false)}  // ← ใหม่ ตัด setStartCamera(true) ออก
-  className="flex-1 py-2 rounded-xl bg-[#8E1616] text-white text-sm"
->
-  Allow
-</button>
-            </div>
-          </div>
-        </div>
-      )}
+      
 
       <div>
         <img
