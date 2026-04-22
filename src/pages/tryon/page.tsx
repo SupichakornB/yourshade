@@ -335,7 +335,7 @@ const hairSegmenterRef = useRef<ImageSegmenter | null>(null);
       if (destroyed) return;
       frameCount++;
       if (frameCount % 3 === 0 && video.readyState >= 2) {
-        try { await pose.send({ image: video }); } catch (_) {}
+        try { await pose.send({ image: video }); } catch { /* ignore */ }
       }
       rafId = requestAnimationFrame(loop);
     };
@@ -757,7 +757,7 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
       const sendFrame = async () => {
         if (destroyed) return;
         if (video.readyState >= 2) {
-          try { await faceMesh.send({ image: video }); } catch (_) { /* ignore */ }
+          try { await faceMesh.send({ image: video }); } catch { /* ignore */ }
         }
         if ("requestVideoFrameCallback" in video) {
           rvfcId = (video as HTMLVideoElement & { requestVideoFrameCallback: (cb: () => void) => number })
@@ -858,14 +858,6 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
     applyMakeupRef.current = false;
     setSelectedProduct(null);
     setActiveVariantIdx(null);
-  };
-
-  const seasonLabel: Record<Season, string> = {
-    spring: "Spring", summer: "Summer", autumn: "Autumn", winter: "Winter",
-  };
-
-  const finishAreaLabel: Record<Finish, string> = {
-    matte: "Lip", gloss: "Lip", shimmer: "Lip", blush: "Cheek", liner: "Liner",
   };
 
   const tabConfig: { key: Tab; label: string;}[] = [
