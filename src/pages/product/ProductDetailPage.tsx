@@ -47,8 +47,8 @@ const ProductDetailPage = () => {
             </div>
           </Link>
         </div>
-        <div className="w-full flex justify-center py-4 xl:py-6 2xl:py-6 px-4 xl:px-6 2xl:px-6">
-          <div className="w-[382px] h-[382px] xl:w-[534px] xl:h-[534px] 2xl:w-[590px] 2xl:h-[590px]">
+        <div className="w-full flex justify-center pb-4 xl:pb-6 2xl:pb-6 px-4 xl:px-6 2xl:px-6">
+          <div className="w-[382px] h-[382px] xl:w-[510px] xl:h-[510px] 2xl:w-[590px] 2xl:h-[590px]">
             <ProductImageSlider
               images={product.images}
               selectedIndex={selectedIndex}
@@ -70,7 +70,7 @@ const ProductDetailPage = () => {
 
             </div>
             {product.choice && (
-              <div className="flex gap-6">
+              <div className="flex pb-4 xl:pb-6 2xl:pb-6 items-center">
                 {colorImages && colorImages?.length > 0 && (
                   <div className="flex gap-4 mt-3">
                     {colorImages.map((img) => {
@@ -101,6 +101,17 @@ const ProductDetailPage = () => {
             <div className="text-[16px] xl:text-[24px] 2xl:text-[28px] font-semibold">
               Brand: {product.brand}
             </div>
+        <div
+          className="flex w-full justify-center"
+          onClick={() => dispatch({ type: "SET_IMAGE", payload: null })}
+        >
+          <Link
+            to="/upload"
+            className="bg-[#8E1616] px-6 py-4 font-thin text-[20px] xl:text-[28px] 2xl:text-[36px] text-white rounded-full shadow-lg shadow-[#8E1616]/20bg-[#8E1616] font rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
+          >
+            Discover Your Personal Color →
+          </Link>
+        </div>
           </div>
         </div>
       </div>

@@ -25,6 +25,7 @@ export type Product = {
   choice: boolean;
   season: Season;
   images: ProductImage[];
+  buttonlink: string;
 };
 
 export const SEASON_LABEL: Record<Season, string> = {

@@ -937,9 +937,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 {activeTab === "haircolor" && (
   <div className="flex-1 flex flex-col">
     <div className="flex items-center justify-between mb-2">
-      <p className="text-xs font-medium">
+      <p className="text-[14px] xl:text-[20px] 2xl:text-[24px] font-semibold">
         Color : {selectedHairColor && (
-          <span className="text-xs text-[#8E1616] font-medium">
+          <span className="text-[14px] xl:text-[20px] 2xl:text-[24px] text-[#8E1616] font-medium">
             {selectedHairColor.name}
           </span>
         )}

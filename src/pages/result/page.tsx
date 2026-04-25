@@ -210,8 +210,8 @@ export default function ResultPage() {
           ))}
         </div>
       </div>
-      <div className="px-4 md:px-32 mt-11 py-20 md:py-40 bg-[url(@/assets/result/bg.png)] bg-cover bg-center bg-no-repeat min-h-95 md:min-h-280 ">
-        <div className="grid md:grid-cols-2 gap-6 md:gap-10 items-stretch">
+      <div className=" px-4 xl:px-32 2xl:px-32 mt-11 py-20 xl:py-20 2xl:py-40 bg-[url(@/assets/result/bg.png)] bg-cover bg-center bg-no-repeat min-h-95 xl:min-h-180 2xl:min-h-280 rounded-3xl">
+        <div className="grid xl:grid-cols-2 2xl:grid-cols-2 gap-6 xl:gap-10 2xl:gap-10 items-stretch">
           {/* Make up */}
           <div className="grid text-center justify-center">
             <h3 className="text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-4">
@@ -300,7 +300,7 @@ export default function ResultPage() {
             }
           `}</style>
 
-          <div className="grid md:grid-cols-3 gap-20 px-14">
+          <div className="grid xl:grid-cols-3   2xl:grid-cols-3 gap-20 px-14">
             {/* Career Card */}
             <div
               className={`card-flip-container ${flippedCards.career ? "flipped" : ""}`}

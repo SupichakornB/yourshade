@@ -22,7 +22,6 @@ import { WINTER_MAKEUP } from "./products/winter.makeup";
 import { WINTER_ACCESSORISE } from "./products/winter.accessories";
 
 
-// 🧠 helper: แปลง ClothesColor → Product (ใช้ใน TryOn เท่านั้น)
 function mapClothesToProduct(
   colors: ClothesColor[],
   season: "spring" | "summer" | "autumn" | "winter"
@@ -35,6 +34,7 @@ function mapClothesToProduct(
     choice: true,
     season,
     images: [{ colorHex: c.colorHex }],
+    buttonlink: "",  // ← ใส่ "" แทนที่จะค้างไว้
   }));
 }
 
