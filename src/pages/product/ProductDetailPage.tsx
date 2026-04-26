@@ -101,17 +101,33 @@ const ProductDetailPage = () => {
             <div className="text-[16px] xl:text-[24px] 2xl:text-[28px] font-semibold">
               Brand: {product.brand}
             </div>
-        <div
-          className="flex w-full justify-center"
-          onClick={() => dispatch({ type: "SET_IMAGE", payload: null })}
-        >
-          <Link
-            to="/upload"
-            className="bg-[#8E1616] px-6 py-4 font-thin text-[20px] xl:text-[28px] 2xl:text-[36px] text-white rounded-full shadow-lg shadow-[#8E1616]/20bg-[#8E1616] font rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
-          >
-            Discover Your Personal Color →
-          </Link>
-        </div>
+<div className="flex justify-center pt-4 xl:pt-6 2xl:pt-6">
+{product.buttonlink && (
+  
+  <a href={product.buttonlink}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="bg-[#8E1616] w-full py-3 font-regular text-[16px] xl:text-[24px] 2xl:text-[24px] text-white rounded-full shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition-transform cursor-pointer whitespace-nowrap justify-center flex items-center"
+  >
+    Shop Now
+    <span className="pl-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-6 2xl:h-6"
+      >
+        <path d="M7 7h10v10"/>
+        <path d="M7 17 17 7"/>
+      </svg>
+    </span>
+  </a>
+)}
+</div>
           </div>
         </div>
       </div>

@@ -30,34 +30,51 @@ export default function Home() {
         />
       </div>
 
-      <div className="space-y-6 py-6 px-4">
-        <div
-          className="flex justify-center"
-          onClick={() => dispatch({ type: "SET_IMAGE", payload: null })}
-        >
-          <Link
-            to="/upload"
-            className="bg-[#8E1616] px-6 py-4 font-thin text-[20px] xl:text-[28px] 2xl:text-[36px] text-white rounded-full shadow-lg shadow-[#8E1616]/20bg-[#8E1616] font rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
-          >
-            Discover Your Personal Color →
-          </Link>
-        </div>
+      <div className="py-4 xl:py-6 2xl:py-6 px-4 mt-4 xl:mt-6 2xl:mt-6">
         <div className="text-[24px] xl:text-[40px] 2xl:text-[56px] text-center font-bold text-[#8E1616]">
           What is Personal Color ?
         </div>
 
-        <div className="flex justify-center">
-          <div className="text-center xl:w-[1196px] 2xl:w-[1400px] :text-[16px] xl:text-[28px] 2xl:text-[32px]">
-            Colors that match our skin tone will make shadows on the face appear
-            less noticeable, reducing the appearance of wrinkles, laugh lines,
-            and under-eye circles. This makes the face look brighter and
-            healthier. However, using personal color is just one option for
-            dressing. It can be adapted to suit your style and confidence level.
+        <div className="flex justify-center py-4 xl:py-6 2xl:py-6">
+          <div className="text-center xl:w-[1050px] 2xl:w-[1200px] :text-[16px] xl:text-[28px] 2xl:text-[32px]">
+              Personal color is all about finding the colors that truly suit you—those that match your<span className="font-semibold"> skin tone, hair, </span>
+              and <span className="font-semibold">eyes </span>and make everything look more in harmony. The right colors can instantly brighten your face, 
+              enhance your natural features, and help you feel more <span className="font-semibold"> comfortable, confident,</span> and <span className="font-semibold">like your best self every day.</span>
           </div>
         </div>
 
-        <div className="text-[24px] xl:text-[36px] 2xl:text-[48px] text-center font-bold text-[#8E1616]">
-          Personal Color Types
+        <div className="py-4 xl:py-6 2xl:py-6">
+        <div
+          className="flex justify-center"
+          onClick={() => dispatch({ type: "SET_IMAGE", payload: null })}>
+  <Link
+    to="/upload"
+    className="bg-[#8E1616] px-6 py-4 font-thin text-[20px] xl:text-[28px] 2xl:text-[36px] text-white rounded-full shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition-transform cursor-pointer whitespace-nowrap flex items-center"
+  >
+    Discover Your Personal Color
+    <span className="pl-1">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8"
+      >
+        <path d="M5 12h14"/>
+        <path d="m12 5 7 7-7 7"/>
+      </svg>
+    </span>
+  </Link>
+</div>
+</div>
+
+        <div className="py-4 xl:py-6 2xl:py-6">
+          <div className="text-[24px] xl:text-[36px] 2xl:text-[48px] text-center font-bold text-[#8E1616]">
+            Personal Color Types
+          </div>
         </div>
 
         <div className="space-y-6">
@@ -74,7 +91,7 @@ export default function Home() {
             />
           </div>
           <div
-            className="flex justify-center"
+            className="flex justify-center pb-6 xl:pb-12 2xl:pb-12"
             onClick={() => dispatch({ type: "SET_RESULT", payload: "spring" })}
           >
             <Link
@@ -100,7 +117,7 @@ export default function Home() {
             />
           </div>
           <div
-            className="flex justify-center"
+            className="flex justify-center pb-6 xl:pb-12 2xl:pb-12"
             onClick={() => dispatch({ type: "SET_RESULT", payload: "summer" })}
           >
             <Link
@@ -126,7 +143,7 @@ export default function Home() {
             />
           </div>
           <div
-            className="flex justify-center"
+            className="flex justify-center pb-6 xl:pb-12 2xl:pb-12"
             onClick={() => dispatch({ type: "SET_RESULT", payload: "autumn" })}
           >
             <Link
@@ -152,7 +169,7 @@ export default function Home() {
             />
           </div>
           <div
-            className="flex justify-center"
+            className="flex justify-center pb-6 xl:pb-12 2xl:pb-12"
             onClick={() => dispatch({ type: "SET_RESULT", payload: "winter" })}
           >
             <Link

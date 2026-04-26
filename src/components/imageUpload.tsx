@@ -40,7 +40,7 @@ export default function ImageUpload({
         onClick={handleClick}
         className="py-2 px-4 rounded-full inline-flex items-center gap-2 cursor-pointer bg-white text-[20px] xl:text-[24px] 2xl:text-[28px] text-[#8E1616] border border-[#8E1616]"
       >
-        <img src={uploadImageIcon} alt="uploadImageIcon" />
+        <img className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" src={uploadImageIcon} alt="uploadImageIcon" />
         <span>Upload image</span>
       </button>
       <input

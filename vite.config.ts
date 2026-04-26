@@ -8,9 +8,9 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "src") },
   },
-  optimizeDeps: {
-    exclude: ["@mediapipe/tasks-vision", "face-api.js"],
-  },
+optimizeDeps: {
+  include: ["@mediapipe/tasks-vision", "face-api.js"],
+},
   server: {
     watch: {
       ignored: ["**/node_modules/**", "**/.git/**", "**/package.json", "**/tsconfig*.json"],
