@@ -70,11 +70,13 @@ export default function ResultPage() {
     }
   };
 
+  
   useEffect(() => {
-    if (!state.result) {
-      navigate("/");
-    }
-  }, []);
+    const id = setTimeout(() => {
+      if (!state.result) navigate("/");
+    }, 0);
+    return () => clearTimeout(id);
+  }, []); 
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -129,21 +131,30 @@ export default function ResultPage() {
         </div>
       </div>
 
-      <div className="mx-auto xl:mx-32 2xl:mx-32 text-center text-[16px] xl:text-[24px] 2xl:text-[32px] leading-relaxed px-6 py-6 xl:pt-12 xl:pb-6 2xl:pt-12 2xl:pb-6">
+<div className="grid grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 mx-auto xl:mx-32 2xl:mx-32 text-center gap-y-4 gap-x-4 pt-4 xl:pt-12 2xl:pt-12 px-6 pb-6">
+        {[
+          { label: "Undertone", value: state.vein },
+          { label: "Contrast",  value: state.contrast },
+          { label: "Brightness", value: state.brightness },
+          { label: "Saturation", value: state.saturation },
+        ].map(({ label, value }) => (
+          <div
+            key={label}
+            className="w-full items-center font-regular rounded-[16px] xl:rounded-[24px] 2xl:rounded-[24px] bg-[#F4E8E8] p-4 xl:p-5 2xl:p-6 text-[14px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616]"
+          >
+            <span>{label} : </span>
+            <span className="font-semibold capitalize">{value ?? "—"}</span>
+          </div>
+        ))}
+      </div>
+
+      <div className="mx-auto xl:mx-32 2xl:mx-32 text-center text-[14px] xl:text-[24px] 2xl:text-[32px] leading-relaxed px-6 pt-6 xl:py-6 2xl:py-6">
         {getPersonalDescription()}
       </div>
 
+
       <div className="mt-12 relative px-2 md:px-32">
-  {/* <img
-    src={bannerShoppingMb}
-    alt="banner"
-    className="w-full h-auto rounded-lg block md:hidden"
-  /> */}
-  {/* <img
-    src={bannerShopping}
-    alt="banner"
-    className="w-full h-auto rounded-lg hidden md:block"
-  /> */}
+      
   <div className="mt-12 mx-4 md:mx-0">
 
   {/* ======== MOBILE ======== */}
