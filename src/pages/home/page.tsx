@@ -36,7 +36,7 @@ export default function Home() {
         </div>
 
         <div className="flex justify-center py-4 xl:py-6 2xl:py-6">
-          <div className="text-center xl:w-[1050px] 2xl:w-[1200px] :text-[16px] xl:text-[28px] 2xl:text-[32px]">
+          <div className="text-center xl:w-[1050px] 2xl:w-[1200px] text-[16px] xl:text-[28px] 2xl:text-[32px]">
               Personal color is all about finding the colors that truly suit you—those that match your<span className="font-semibold"> skin tone, hair, </span>
               and <span className="font-semibold">eyes </span>and make everything look more in harmony. The right colors can instantly brighten your face, 
               enhance your natural features, and help you feel more <span className="font-semibold"> comfortable, confident,</span> and <span className="font-semibold">like your best self every day.</span>

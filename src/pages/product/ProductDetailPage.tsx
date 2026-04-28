@@ -107,7 +107,7 @@ const ProductDetailPage = () => {
   <a href={product.buttonlink}
     target="_blank"
     rel="noopener noreferrer"
-    className="bg-[#8E1616] w-full py-3 font-regular text-[16px] xl:text-[24px] 2xl:text-[24px] text-white rounded-full shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition-transform cursor-pointer whitespace-nowrap justify-center flex items-center"
+    className="bg-[#8E1616] w-full py-3 font-normal text-[16px] xl:text-[24px] 2xl:text-[24px] text-white rounded-full shadow-lg shadow-[#8E1616]/20 hover:scale-105 transition-transform cursor-pointer whitespace-nowrap justify-center flex items-center"
   >
     Shop Now
     <span className="pl-1">

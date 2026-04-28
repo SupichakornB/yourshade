@@ -127,7 +127,7 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
       >
         ✕
       </span>
-      <ul className="font-inter font-Regular text-[12px] xl:text-[16px] 2xl:text-[24px] pr-4 text-left leading-4 xl:leading-6 2xl:leading-8">
+      <ul className="font-inter font-normal text-[12px] xl:text-[16px] 2xl:text-[24px] pr-4 text-left leading-4 xl:leading-6 2xl:leading-8">
         <li>• Clean face (bare-faced, no foundation or lipstick)</li>
         <li>• If you have bangs, pin them back</li>
         <li>• Wear a white shirt if possible</li>

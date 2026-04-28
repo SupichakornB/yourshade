@@ -34,7 +34,28 @@ export const COLOR_SETS = {
         { name: "Green", color: "#9CE1CF" },
         { name: "Grey", color: "#AAAFC5" },
       ],
-    },
+          },
+      avoidColor: [
+      "#E05751",
+      "#61B055",
+      "#ED935E",
+      "#8E283D",
+      "#62385C",
+    ],
+    eyeshadowColor: [
+      "#E1B3BD",
+      "#EEC3CE",
+      "#E2B9C7",
+      "#A08182",
+      "#917D7A",
+    ],
+    blushColor: [
+      "#F4BDC8",
+      "#E7C6DA",
+      "#F4C1CA",
+      "#FFA8BB",
+      "#F2CBCF",
+    ],
   },
 
   spring: {
@@ -72,7 +93,28 @@ export const COLOR_SETS = {
         { name: "Green", color: "#66BD42" },
         { name: "Camel", color: "#DDAC53" },
       ],
-    },
+          },
+    avoidColor: [
+      "#4F4F4F",
+      "#59532F",
+      "#60652D",
+      "#A76D7C",
+      "#CFC387",
+    ],
+    eyeshadowColor: [
+      "#F5E0E2",
+      "#F5B8B3",
+      "#F9C7BC",
+      "#E6AFA0",
+      "#C98B77",
+    ],
+    blushColor: [
+      "#EFC7C9",
+      "#F4C4BD",
+      "#FF9FA7",
+      "#FFA19B",
+      "#FBC3A8",
+    ],
   },
 
   autumn: {
@@ -110,7 +152,28 @@ export const COLOR_SETS = {
         { name: "Green", color: "#60662A" },
         { name: "Yellow", color: "#DDB109" },
       ],
-    },
+          },
+       avoidColor: [
+      "#FDEE5D",
+      "#FF65C7",
+      "#53C87A",
+      "#2954BC",
+      "#7D98FF",
+    ],
+    eyeshadowColor: [
+      "#F3D3C0",
+      "#DDB7A4",
+      "#F3B28F",
+      "#E69E7B",
+      "#C27F5D",
+    ],
+    blushColor: [
+      "#F69F95",
+      "#F1B7B0",
+      "#F5A68F",
+      "#EEB7A0",
+      "#DD9D91",
+    ],
   },
 
   winter: {
@@ -148,7 +211,28 @@ export const COLOR_SETS = {
         { name: "Black", color: "#050608" },
         { name: "Silver", color: "#898B95" },
       ],
-    },
+          },
+       avoidColor: [
+      "#E1907D",
+      "#DC7015",
+      "#A76D7C",
+      "#B3D670",
+      "#A3BAE3",
+    ],
+    eyeshadowColor: [
+      "#D9BFC1",
+      "#D3A1A2",
+      "#CEADA6",
+      "#9D6868",
+      "#97666C",
+    ],
+    blushColor: [
+      "#F0BAD2",
+      "#F995C0",
+      "#FFB1CD",
+      "#F89DB2",
+      "#D490A2",
+    ],
   },
 };
 

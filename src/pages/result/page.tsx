@@ -11,6 +11,70 @@ import autumnMb from "@/assets/result/banner-autumn-mobile.png";
 import winterMb from "@/assets/result/banner-winter-mobile.png";
 import springMb from "@/assets/result/banner-spring-mobile.png";
 
+
+import summerRecommended1 from "@/assets/result/summer-recommend-1.png";
+import summerRecommended2 from "@/assets/result/summer-recommend-2.png";
+import summerRecommended3 from "@/assets/result/summer-recommend-3.png";
+import summerRecommended4 from "@/assets/result/summer-recommend-4.png";
+import summerRecommended5 from "@/assets/result/summer-recommend-5.png";
+import summerRecommended6 from "@/assets/result/summer-recommend-6.png";
+import autumnRecommended1 from "@/assets/result/autumn-recommend-1.png";
+import autumnRecommended2 from "@/assets/result/autumn-recommend-2.png";
+import autumnRecommended3 from "@/assets/result/autumn-recommend-3.png";
+import autumnRecommended4 from "@/assets/result/autumn-recommend-4.png";
+import autumnRecommended5 from "@/assets/result/autumn-recommend-5.png";
+import autumnRecommended6 from "@/assets/result/autumn-recommend-6.png";
+import winterRecommended1 from "@/assets/result/winter-recommend-1.png";
+import winterRecommended2 from "@/assets/result/winter-recommend-2.png";
+import winterRecommended3 from "@/assets/result/winter-recommend-3.png";
+import winterRecommended4 from "@/assets/result/winter-recommend-4.png";
+import winterRecommended5 from "@/assets/result/winter-recommend-5.png";
+import winterRecommended6 from "@/assets/result/winter-recommend-6.png";
+import springRecommended1 from "@/assets/result/spring-recommend-1.png";
+import springRecommended2 from "@/assets/result/spring-recommend-2.png";
+import springRecommended3 from "@/assets/result/spring-recommend-3.png";
+import springRecommended4 from "@/assets/result/spring-recommend-4.png";
+import springRecommended5 from "@/assets/result/spring-recommend-5.png";
+import springRecommended6 from "@/assets/result/spring-recommend-6.png";
+
+import springresultclothe from "@/assets/result/spring-result-clothe.png"
+import summerresultclothe from "@/assets/result/summer-result-clothe.png"
+import autumnresultclothe from "@/assets/result/autumn-result-clothe.png"
+import winterresultclothe from "@/assets/result/winter-result-clothe.png"
+
+import summerLip1 from "@/assets/result/summer-lip-1.png";
+import summerLip2 from "@/assets/result/summer-lip-2.png";
+import summerLip3 from "@/assets/result/summer-lip-3.png";
+import summerLip4 from "@/assets/result/summer-lip-4.png";
+import summerLip5 from "@/assets/result/summer-lip-5.png";
+import autumnLip1 from "@/assets/result/autumn-lip-1.png";
+import autumnLip2 from "@/assets/result/autumn-lip-2.png";
+import autumnLip3 from "@/assets/result/autumn-lip-3.png";
+import autumnLip4 from "@/assets/result/autumn-lip-4.png";
+import autumnLip5 from "@/assets/result/autumn-lip-5.png";
+import winterLip1 from "@/assets/result/winter-lip-1.png";
+import winterLip2 from "@/assets/result/winter-lip-2.png";
+import winterLip3 from "@/assets/result/winter-lip-3.png";
+import winterLip4 from "@/assets/result/winter-lip-4.png";
+import winterLip5 from "@/assets/result/winter-lip-5.png";
+import springLip1 from "@/assets/result/spring-lip-1.png";
+import springLip2 from "@/assets/result/spring-lip-2.png";
+import springLip3 from "@/assets/result/spring-lip-3.png";
+import springLip4 from "@/assets/result/spring-lip-4.png";
+import springLip5 from "@/assets/result/spring-lip-5.png";
+
+
+import springmakeup from "@/assets/result/spring-result-makeup.png"
+import wintermakeup from "@/assets/result/winter-result-makeup.png"
+import summermakeup from "@/assets/result/summer-result-makeup.png"
+import autumnmakeup from "@/assets/result/autumn-result-makeup.png"
+
+
+import summerAccsessoriesMb from "@/assets/result/summer-accessories.png";
+import springAccsessoriesMb from "@/assets/result/spring-accessories.png";
+import autumnAccsessoriesMb from "@/assets/result/autumn-accessories.png";
+import winterAccsessoriesMb from "@/assets/result/winter-accessories.png";
+
 import summerAccsessories from "@/assets/result/accessories-summer.png";
 import springAccsessories from "@/assets/result/accessories-spring.png";
 import autumnAccsessories from "@/assets/result/accessories-autumn.png";
@@ -21,37 +85,29 @@ import logo from "@/assets/logo.png";
 import bannerShopping from "@/assets/result/banner-shopping.png";
 import bannerShoppingMb from "@/assets/result/banner-shopping-mobile.png";
 import springCareer from "@/assets/result/spring-fortune-career.png";
-import springCardCareer from "@/assets/result/spring-card-career.png";
+
 import springLove from "@/assets/result/spring-fortune-love.png";
-import springCardLove from "@/assets/result/spring-card-love.png";
 import springWealth from "@/assets/result/spring-fortune-wealth.png";
-import springCardWealth from "@/assets/result/spring-card-wealth.png";
-
 import summerCareer from "@/assets/result/summer-fortune-career.png";
-import summerCardCareer from "@/assets/result/summer-card-career.png";
 import summerLove from "@/assets/result/summer-fortune-love.png";
-import summerCardLove from "@/assets/result/summer-card-love.png";
 import summerWealth from "@/assets/result/summer-fortune-wealth.png";
-import summerCardWealth from "@/assets/result/summer-card-wealth.png";
-
 import autumnCareer from "@/assets/result/autumn-fortune-career.png";
-import autumnCardCareer from "@/assets/result/autumn-card-career.png";
 import autumnLove from "@/assets/result/autumn-fortune-love.png";
-import autumnCardLove from "@/assets/result/autumn-card-love.png";
 import autumnWealth from "@/assets/result/autumn-fortune-wealth.png";
-import autumnCardWealth from "@/assets/result/autumn-card-wealth.png";
-
 import winterCareer from "@/assets/result/winter-fortune-career.png";
-import winterCardCareer from "@/assets/result/winter-card-career.png";
 import winterLove from "@/assets/result/winter-fortune-love.png";
-import winterCardLove from "@/assets/result/winter-card-love.png";
 import winterWealth from "@/assets/result/winter-fortune-wealth.png";
-import winterCardWealth from "@/assets/result/winter-card-wealth.png";
+
+// import springresult from "@/assets/result/spring-result.png"
+// import summerresult from "@/assets/result/summer-result.png"
+// import autumnresult from "@/assets/result/autumn-result.png"
+// import winterresult from "@/assets/result/winter-result.png"
+
 
 export default function ResultPage() {
   const { state } = useAnalyze();
   const navigate = useNavigate();
-  const [flippedCards, setFlippedCards] = useState({ career: false, love: false, wealth: false });
+
   const key = state.result?.toLowerCase();
   const data = key && isColorSetKey(key) ? COLOR_SETS[key] : undefined;
 
@@ -140,7 +196,7 @@ export default function ResultPage() {
         ].map(({ label, value }) => (
           <div
             key={label}
-            className="w-full items-center font-regular rounded-[16px] xl:rounded-[24px] 2xl:rounded-[24px] bg-[#F4E8E8] p-4 xl:p-5 2xl:p-6 text-[14px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616]"
+            className="w-full items-center font-normal rounded-[16px] xl:rounded-[24px] 2xl:rounded-[24px] bg-[#F4E8E8] p-4 xl:p-5 2xl:p-6 text-[14px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616]"
           >
             <span>{label} : </span>
             <span className="font-semibold capitalize">{value ?? "—"}</span>
@@ -206,225 +262,260 @@ export default function ResultPage() {
 </div>
 </div>
 
-      <div className="text-center mt-10 md:mt-14 text-[24px] xl:text-[36px] 2xl:text-[48px] font-bold text-[#8E1616]">
-        Recommended colors
-      </div>
+<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-cover min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-15 xl:pb-0 2xl:pt-6">
+      <div className="px-2 md:px-32">
+            <h3 className="text-[#8E1616] text-center font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] py-4 xl:py-6 2xl:py-6">
+              Your Personal Color Guide
+            </h3>
 
-      <div className="mx-4 md:mx-32 justify-center mt-10 rounded-2xl p-6 shadow-sm bg-white">
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 gap-6">
-          {data.recommended.map((c: string, i: number) => (
-            <div
-              key={i}
-              className="w-full aspect-square rounded-xl"
-              style={{ backgroundColor: c }}
+      <div className="grid xl:grid-cols-2 2xl:grid-cols-2 gap-6 xl:gap-10 2xl:gap-10 items-stretch">
+        {/* Recommended colors */}
+  <div className="grid justify-center order-2 xl:order-1 2xl:order-1">
+    <div className="h-[420px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white p-4 xl:p-6 2xl:p-6">
+           <h3 className="text-[#8E1616] font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] p-4 xl:px-6 2xl:p-6 order-2 xl:order-1 2xl:order-1">
+              Recommended colors
+            </h3>
+            <div className="grid grid-cols-3 gap-6 xl:gap-3 2xl:gap-3 px-4 pb-6 xl:pb-3 2xl:pb-6 xl:px-6 2xl:px-3">
+              {[1, 2, 3, 4, 5, 6].map((num) => {
+                const map: Record<string, Record<number, string>> = {
+                  summer: { 1: summerRecommended1, 2: summerRecommended2, 3: summerRecommended3, 4: summerRecommended4, 5: summerRecommended5, 6: summerRecommended6 },
+                  autumn: { 1: autumnRecommended1, 2: autumnRecommended2, 3: autumnRecommended3, 4: autumnRecommended4, 5: autumnRecommended5, 6: autumnRecommended6 },
+                  winter: { 1: winterRecommended1, 2: winterRecommended2, 3: winterRecommended3, 4: winterRecommended4, 5: winterRecommended5, 6: winterRecommended6 },
+                  spring: { 1: springRecommended1, 2: springRecommended2, 3: springRecommended3, 4: springRecommended4, 5: springRecommended5, 6: springRecommended6 },
+                };
+                const season = state.result && state.result in map ? state.result : "spring";
+                return (
+                  <img
+                    key={num}
+                    src={map[season][num]}
+                    alt={`recommended-${num}`}
+                    className="w-full h-auto rounded-lg xl:px-3 2xl:px-9 xl:pb-3 2xl:py-3"
+                  />
+                );
+              })}
+            </div>
+          <div className="px-4 xl:px-6 2xl:px-6">
+            <hr className="text-[#8E1616] border-1 xl:border-2 2xl:border-3"/>
+          </div>
+
+            <h3 className="text-[#8E1616] font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-4 xl:px-6 2xl:px-6 py-4 xl:py-3 2xl:py-6">
+              Avoid colors
+            </h3>
+    <div className="  grid grid-cols-5 px-6 xl:px-6 2xl:px-9 gap-4 xl:gap-6 2xl:gap-9">
+  {data.avoidColor.map((hex, i) => (
+    <div
+      key={i}
+      className="w-full aspect-square rounded-full"
+      style={{ backgroundColor: hex }}
+    />
+  ))}
+            </div>
+          </div>
+        </div>
+        
+
+        {/* clothe mood */}
+  <div className="grid text-center justify-center order-1 xl:order-2 2xl:order-2">
+                        <img
+       src={
+          state.result === "summer" ? summerresultclothe
+          : state.result === "autumn" ? autumnresultclothe
+          : state.result === "winter" ? winterresultclothe
+          : springresultclothe
+        }
+              alt="Accessories"
+              className="max-w-[360px] xl:max-w-[500px] 2xl:max-w-[876px] h-auto xl:h-[500px] 2xl:h-[876px] rounded-3xl "
             />
-          ))}
         </div>
+
       </div>
-      <div className=" px-4 xl:px-32 2xl:px-32 mt-11 py-20 xl:py-20 2xl:py-40 bg-[url(@/assets/result/bg.png)] bg-cover bg-center bg-no-repeat min-h-95 xl:min-h-180 2xl:min-h-280 rounded-3xl">
-        <div className="grid xl:grid-cols-2 2xl:grid-cols-2 gap-6 xl:gap-10 2xl:gap-10 items-stretch">
-          {/* Make up */}
-          <div className="grid text-center justify-center">
-            <h3 className="text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-4">
-              Make up
-            </h3>
-            <div className="h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white shadow-md">
-              <div className="grid grid-cols-2 w-full h-full gap-5 xl:gap-10 2xl:gap-10 p-5 xl:p-10 2xl:p-10">
-                {data.makeup.map((color: string, i: number) => (
-                  <div
-                    key={i}
-                    className={`bg-[${color}] w-full h-full rounded-lg`}
-                    style={{ backgroundColor: color }}
-                  />
-                ))}
-              </div>
-            </div>
-          </div>
-
-          {/* Accessories */}
-          <div className="grid text-center justify-center">
-            <h3 className="text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-4 mt-11 md:mt-0">
-              Accessories
-            </h3>
-
-            <div className="h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white shadow-md object-cover">
-              <img
-                src={
-                  state.result === "summer"
-                    ? summerAccsessories
-                    : state.result === "autumn"
-                      ? autumnAccsessories
-                      : state.result === "winter"
-                        ? winterAccsessories
-                        : springAccsessories
-                }
-                alt="Accessories"
-                className="w-full h-full rounded-3xl object-cover"
-              />
-            </div>
-          </div>
-        </div>
       </div>
-      <div className="w-full max-w-6xl mx-auto space-y-10 mt-10">
-        <div className="mt-12">
-          <h3 className="text-center text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] mb-6">
-            Color of good fortune
-          </h3>
+</div>
 
-          <style>{`
-            .card-flip-container {
-              perspective: 1000px;
-              cursor: pointer;
-            }
-            .card-flip-inner {
-              position: relative;
-              width: 100%;
-              transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
-              transform-style: preserve-3d;
-            }
-            .card-face {
-              width: 100%;
-              backface-visibility: hidden;
-              -webkit-backface-visibility: hidden;
-            }
-            .card-face-front {
-              position: relative;
-            }
-            .card-face-back {
-              position: absolute;
-              top: 0;
-              left: 0;
-              transform: rotateY(180deg);
-            }
-            .card-flip-container.flipped .card-flip-inner {
-              transform: rotateY(180deg);
-            }
-            .card-flip-inner {
-              border-radius: 16px;
-              box-shadow: 0 4px 16px rgba(0,0,0,0.15);
-            }
-            .card-flip-container img {
-              width: 100%;
-              height: auto;
-              border-radius: 16px;
-              display: block;
-            }
-          `}</style>
+<div className="px-4 xl:px-32 2xl:px-32 mt-11 py-4 xl:py-6 2xl:py-6 justify-center">
+  <div className="text-center text-[24px] xl:text-[36px] 2xl:text-[48px] font-bold text-[#8E1616] pb-5 xl:pb-10 2xl:pb-10">
+    Makeup
+  </div>
 
-          <div className="grid xl:grid-cols-3   2xl:grid-cols-3 gap-20 px-14">
-            {/* Career Card */}
-            <div
-              className={`card-flip-container ${flippedCards.career ? "flipped" : ""}`}
-              onClick={() => setFlippedCards(prev => ({ ...prev, career: !prev.career }))}
-            >
-              <div className="card-flip-inner">
-                <div className="card-face card-face-front">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerCardCareer
-                        : state.result == "autumn"
-                          ? autumnCardCareer
-                          : state.result == "winter"
-                            ? winterCardCareer
-                            : springCardCareer
-                    }
-                    alt="Career card"
-                  />
-                </div>
-                <div className="card-face card-face-back">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerCareer
-                        : state.result == "autumn"
-                          ? autumnCareer
-                          : state.result == "winter"
-                            ? winterCareer
-                            : springCareer
-                    }
-                    alt="Career fortune"
-                  />
-                </div>
-              </div>
-            </div>
+  <div className="flex flex-col xl:grid xl:grid-cols-2 gap-6 xl:gap-10 2xl:gap-10 items-center xl:items-stretch">
 
-            {/* Love Card */}
-            <div
-              className={`card-flip-container ${flippedCards.love ? "flipped" : ""}`}
-              onClick={() => setFlippedCards(prev => ({ ...prev, love: !prev.love }))}
-            >
-              <div className="card-flip-inner">
-                <div className="card-face card-face-front">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerCardLove
-                        : state.result == "autumn"
-                          ? autumnCardLove
-                          : state.result == "winter"
-                            ? winterCardLove
-                            : springCardLove
-                    }
-                    alt="Love card"
-                  />
-                </div>
-                <div className="card-face card-face-back">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerLove
-                        : state.result == "autumn"
-                          ? autumnLove
-                          : state.result == "winter"
-                            ? winterLove
-                            : springLove
-                    }
-                    alt="Love fortune"
-                  />
-                </div>
-              </div>
-            </div>
+    {/* รูป makeup */}
+    <div className="mx-auto h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl bg-white object-cover">
+      <img
+        src={
+          state.result === "summer" ? summermakeup
+          : state.result === "autumn" ? autumnmakeup
+          : state.result === "winter" ? wintermakeup
+          : springmakeup
+        }
+        alt="Accessories"
+        className="w-full h-full rounded-3xl object-cover"
+      />
+    </div>
 
-            {/* Wealth Card */}
-            <div
-              className={`card-flip-container ${flippedCards.wealth ? "flipped" : ""}`}
-              onClick={() => setFlippedCards(prev => ({ ...prev, wealth: !prev.wealth }))}
-            >
-              <div className="card-flip-inner">
-                <div className="card-face card-face-front">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerCardWealth
-                        : state.result == "autumn"
-                          ? autumnCardWealth
-                          : state.result == "winter"
-                            ? winterCardWealth
-                            : springCardWealth
-                    }
-                    alt="Wealth card"
-                  />
-                </div>
-                <div className="card-face card-face-back">
-                  <img
-                    src={
-                      state.result == "summer"
-                        ? summerWealth
-                        : state.result == "autumn"
-                          ? autumnWealth
-                          : state.result == "winter"
-                            ? winterWealth
-                            : springWealth
-                    }
-                    alt="Wealth fortune"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+    {/* Eyeshadow / Blush / Lip */}
+    <div className="mx-auto w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] xl:p-6 2xl:p-6">
+      <h3 className="text-[#8E1616] font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-4 xl:px-6 2xl:px-6 py-4 xl:py-6 2xl:py-9">
+        Eyeshadow
+      </h3>
+      <div className="grid grid-cols-5 px-6 xl:px-6 2xl:px-9 gap-4 xl:gap-6 2xl:gap-9">
+        {data.eyeshadowColor.map((hex, i) => (
+          <div key={i} className="w-full aspect-square rounded-full shadow-md" style={{ backgroundColor: hex }} />
+        ))}
+      </div>
+
+      <h3 className="text-[#8E1616] font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-4 xl:px-6 2xl:px-6 py-4 xl:py-6 2xl:py-9">
+        Blush
+      </h3>
+      <div className="grid grid-cols-5 px-6 xl:px-6 2xl:px-9 gap-4 xl:gap-6 2xl:gap-9">
+        {data.blushColor.map((hex, i) => (
+          <div key={i} className="w-full aspect-square rounded-full shadow-md" style={{ backgroundColor: hex }} />
+        ))}
+      </div>
+
+      <h3 className="text-[#8E1616] font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-4 xl:px-6 2xl:px-6 py-4 xl:py-6 2xl:py-9">
+        Lip color
+      </h3>
+      <div className="grid grid-cols-5 gap-6 xl:gap-3 2xl:gap-3 px-6 pb-6 xl:pb-3 2xl:pb-6 xl:px-6 2xl:px-3">
+        {[1, 2, 3, 4, 5].map((num) => {
+          const map: Record<string, Record<number, string>> = {
+            summer: { 1: summerLip1, 2: summerLip2, 3: summerLip3, 4: summerLip4, 5: summerLip5 },
+            autumn: { 1: autumnLip1, 2: autumnLip2, 3: autumnLip3, 4: autumnLip4, 5: autumnLip5 },
+            winter: { 1: winterLip1, 2: winterLip2, 3: winterLip3, 4: winterLip4, 5: winterLip5 },
+            spring: { 1: springLip1, 2: springLip2, 3: springLip3, 4: springLip4, 5: springLip5 },
+          };
+          const season = state.result && state.result in map ? state.result : "spring";
+          return <img key={num} src={map[season][num]} alt={`lip-${num}`} className="w-full h-auto rounded-lg" />;
+        })}
       </div>
     </div>
+
+  </div>
+</div>
+
+      <div className="mx-4 md:mx-32 justify-center xl:mt-10 2xl:mt-10 py-6">
+          <div className="text-center text-[24px] xl:text-[36px] 2xl:text-[48px] font-bold text-[#8E1616] pb-5 xl:pb-10 2xl:pb-10">
+    Accessories
+  </div>
+
+          <img
+
+              src={
+              state.result == "summer"
+                ? summerAccsessories
+                : state.result == "autumn"
+                  ? autumnAccsessories
+                  : state.result == "winter"
+                    ? winterAccsessories
+                    : springAccsessories
+            }
+            
+            alt="result"
+            className="max-w-[360px] xl:w-full 2xl:w-full h-auto rounded-lg block md:hidden mx-auto"
+          />
+          {/* Desktop banner */}
+          <img
+            src={
+              state.result == "summer"
+                ? summerAccsessoriesMb
+                : state.result == "autumn"
+                  ? autumnAccsessoriesMb
+                  : state.result == "winter"
+                    ? winterAccsessoriesMb
+                    : springAccsessoriesMb
+            }
+            alt="result"
+            className="w-full h-auto rounded-lg hidden md:block"
+          />
+      </div>
+
+
+<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-cover min-h-180 xl:min-h-230 2xl:min-h-330 pb-20 xl:pb-24 2xl:pb-32">
+<div className="w-full mx-auto mt-10 pt-6 px-10 xl:px-32 2xl:px-32 ">
+
+    <h3 className="text-center text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] pt-4 xl:pt-6 2xl:pt-6">
+      Color of good fortune
+    </h3>
+    <div className="text-center text-[16px] xl:text-[24px] 2xl:text-[24px] pb-6 xl:pb-10 2xl:pb-10">
+      Lucky colors for your <span className="text-[#8E1616]">Career</span>
+      , <span className="text-[#8E1616]">Love </span>and<span className="text-[#8E1616]"> Wealth—</span>selected to support each part of your life.
+    </div>
+
+    <div className="grid xl:grid-cols-3 2xl:grid-cols-3 gap-4 xl:gap-20 2xl:gap-20 ">
+      {/* Career */}
+      <img
+        src={state.result == "summer" ? summerCareer : state.result == "autumn" ? autumnCareer : state.result == "winter" ? winterCareer : springCareer}
+        alt="Career fortune"
+        className="w-full h-auto rounded-2xl"
+      />
+
+      {/* Love */}
+      <img
+        src={state.result == "summer" ? summerLove : state.result == "autumn" ? autumnLove : state.result == "winter" ? winterLove : springLove}
+        alt="Love fortune"
+        className="w-full h-auto rounded-2xl"
+      />
+
+      {/* Wealth */}
+      <img
+        src={state.result == "summer" ? summerWealth : state.result == "autumn" ? autumnWealth : state.result == "winter" ? winterWealth : springWealth}
+        alt="Wealth fortune"
+        className="w-full h-auto rounded-2xl"
+      />
+    </div>
+  </div>
+</div>
+
+<div className="xl:px-32 2xl:px-32 pt-4 xl:pt-10 2xl:pt-10 py-4 xl:py-6 2xl:py-6 justify-center">
+  <div className="flex flex-col xl:grid xl:grid-cols-2 gap-6 xl:gap-10 items-center">
+    
+    {/* รูป makeup */}
+    <div className="mx-auto h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl object-cover">
+      <img
+       src={
+          state.result === "summer" ? summerresultclothe
+          : state.result === "autumn" ? autumnresultclothe
+          : state.result === "winter" ? winterresultclothe
+          : springresultclothe
+        }
+        alt="Result"
+        className="w-full h-full rounded-3xl object-cover"
+      />
+    </div>
+
+    <div className="flex flex-col items-center gap-4 xl:gap-6 2xl:gap-6">
+      <h3 className="text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px] px-6 xl:px-10 2xl:px-10">
+        Don't lose your colors
+        <br />
+        <span className="text-[#14110F] font-normal text-center text-[16px] xl:text-[24px] 2xl:text-[36px]">
+          Save your personal color, makeup tones, accessories, and lucky colors for easy access anytime.
+        </span>
+      </h3>
+
+      
+       <a href={
+          state.result === "summer" ? summerresultclothe
+          : state.result === "autumn" ? autumnresultclothe
+          : state.result === "winter" ? winterresultclothe
+          : springresultclothe
+        }
+        download="my-personal-color.png"
+        className="flex items-center gap-2 bg-[#8E1616] text-white font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-8 py-3 rounded-full px-6 py-3 shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
+      >
+       <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8"
+      >
+<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Save result
+      </a>
+    </div>
+
+  </div>
+</div>
+</div>
   );
 }
