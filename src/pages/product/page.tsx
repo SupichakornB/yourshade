@@ -86,7 +86,7 @@ const ProductPage = () => {
         {/* Header */}
         <div className="grid grid-cols-3">
           <div className="self-center p-3">
-          <button onClick={() => navigate(-1)} className="p-2 rounded-full hover:bg-gray-200 transition">
+        <button onClick={() => navigate('/result')} className="p-2 rounded-full hover:bg-gray-200 transition">
           <img src={backIcon} alt="back" className="max-w-9 cursor-pointer" />
         </button>
           </div>
@@ -159,7 +159,7 @@ const ProductPage = () => {
           </div>
         </div>
 
-        <div className="flex justify-end px-10 md:px-30 mb-4 md:mb-10">
+        <div className="flex justify-end px-10 mt-2 mb-2">
           {/* ปุ่มเดียวที่เปลี่ยนไอคอนและโหมด */}
           <button
             onClick={toggleViewMode}
@@ -172,7 +172,7 @@ const ProductPage = () => {
 
         {/* รายการสินค้า */}
         <div
-          className={`grid gap-x-6 gap-y-14 px-10 md:px-30 ${
+          className={`grid gap-x-6 gap-y-6 xl:gap-y-14 2xl:gap-y-14 px-10 md:px-30 ${
             viewMode === 'grid-1' ? 'grid-cols-1' : 'grid-cols-2 md:grid-cols-3'
           }`}
         >
@@ -181,7 +181,7 @@ const ProductPage = () => {
               key={product.id + index}
               to={`/products/${product.season}/${product.id}?tab=${activeTab}`}
             >
-              <div className="grid gap-2 md:gap-6 mt-4 md:mt-1">
+              <div className="grid gap-2 md:gap-6">
                 <div className="w-full aspect-[350/350] overflow-hidden rounded-xl group">
                   <img
                     src={getPrimaryImage(product)?.url}

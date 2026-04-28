@@ -27,7 +27,7 @@ const ProductDetailPage = () => {
   const selectedImage = product?.images?.[selectedIndex];
 
   useEffect(() => {
-    setSelectedIndex(primaryIndex);
+    setSelectedIndex(0);
   }, [primaryIndex]);
 
   if (!product) return <div>Product not found</div>;
@@ -48,12 +48,28 @@ const ProductDetailPage = () => {
           </Link>
         </div>
         <div className="w-full flex justify-center pb-4 xl:pb-6 2xl:pb-6 px-4 xl:px-6 2xl:px-6">
-          <div className="w-[382px] h-[382px] xl:w-[510px] xl:h-[510px] 2xl:w-[590px] 2xl:h-[590px]">
-            <ProductImageSlider
-              images={product.images}
-              selectedIndex={selectedIndex}
-              onChange={setSelectedIndex}
-            />
+          <div className="w-[382px] h-[382px] xl:w-[510px] xl:h-[510px] 2xl:w-[590px] 2xl:h-[590px] relative">
+  <ProductImageSlider
+    images={product.images}
+    selectedIndex={selectedIndex}
+    onChange={setSelectedIndex}
+  />
+
+  {product.images.length > 1 && (
+    <div className="absolute bottom-3 left-0 right-0 flex justify-center items-center gap-2">
+      {product.images.map((_, index) => (
+        <button
+          key={index}
+          onClick={() => setSelectedIndex(index)}
+          className={`rounded-full transition-all duration-300 cursor-pointer ${
+            selectedIndex === index
+              ? "w-5 h-[6px] bg-[#8E1616]"
+              : "w-[6px] h-[6px] bg-gray-300 hover:bg-gray-400"
+          }`}
+        />
+      ))}
+    </div>
+  )}
 
             <div className="mt-6">
 
