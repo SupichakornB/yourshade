@@ -7,7 +7,6 @@ export default function MainLayout() {
     <div className="relative min-h-screen bg-[#FAFAFA]">
       <main>
         <Outlet />
-              <ScrollToTop />
       </main>
     </div>
   );

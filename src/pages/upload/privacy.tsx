@@ -1,9 +1,11 @@
 import banner from "@/assets/home-banner.png";
 import logo from "@/assets/full-logo.png";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Privacy() {
   return (
     <div className="pb-20">
+            <ScrollToTop />
       <div className="relative w-full h-79.75 md:h-full">
         <img
           src={banner}

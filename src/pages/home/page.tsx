@@ -10,12 +10,14 @@ import summerImageMb from "@/assets/home-summer-tone-banner-mb.png";
 import winterImageMb from "@/assets/home-winter-tone-banner-mb.png";
 import { useAnalyze } from "@/context/useAnalyze";
 import logo from "@/assets/full-logo.png";
+import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {
   const { dispatch } = useAnalyze();
 
   return (
     <div className="pb-20">
+      <ScrollToTop />
       <div className="relative w-full h-79.75 md:h-full">
         <img
           src={banner}

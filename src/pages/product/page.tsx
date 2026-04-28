@@ -7,6 +7,8 @@ import logo from "@/assets/full-logo.png";
 import backIcon from "@/assets/icon/ep_back.svg";
 import { FiGrid, FiList } from 'react-icons/fi';
 
+import ScrollToTop from "@/components/ScrollToTop";
+
 import springBanner from "@/assets/product/product-spring-banner.png";
 import summerBanner from "@/assets/product/product-summer-banner.png";
 import autumnBanner from "@/assets/product/product-autumn-banner.png";
@@ -79,6 +81,7 @@ const ProductPage = () => {
 
   return (
     <div className="pb-10">
+            <ScrollToTop />
       <div className="w-full mx-auto">
         {/* Header */}
         <div className="grid grid-cols-3">

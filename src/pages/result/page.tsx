@@ -2,6 +2,12 @@
 
 import { useAnalyze } from "@/context/useAnalyze";
 import { useEffect, useState } from "react";
+
+import StartNewAnalysis from '@/components/StartNewAnalysis'
+import backIcon from "@/assets/icon/ep_back.svg";
+
+import ScrollToTop from "@/components/ScrollToTop";
+
 import summer from "@/assets/result/banner-summer.png";
 import autumn from "@/assets/result/banner-autumn.png";
 import winter from "@/assets/result/banner-winter.png";
@@ -105,7 +111,7 @@ import winterWealth from "@/assets/result/winter-fortune-wealth.png";
 
 
 export default function ResultPage() {
-  const { state } = useAnalyze();
+const { state, dispatch } = useAnalyze();
   const navigate = useNavigate();
 
   const key = state.result?.toLowerCase();
@@ -138,54 +144,66 @@ export default function ResultPage() {
     window.scrollTo({ top: 0, behavior: "instant" });
   }, []);
 
+const [showModal, setShowModal] = useState(false)
+
+const handleConfirm = () => {
+  setShowModal(false)
+  dispatch({ type: "SET_IMAGE", payload: null })
+  navigate('/upload')
+}
+
   const navigateToProduct = () => {
     navigate(`/product/${state?.result?.toLowerCase()}`);
   };
+
+const hasValues = [state.vein, state.contrast, state.brightness, state.saturation].some(v => v)
+
+const handleBack = () => {
+  if (hasValues) {
+    setShowModal(true)
+  } else {
+    navigate('/')
+  }
+}
 
   if (!data) return null;
 
   return (
     <div className="pb-10">
-      <div className="w-full  mx-auto relative">
-      <div className="relative w-full">
-          {/* Mobile banner */}
-          <img
-            src={
-              state.result == "summer"
-                ? summerMb
-                : state.result == "autumn"
-                  ? autumnMb
-                  : state.result == "winter"
-                    ? winterMb
-                    : springMb
-            }
-            alt="result"
-            className="w-full h-auto rounded-lg block md:hidden"
-          />
-          {/* Desktop banner */}
-          <img
-            src={
-              state.result == "summer"
-                ? summer
-                : state.result == "autumn"
-                  ? autumn
-                  : state.result == "winter"
-                    ? winter
-                    : spring
-            }
-            alt="result"
-            className="w-full h-auto rounded-lg hidden md:block"
-          />
+            <ScrollToTop />
+      <div className="w-full mx-auto relative">
+  <div className="relative w-full">
+    {/* Mobile banner */}
+    <img
+      src={state.result == "summer" ? summerMb : state.result == "autumn" ? autumnMb : state.result == "winter" ? winterMb : springMb}
+      alt="result"
+      className="w-full h-auto rounded-lg block md:hidden"
+    />
+    {/* Desktop banner */}
+    <img
+      src={state.result == "summer" ? summer : state.result == "autumn" ? autumn : state.result == "winter" ? winter : spring}
+      alt="result"
+      className="w-full h-auto rounded-lg hidden md:block"
+    />
 
-          <Link to="/">
-            <img
-              src={logo}
-              alt="logo"
-              className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-10 h-8 md:w-28 md:h-20 z-10"
-            />
-          </Link>
-        </div>
-      </div>
+    {/* ปุ่มทับบน banner */}
+  <div className="self-center p-3">
+    <button
+      onClick={handleBack}
+      className="absolute top-6 left-4  p-2 rounded-full  hover:bg-white/60 transition"
+    >
+      <img src={backIcon} alt="back" className="w-9 h-9" />
+    </button>
+  </div>
+    <Link to="/">
+      <img
+        src={logo}
+        alt="logo"
+        className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-10 h-8 md:w-28 md:h-20 z-10"
+      />
+    </Link>
+  </div>
+</div>
 
 <div className="grid grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 mx-auto xl:mx-32 2xl:mx-32 text-center gap-y-4 gap-x-4 pt-4 xl:pt-12 2xl:pt-12 px-6 pb-6">
         {[
@@ -516,6 +534,14 @@ export default function ResultPage() {
 
   </div>
 </div>
-</div>
-  );
+ {showModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60">
+          <StartNewAnalysis
+            onClose={() => setShowModal(false)}
+            onConfirm={handleConfirm}
+          />
+        </div>
+      )}
+    </div>
+  )
 }

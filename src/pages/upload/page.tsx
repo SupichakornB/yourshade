@@ -59,10 +59,11 @@ export default function UploadPage() {
   };
 
   const onClear = () => {
-    dispatch({ type: "SET_IMAGE", payload: null });
-    setStartCamera(false);
-    setNoDetectFaceAlert(false);
-    setUnsupportFileAlert(false);
+  dispatch({ type: "SET_IMAGE", payload: null })
+  setStartCamera(false)
+  setShowConsent(false)
+  setNoDetectFaceAlert(false)
+  setUnsupportFileAlert(false)
   };
 
   const handleNext = () => {
