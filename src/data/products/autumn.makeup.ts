@@ -104,7 +104,6 @@ export const AUTUMN_MAKEUP: Product[] = [
     { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-2.jpg" },
     { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-3.jpg" },
     { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-4.jpg" },
-    { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-5.jpg" },
     {
       url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-be-kind.jpg",
       color: "Be Kind",

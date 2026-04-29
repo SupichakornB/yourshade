@@ -149,6 +149,10 @@ const [showModal, setShowModal] = useState(false)
 const handleConfirm = () => {
   setShowModal(false)
   dispatch({ type: "SET_IMAGE", payload: null })
+  dispatch({ type: "SET_VEIN", payload: null })
+  dispatch({ type: "SET_CONTRAST", payload: null })
+  dispatch({ type: "SET_BRIGHTNESS", payload: null })
+  dispatch({ type: "SET_SATURATION", payload: null })
   navigate('/upload')
 }
 
@@ -207,22 +211,26 @@ const handleBack = () => {
   </div>
 </div>
 
-<div className="grid grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 mx-auto xl:mx-32 2xl:mx-32 text-center gap-y-4 gap-x-4 pt-4 xl:pt-12 2xl:pt-12 px-6 pb-6">
-        {[
-          { label: "Undertone", value: state.vein },
-          { label: "Contrast",  value: state.contrast },
-          { label: "Brightness", value: state.brightness },
-          { label: "Saturation", value: state.saturation },
-        ].map(({ label, value }) => (
-          <div
-            key={label}
-            className="w-full items-center font-normal rounded-[16px] xl:rounded-[24px] 2xl:rounded-[24px] bg-[#F4E8E8] p-4 xl:p-5 2xl:p-6 text-[14px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616]"
-          >
-            <span>{label} : </span>
-            <span className="font-semibold capitalize">{value ?? "—"}</span>
-          </div>
-        ))}
+
+{hasValues && (
+  <div className="grid grid-cols-2 xl:grid-cols-4 2xl:grid-cols-4 mx-auto xl:mx-32 2xl:mx-32 text-center gap-y-4 gap-x-4 pt-4 xl:pt-12 2xl:pt-12 px-6 pb-6">
+    {[
+      { label: "Undertone", value: state.vein },
+      { label: "Contrast",  value: state.contrast },
+      { label: "Brightness", value: state.brightness },
+      { label: "Saturation", value: state.saturation },
+    ].map(({ label, value }) => (
+      <div
+        key={label}
+        className="w-full items-center font-normal rounded-[16px] xl:rounded-[24px] 2xl:rounded-[24px] bg-[#F4E8E8] p-4 xl:p-5 2xl:p-6 text-[14px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616]"
+      >
+        <span>{label} : </span>
+        <span className="font-semibold capitalize">{value ?? "—"}</span>
       </div>
+    ))}
+  </div>
+)}
+
 
       <div className="mx-auto xl:mx-32 2xl:mx-32 text-center text-[14px] xl:text-[24px] 2xl:text-[32px] leading-relaxed px-6 pt-6 xl:py-6 2xl:py-6">
         {getPersonalDescription()}
@@ -380,7 +388,7 @@ const handleBack = () => {
       </h3>
       <div className="grid grid-cols-5 px-6 xl:px-6 2xl:px-9 gap-4 xl:gap-6 2xl:gap-9">
         {data.eyeshadowColor.map((hex, i) => (
-          <div key={i} className="w-full aspect-square rounded-full shadow-md" style={{ backgroundColor: hex }} />
+          <div key={i} className="w-full aspect-square rounded-full" style={{ backgroundColor: hex }} />
         ))}
       </div>
 
@@ -389,7 +397,7 @@ const handleBack = () => {
       </h3>
       <div className="grid grid-cols-5 px-6 xl:px-6 2xl:px-9 gap-4 xl:gap-6 2xl:gap-9">
         {data.blushColor.map((hex, i) => (
-          <div key={i} className="w-full aspect-square rounded-full shadow-md" style={{ backgroundColor: hex }} />
+          <div key={i} className="w-full aspect-square rounded-full" style={{ backgroundColor: hex }} />
         ))}
       </div>
 
@@ -487,10 +495,8 @@ const handleBack = () => {
 </div>
 
 <div className="xl:px-32 2xl:px-32 pt-4 xl:pt-10 2xl:pt-10 py-4 xl:py-6 2xl:py-6 justify-center">
-  <div className="flex flex-col xl:grid xl:grid-cols-2 gap-6 xl:gap-10 items-center">
-    
-    {/* รูป makeup */}
-<div className="mx-auto h-[360px] w-auto xl:h-[500px] 2xl:h-[876px] rounded-xl object-cover relative group">
+<div className="flex flex-col xl:grid xl:grid-cols-[1fr_1.4fr] gap-6 xl:gap-10 items-center">
+  <div className="mx-auto  h-[360px] w-auto xl:h-[500px] 2xl:h-[876px] rounded-xl object-cover relative group">
   {/* Blurred Image */}
   <img
     src={
@@ -507,7 +513,7 @@ const handleBack = () => {
   <div className="absolute inset-0 flex items-center justify-center">
     <button
       onClick={() => setIsPreviewOpen(true)}
-      className="flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-semibold rounded-full border border-white/40 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+      className="flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-normal rounded-full border border-white/40 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
     >
       <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
         <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -551,16 +557,14 @@ const handleBack = () => {
     </div>
   )}
 </div>
-
-    <div className="flex flex-col items-center gap-4 xl:gap-6 2xl:gap-6">
-      <h3 className="text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px] px-6 xl:px-10 2xl:px-10">
-        Don't lose your colors
-        <br />
-        <span className="text-[#14110F] font-normal text-center text-[16px] xl:text-[24px] 2xl:text-[36px]">
-          Save your personal color, makeup tones, accessories, and lucky colors for easy access anytime.
-        </span>
-      </h3>
-
+<div className="w-full flex flex-col items-center gap-y-4 xl:gap-y-6 2xl:gap-6">      
+  <h3 className="w-full text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px]">
+    Don't lose your colors
+    <br />
+    <span className="text-[#14110F] font-normal text-[16px] xl:text-[24px] 2xl:text-[36px]">
+      Save your personal color, makeup tones, accessories, and lucky colors for easy access anytime.
+    </span>
+  </h3>
       
        <a href={
           state.result === "summer" ? summerresult
@@ -568,9 +572,9 @@ const handleBack = () => {
           : state.result === "winter" ? winterresult
           : springresult
         }
-        download="my-personal-color.png"
-        className="flex items-center gap-2 bg-[#8E1616] text-white font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-8 py-3 rounded-full px-6 py-3 shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
-      >
+     download="my-personal-color.png"
+    className="self-center flex items-center gap-2 bg-[#8E1616] text-white font-normal text-[16px] xl:text-[24px] 2xl:text-[32px] px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
+  >
        <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -579,7 +583,8 @@ const handleBack = () => {
         strokeLinejoin="round"
         className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8"
       >
-<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> Save result
+<path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg>
+Save result
       </a>
     </div>
 
