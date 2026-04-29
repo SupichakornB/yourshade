@@ -937,9 +937,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 {activeTab === "haircolor" && (
   <div className="flex-1 flex flex-col">
     <div className="flex items-center justify-between mb-2">
-      <p className="text-[14px] xl:text-[20px] 2xl:text-[24px] font-semibold">
+      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
         Color : {selectedHairColor && (
-          <span className="text-[14px] xl:text-[20px] 2xl:text-[24px] text-[#8E1616] font-medium">
+          <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
             {selectedHairColor.name}
           </span>
         )}
@@ -1040,9 +1040,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
               <div className="pt-4 xl:pt-6 2xl:pt-6 border-t border-gray-100">
-<p className="text-xs font-medium">
+      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
   Color : {selectedProduct.variants[activeVariantIdx] && (
-    <span className="text-xs text-[#8E1616] font-medium">
+          <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
       {selectedProduct.variants[activeVariantIdx].name}
     </span>
   )}
@@ -1079,9 +1079,9 @@ const segResult = hairSegmenterRef.current?.segmentForVideo(
 {activeTab === "clothes" && (
   <div className="flex-1 flex flex-col">
     <div className="flex items-center justify-between mb-2">
-      <p className="text-xs font-medium">
+      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
         Color : {selectedClothesColor && (
-          <span className="text-xs text-[#8E1616] font-medium">
+          <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
             {selectedClothesColor.name}
           </span>
         )}

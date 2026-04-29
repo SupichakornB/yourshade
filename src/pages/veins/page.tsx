@@ -26,6 +26,7 @@ export default function VeinsPage() {
     }
   }, []);
 
+  
   useEffect(() => {
     document.body.style.overflow = "hidden";
     return () => {
@@ -37,25 +38,28 @@ export default function VeinsPage() {
     <div className="min-h-screen overflow-hidden p-6 pb-20 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       {" "}
       <div>
-        <img
-          src={backIcon}
-          alt="homeImage"
-          className="max-w-9 cursor-pointer"
-          onClick={() => navigate("/upload")}
-        />
+<img
+  src={backIcon}
+  alt="homeImage"
+  className="max-w-9 cursor-pointer"
+  onClick={() => {
+    dispatch({ type: "SET_IMAGE", payload: null })
+    navigate("/upload")
+  }}
+/>
       </div>
       <h1 className="font-playfair font-semibold md:mt-2 xl:my-4 2xl:my-6 text-center text-[24px] xl:text-[32px] 2xl:text-[48px] text-[#8E1616]">
         Take a look at your wrist <br />
         what color do your veins appear?
       </h1>
-      <div className="md:m-5 justify-items-center w-full">
-        <div className="grid md:flex md:justify-center py-4 xl:pb-0 2xl:pb-0 xl:gap-10  2xl:gap-10">
+      <div className="justify-center items-center w-full">
+        <div className="grid md:flex md:justify-center py-4 2xl:py-0 xl:pb-0 2xl:pb-0 xl:gap-10  2xl:gap-10">
           <div className="grid text-center" onClick={() => selectVein("cool")}>
             <img
               src={veinCoolTone}
               alt="cool tone vein"
               className={clsx(
-                "hidden md:block cursor-pointer rounded-3xl xl:w-[384px] xl:h-[510px] 2xl:w-[440px] 2xl:h-[590px] shadow-xl border border-[#7E7F83]",
+                "hidden md:block cursor-pointer rounded-3xl xl:w-[350px] xl:h-auto 2xl:w-[440px] 2xl:h-[590px] shadow-xl border border-[#7E7F83]",
                 state.vein === "cool" && "border-2 border-[#8E1616]",
               )}
             />
@@ -63,12 +67,12 @@ export default function VeinsPage() {
               src={veinCoolToneMb}
               alt="cool tone vein"
               className={clsx(
-                "block md:hidden cursor-pointer rounded-3xl w-[365px] h-[270px] xl:w-[330px] xl:h-[446px] 2xl:w-[440px] 2xl:h-[590px] shadow-xl border border-[#7E7F83]",
+                "block md:hidden cursor-pointer rounded-3xl w-[365px] h-[270px] shadow-xl border border-[#7E7F83]",
                 state.vein === "cool" && "border-2 border-[#8E1616]",
               )}
             />
 
-            <div className="py-4 xl:py-6 2xl:py-6 text-center text-[16px] xl:text-[24px] 2xl:text-[32px] font-bold">
+            <div className="py-4 xl:pt-6 2xl:py-6 text-center text-[16px] xl:text-[24px] 2xl:text-[32px] font-bold">
               Cool
             </div>
           </div>
@@ -77,7 +81,7 @@ export default function VeinsPage() {
               src={veinWarmTone}
               alt="warm tone vein"
               className={clsx(
-                "hidden md:block cursor-pointer rounded-3xl xl:w-[384px] xl:h-[510px] 2xl:w-[440px] 2xl:h-[590px] shadow-xl border border-[#7E7F83]",
+                "hidden md:block cursor-pointer rounded-3xl xl:w-[350px] xl:h-auto 2xl:w-[440px] 2xl:h-[590px] shadow-xl border border-[#7E7F83]",
                 state.vein === "warm" && "border-2 border-[#8E1616]",
               )}
             />
@@ -90,7 +94,7 @@ export default function VeinsPage() {
               )}
             />
 
-            <div className="pt-4 xl:py-6 2xl:py-6 text-center text-[16px] xl:text-[24px] 2xl:text-[32px] font-bold">
+            <div className="pt-4 xl:pt-6 2xl:py-6 text-center text-[16px] xl:text-[24px] 2xl:text-[32px] font-bold">
               Warm
             </div>
           </div>

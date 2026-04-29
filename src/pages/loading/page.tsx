@@ -338,7 +338,6 @@ export default function LoadingPage() {
 
     executeAnalysis();
 
-    // ── ไม่ revoke imageUrl ที่นี่ → ย้ายไป effect แยกข้างบนแล้ว ──────
   }, [state.image]); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
@@ -348,9 +347,20 @@ export default function LoadingPage() {
           <img src={imageUrl} className="w-full h-full object-cover" alt="analyzing" />
         </div>
       )}
-      <p className="text-[24px] xl:text-[48px] 2xl:text-[72px] text-white mt-8 animate-pulse">
-        Loading...
-      </p>
+<p className="text-[24px] xl:text-[48px] 2xl:text-[72px] text-white mt-8">
+  Loading
+  <span className="inline-flex gap-1 ml-1">
+    {[0, 1, 2].map((i) => (
+      <span
+        key={i}
+        className="animate-bounce"
+        style={{ animationDelay: `${i * 0.2}s` }}
+      >
+        .
+      </span>
+    ))}
+  </span>
+</p>
     </div>
   );
 }

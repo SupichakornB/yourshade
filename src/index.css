@@ -9,3 +9,9 @@
   --font-playfair: 'Playfair Display', serif;
   --font-inter: 'Inter', sans-serif;
 }
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+  }
+}

@@ -104,10 +104,10 @@ import winterCareer from "@/assets/result/winter-fortune-career.png";
 import winterLove from "@/assets/result/winter-fortune-love.png";
 import winterWealth from "@/assets/result/winter-fortune-wealth.png";
 
-// import springresult from "@/assets/result/spring-result.png"
-// import summerresult from "@/assets/result/summer-result.png"
-// import autumnresult from "@/assets/result/autumn-result.png"
-// import winterresult from "@/assets/result/winter-result.png"
+import springresult from "@/assets/result/spring-result.png"
+import summerresult from "@/assets/result/summer-result.png"
+import autumnresult from "@/assets/result/autumn-result.png"
+import winterresult from "@/assets/result/winter-result.png"
 
 
 export default function ResultPage() {
@@ -152,6 +152,8 @@ const handleConfirm = () => {
   navigate('/upload')
 }
 
+const [isPreviewOpen, setIsPreviewOpen] = useState(false);
+
   const navigateToProduct = () => {
     navigate(`/product/${state?.result?.toLowerCase()}`);
   };
@@ -186,7 +188,7 @@ const handleBack = () => {
       className="w-full h-auto rounded-lg hidden md:block"
     />
 
-    {/* ปุ่มทับบน banner */}
+
   <div className="self-center p-3">
     <button
       onClick={handleBack}
@@ -488,18 +490,67 @@ const handleBack = () => {
   <div className="flex flex-col xl:grid xl:grid-cols-2 gap-6 xl:gap-10 items-center">
     
     {/* รูป makeup */}
-    <div className="mx-auto h-[360px] w-[360px] xl:h-[500px] xl:w-[500px] 2xl:h-[876px] 2xl:w-[876px] rounded-3xl object-cover">
-      <img
-       src={
-          state.result === "summer" ? summerresultclothe
-          : state.result === "autumn" ? autumnresultclothe
-          : state.result === "winter" ? winterresultclothe
-          : springresultclothe
-        }
-        alt="Result"
-        className="w-full h-full rounded-3xl object-cover"
-      />
+<div className="mx-auto h-[360px] w-auto xl:h-[500px] 2xl:h-[876px] rounded-xl object-cover relative group">
+  {/* Blurred Image */}
+  <img
+    src={
+      state.result === "summer" ? summerresult
+      : state.result === "autumn" ? autumnresult
+      : state.result === "winter" ? winterresult
+      : springresult
+    }
+    alt="Result"
+    className="w-full h-full rounded-3xl object-cover blur-[2px] hover:bg-white/30 transition-all duration-300"
+  />
+
+  {/* Preview Button Overlay */}
+  <div className="absolute inset-0 flex items-center justify-center">
+    <button
+      onClick={() => setIsPreviewOpen(true)}
+      className="flex items-center gap-2 px-5 py-2.5 bg-white/20 hover:bg-white/30 backdrop-blur-md text-white font-semibold rounded-full border border-white/40 shadow-lg transition-all duration-200 hover:scale-105 active:scale-95"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+        <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+      </svg>
+      Preview
+    </button>
+  </div>
+
+  {/* Popup Modal */}
+  {isPreviewOpen && (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm"
+      onClick={() => setIsPreviewOpen(false)}
+    >
+      <div
+        className="relative h-[450px] w-auto xl:h-[700px] 2xl:h-[876px] rounded-2xl overflow-hidden shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <img
+          src={
+            state.result === "summer" ? summerresult
+            : state.result === "autumn" ? autumnresult
+            : state.result === "winter" ? winterresult
+            : springresult
+          }
+          alt="Preview"
+          className="w-full h-full object-cover"
+        />
+
+        {/* Close Button */}
+        <button
+          onClick={() => setIsPreviewOpen(false)}
+          className="absolute top-3 right-3 w-8 h-8 flex items-center justify-center rounded-full bg-white/50 hover:bg-white/70 text-white transition-colors duration-200"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
     </div>
+  )}
+</div>
 
     <div className="flex flex-col items-center gap-4 xl:gap-6 2xl:gap-6">
       <h3 className="text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px] px-6 xl:px-10 2xl:px-10">
@@ -512,10 +563,10 @@ const handleBack = () => {
 
       
        <a href={
-          state.result === "summer" ? summerresultclothe
-          : state.result === "autumn" ? autumnresultclothe
-          : state.result === "winter" ? winterresultclothe
-          : springresultclothe
+          state.result === "summer" ? summerresult
+          : state.result === "autumn" ? autumnresult
+          : state.result === "winter" ? winterresult
+          : springresult
         }
         download="my-personal-color.png"
         className="flex items-center gap-2 bg-[#8E1616] text-white font-semibold text-[16px] xl:text-[24px] 2xl:text-[32px] px-8 py-3 rounded-full px-6 py-3 shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"

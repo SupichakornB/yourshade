@@ -48,7 +48,7 @@ const ProductDetailPage = () => {
           </Link>
         </div>
         <div className="w-full flex justify-center pb-4 xl:pb-6 2xl:pb-6 px-4 xl:px-6 2xl:px-6">
-          <div className="w-[382px] h-[382px] xl:w-[510px] xl:h-[510px] 2xl:w-[590px] 2xl:h-[590px] relative">
+          <div className="w-[382px] h-[382px] xl:w-[436px] xl:h-[436px] 2xl:w-[590px] 2xl:h-[590px] relative">
   <ProductImageSlider
     images={product.images}
     selectedIndex={selectedIndex}
@@ -72,7 +72,6 @@ const ProductDetailPage = () => {
   )}
 
             <div className="mt-6">
-
 {product.choice && (
   <p className="text-[14px] xl:text-[20px] 2xl:text-[24px] font-semibold">
     Color :{" "}
@@ -83,7 +82,6 @@ const ProductDetailPage = () => {
     )}
   </p>
 )}
-
             </div>
             {product.choice && (
               <div className="flex pb-4 xl:pb-6 2xl:pb-6 items-center">
@@ -117,7 +115,7 @@ const ProductDetailPage = () => {
             <div className="text-[16px] xl:text-[24px] 2xl:text-[28px] font-semibold">
               Brand: {product.brand}
             </div>
-<div className="flex justify-center pt-4 xl:pt-6 2xl:pt-6">
+<div className="flex justify-center pt-4 2xl:pt-6">
 {product.buttonlink && (
   
   <a href={product.buttonlink}
