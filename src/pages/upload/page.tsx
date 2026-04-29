@@ -77,6 +77,8 @@ const handleSnap = () => {
   setShowConsent(true);
 };
 
+
+
   const isButtonDisabled =
     !ready ||
     (state.image ? noDetectFaceAlert || unsupportFileAlert : false);
@@ -84,7 +86,6 @@ const handleSnap = () => {
   return (
   <div className="min-h-screen overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       
-
       <div>
         <img
           src={backIcon}
@@ -97,14 +98,17 @@ const handleSnap = () => {
       <h1 className="font-playfair font-semibold py-4 xl:py-4 2xl:py-6 text-center text-[24px] xl:text-[32px] 2xl:text-[40px] text-[#8E1616]">
   {state.image ? "Review your photo" : "Get ready and take your photo"}
       </h1>
-
+{showConsent && (
+  <div className="fixed inset-0 z-40 bg-black/60" />
+)}
       <ImageUpload
         value={state.image}
         noDetectFaceAlert={noDetectFaceAlert}
         unsupportFileAlert={unsupportFileAlert}
         onSelect={handleSelectImage}
         onClear={onClear}
-        openCamera={startCamera}
+  openCamera={startCamera}
+  onConsentClose={() => setShowConsent(false)} 
       />
 
       {!ready && (

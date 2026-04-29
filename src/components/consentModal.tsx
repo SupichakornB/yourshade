@@ -7,7 +7,9 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
   const [checked, setChecked] = useState(false)
 
   return (
-    <div className="absolute inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-sm rounded-3xl overflow-hidden border border-gray">
+  <>
+    <div className="fixed inset-0 z-40 bg-black/50" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center">
       <div className="modal">
         <h2>VIRTUAL ANALYSIS</h2>
 
@@ -46,5 +48,6 @@ export default function ConsentModal({ onClose }: { onClose: () => void }) {
         </button>
       </div>
     </div>
+      </>
   )
 }

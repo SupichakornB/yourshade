@@ -10,6 +10,7 @@ type Props = {
   onSelect: (file: File) => void;
   onClear: () => void;
   openCamera: boolean;
+  onConsentClose: () => void;
   noDetectFaceAlert: boolean;
   unsupportFileAlert: boolean;
 };
@@ -18,6 +19,7 @@ export default function ImageUpload({
   value,
   onSelect,
   onClear,
+  onConsentClose,
   openCamera,
   noDetectFaceAlert,
   unsupportFileAlert,
@@ -35,11 +37,12 @@ export default function ImageUpload({
   };
 
   return (
-    <div className="text-center">
-      <button
-        onClick={handleClick}
-        className="py-2 px-4 rounded-full inline-flex items-center gap-2 cursor-pointer bg-white text-[20px] xl:text-[24px] 2xl:text-[28px] text-[#8E1616] border border-[#8E1616]"
-      >
+  <div className="text-center">
+
+    <button
+      onClick={handleClick}
+      className="py-2 px-4 rounded-full inline-flex items-center gap-2 cursor-pointer bg-white text-[20px] xl:text-[24px] 2xl:text-[28px] text-[#8E1616] border border-[#8E1616]"
+    >
         <img className="w-4 h-4 xl:w-6 xl:h-6 2xl:w-8 2xl:h-8" src={uploadImageIcon} alt="uploadImageIcon" />
         <span>Upload image</span>
       </button>
@@ -103,12 +106,15 @@ export default function ImageUpload({
 </button>
               </div>
             ) : (
-<div className="relative">
-  <CameraModal startCapture={openCamera} onCapture={onSelect} />
-  {openConsentModal && (
-    <ConsentModal onClose={() => setOpenConsentModal(false)} />
-  )}
-</div>
+  <div className="relative">
+    <CameraModal startCapture={openCamera} onCapture={onSelect} onClear={onClear} />
+    {openConsentModal && (
+      <ConsentModal onClose={() => {
+        setOpenConsentModal(false);
+        onConsentClose();
+      }} />
+    )}
+  </div>
             )}
           </div>
         </div>

@@ -530,7 +530,7 @@ const handleBack = () => {
       onClick={() => setIsPreviewOpen(false)}
     >
       <div
-        className="relative h-[450px] w-auto xl:h-[700px] 2xl:h-[876px] rounded-2xl overflow-hidden shadow-2xl"
+        className="relative h-[450px] w-auto xl:h-[700px] 2xl:h-[876px] rounded-xl overflow-hidden shadow-xl"
         onClick={(e) => e.stopPropagation()}
       >
         <img
@@ -557,14 +557,14 @@ const handleBack = () => {
     </div>
   )}
 </div>
-<div className="w-full flex flex-col items-center gap-y-4 xl:gap-y-6 2xl:gap-6">      
-  <h3 className="w-full text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px]">
-    Don't lose your colors
-    <br />
-    <span className="text-[#14110F] font-normal text-[16px] xl:text-[24px] 2xl:text-[36px]">
-      Save your personal color, makeup tones, accessories, and lucky colors for easy access anytime.
-    </span>
-  </h3>
+<div className=" flex flex-col items-center gap-y-4 xl:gap-y-6 2xl:gap-6">      
+<h3 className="w-full text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px]">
+  Don't lose your colors
+  <br />
+  <span className="block text-[#14110F] font-normal text-[16px] xl:text-[24px] 2xl:text-[36px] xl:leading-8 2xl:leading-12">
+    Save your personal color, makeup tones, accessories, and lucky colors for easy access anytime.
+  </span>
+</h3>
       
        <a href={
           state.result === "summer" ? summerresult
