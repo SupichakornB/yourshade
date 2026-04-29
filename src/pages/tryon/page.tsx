@@ -209,6 +209,10 @@ export default function TryOnPage() {
   const poseLandmarksRef = useRef<PoseLandmark[] | null>(null);
 const hairSegmenterRef = useRef<ImageSegmenter | null>(null);
   const hairSegReadyRef  = useRef(false);
+const cachedHairMaskRef  = useRef<Float32Array | null>(null);
+const cachedMaskDimsRef  = useRef({ w: 0, h: 0 });
+const hairSegFrameRef    = useRef(0);
+
   const applyMakeupRef   = useRef(false);
 
   const texturesRef = useRef<Record<string, HTMLImageElement>>({
@@ -393,97 +397,99 @@ const hairSegmenterRef = useRef<ImageSegmenter | null>(null);
       x: (1 - landmarks[i].x) * drawW + offsetX,
       y: landmarks[i].y * drawH + offsetY,
     });
+if (hairColorRef.current && hairSegmenterRef.current) {
+  hairSegFrameRef.current = (hairSegFrameRef.current + 1) % 3;
 
-    // ════════════════════════════════════
-    // 💇 HAIR COLOR — MediaPipe Hair Segmenter
-    // ════════════════════════════════════
-    if (hairColorRef.current && hairSegmenterRef.current) {
-      // ส่ง results.image (frame ปัจจุบันจาก FaceMesh pipeline) เข้า segmenter
-      // ไม่ใช้ videoRef เพราะ timing อาจไม่ตรง
-const segResult = hairSegmenterRef.current?.segmentForVideo(
-  results.image as HTMLVideoElement, // 👈 สำคัญ
-  performance.now()
-) as ImageSegmenterResult;
+  // Re-segment ทุก 2 frame เท่านั้น
+  if (hairSegFrameRef.current === 0 || !cachedHairMaskRef.current) {
+    const segResult = hairSegmenterRef.current.segmentForVideo(
+      results.image as HTMLVideoElement,
+      performance.now()
+    ) as ImageSegmenterResult;
 
-      // confidenceMasks[1] = hair confidence 0.0–1.0
-      const hairMask = segResult?.confidenceMasks?.[1];
-      if (hairMask) {
-        const rawMask = hairMask.getAsFloat32Array() as Float32Array;
-        const maskW   = hairMask.width  as number;
-        const maskH   = hairMask.height as number;
+    const hairMask = segResult?.confidenceMasks?.[1];
+    if (hairMask) {
+      const newRaw = hairMask.getAsFloat32Array() as Float32Array;
+      const mW     = hairMask.width  as number;
+      const mH     = hairMask.height as number;
 
-        // ── Erode mask: ทุก pixel ใช้ค่า min ของตัวเอง + เพื่อนบ้าน 8 ทิศ ──
-        // ทำให้ขอบผมหด inward → ไม่เลือดออกนอกเส้นผม
-        const ERODE_R = 2; // radius erosion (pixel บน mask 512×512)
-        const erodedMask = new Float32Array(maskW * maskH);
-        for (let my = 0; my < maskH; my++) {
-          for (let mx = 0; mx < maskW; mx++) {
-            let minVal = rawMask[my * maskW + mx];
-            for (let dy = -ERODE_R; dy <= ERODE_R; dy++) {
-              for (let dx = -ERODE_R; dx <= ERODE_R; dx++) {
-                const nx = mx + dx, ny = my + dy;
-                if (nx < 0 || nx >= maskW || ny < 0 || ny >= maskH) continue;
-                const v = rawMask[ny * maskW + nx];
-                if (v < minVal) minVal = v;
-              }
-            }
-            erodedMask[my * maskW + mx] = minVal;
-          }
+      if (
+        cachedHairMaskRef.current &&
+        cachedHairMaskRef.current.length === newRaw.length
+      ) {
+        // EMA temporal smoothing — ขอบนิ่ม ไม่กระโดด
+        const ALPHA = 0.4; // สูง = ตามเร็ว, ต่ำ = smooth กว่า
+        for (let i = 0; i < newRaw.length; i++) {
+          cachedHairMaskRef.current[i] =
+            cachedHairMaskRef.current[i] * (1 - ALPHA) + newRaw[i] * ALPHA;
         }
+      } else {
+        cachedHairMaskRef.current = new Float32Array(newRaw);
+      }
 
-        // parse target hair color → H, S
-        const hex = hairColorRef.current!.replace("#", "");
-        const tR  = parseInt(hex.slice(0, 2), 16);
-        const tG  = parseInt(hex.slice(2, 4), 16);
-        const tB  = parseInt(hex.slice(4, 6), 16);
-        const [tH, tS] = rgbToHsl(tR, tG, tB);
+      cachedMaskDimsRef.current = { w: mW, h: mH };
+      hairMask.close();
+    }
+  }
 
-        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        const pixels  = imgData.data;
-        const cW = canvas.width;
-        const cH = canvas.height;
+  const smoothedMask = cachedHairMaskRef.current;
+  const maskW        = cachedMaskDimsRef.current.w;
+  const maskH        = cachedMaskDimsRef.current.h;
 
-        // smoothstep: เส้นโค้งที่ตัดขอบชัด ไม่ linear
-        const smoothstep = (edge0: number, edge1: number, x: number) => {
-          const t = Math.max(0, Math.min(1, (x - edge0) / (edge1 - edge0)));
-          return t * t * (3 - 2 * t);
-        };
+  if (smoothedMask && maskW > 0) {
+    const hex = hairColorRef.current.replace("#", "");
+    const tR  = parseInt(hex.slice(0, 2), 16);
+    const tG  = parseInt(hex.slice(2, 4), 16);
+    const tB  = parseInt(hex.slice(4, 6), 16);
+    const [tH, tS] = rgbToHsl(tR, tG, tB);
 
-        for (let y = 0; y < cH; y++) {
-          for (let x = 0; x < cW; x++) {
-            const videoX = cW - 1 - x;
-            const relX = (videoX - offsetX) / drawW;
-            const relY = (y - offsetY) / drawH;
-            if (relX < 0 || relX > 1 || relY < 0 || relY > 1) continue;
-            const mx = Math.min(maskW - 1, Math.round(relX * maskW));
-            const my = Math.min(maskH - 1, Math.round(relY * maskH));
+    const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+    const pixels  = imgData.data;
+    const cW = canvas.width;
+    const cH = canvas.height;
 
-            const conf = erodedMask[my * maskW + mx];
+    const smoothstep = (e0: number, e1: number, x: number) => {
+      const t = Math.max(0, Math.min(1, (x - e0) / (e1 - e0)));
+      return t * t * (3 - 2 * t);
+    };
 
-            // smoothstep: ต่ำกว่า 0.55 = 0, สูงกว่า 0.80 = 1 → ตัดขอบคม
-            const edgeMask = smoothstep(0.55, 0.80, conf);
-            if (edgeMask < 0.01) continue;
+    for (let y = 0; y < cH; y++) {
+      for (let x = 0; x < cW; x++) {
+        const relX = ((cW - 1 - x) - offsetX) / drawW;
+        const relY = (y - offsetY) / drawH;
+        if (relX < 0 || relX > 1 || relY < 0 || relY > 1) continue;
 
-            const i = (y * cW + x) * 4;
-            const r = pixels[i], g = pixels[i + 1], b = pixels[i + 2];
+        const mx   = Math.min(maskW - 1, Math.round(relX * maskW));
+        const my   = Math.min(maskH - 1, Math.round(relY * maskH));
+        const conf = smoothedMask[my * maskW + mx];
 
-            // HSL hue-shift: คง L ไว้ → texture เส้นผมยังอยู่
-            const [, , l] = rgbToHsl(r, g, b);
-            // ผมเข้ม (l ต่ำ) blend เต็ม, highlight blend น้อย
-            const depthFactor = Math.min(1, (1 - l) * 1.5 + 0.25);
-            const strength    = edgeMask * depthFactor;
+        // ขยาย range เพื่อให้ mask ครอบผมมากขึ้น
+        const edgeMask = smoothstep(0.38, 0.70, conf);
+        if (edgeMask < 0.01) continue;
 
-            const [nr, ng, nb] = hslToRgb(tH, tS * 0.92, l);
-            pixels[i]     = Math.round(r + (nr - r) * strength);
-            pixels[i + 1] = Math.round(g + (ng - g) * strength);
-            pixels[i + 2] = Math.round(b + (nb - b) * strength);
-          }
-        }
+        const idx = (y * cW + x) * 4;
+        const r   = pixels[idx];
+        const g   = pixels[idx + 1];
+        const b   = pixels[idx + 2];
 
-        ctx.putImageData(imgData, 0, 0);
-        hairMask.close();
+        const [, , l] = rgbToHsl(r, g, b);
+
+        // Highlight ผม (l > 0.65) รับสีน้อย → เส้น shine ยังโผล่
+        const highlightFade =
+          l > 0.65 ? Math.pow(1 - (l - 0.65) / 0.35, 1.8) : 1.0;
+
+        const [nr, ng, nb] = hslToRgb(tH, Math.min(1, tS * 1.05), l);
+        const strength      = edgeMask * highlightFade * 0.88;
+
+        pixels[idx]     = Math.round(r + (nr - r) * strength);
+        pixels[idx + 1] = Math.round(g + (ng - g) * strength);
+        pixels[idx + 2] = Math.round(b + (nb - b) * strength);
       }
     }
+
+    ctx.putImageData(imgData, 0, 0);
+  }
+}
 
     // ════════════════════════════════════
     // 👗 CLOTHES — จับไหล่จาก MediaPipe Pose
