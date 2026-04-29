@@ -1,6 +1,6 @@
 export const SEASONS = ["summer", "spring", "autumn", "winter"] as const;
 
-export const PRODUCT_TYPES = ["clothes", "makeup", "accessories"] as const;
+export const PRODUCT_TYPES = ["makeup", "accessories", "clothes"] as const;
 
 export type Season = (typeof SEASONS)[number];
 

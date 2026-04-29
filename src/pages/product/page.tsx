@@ -32,7 +32,7 @@ const ProductPage = () => {
   const { resultData } = useParams();
 
   const season = resultData?.toLowerCase() as Season;
-  const activeTab = (searchParams.get("tab") as ProductType) || "clothes";
+  const activeTab = (searchParams.get("tab") as ProductType) || "makeup";
   const setActiveTab = (tab: ProductType) => {
     setSearchParams({ tab });
   };
