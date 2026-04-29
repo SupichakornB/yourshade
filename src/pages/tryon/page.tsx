@@ -100,6 +100,14 @@ declare global {
 const OUTER_LIP = [61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 409, 270, 269, 267, 0, 37, 39, 40, 185];
 const INNER_LIP = [78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308, 415, 310, 311, 312, 13, 82, 81, 80, 191];
 
+
+const FACE_OVAL = [
+  10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288,
+  397, 365, 379, 378, 400, 377, 152, 148, 176, 149, 150, 136,
+  172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109,
+];
+
+
 // ─── Cheek Landmarks ──────────────────────────────────────────────────────────
 const LEFT_CHEEK_INNER  = [117, 118, 101, 36,  205, 187];
 const LEFT_CHEEK_OUTER  = [123, 50,  31,  228, 229, 230];
@@ -207,11 +215,15 @@ export default function TryOnPage() {
   const hairColorRef     = useRef<string | null>(null);
   const clothesColorRef  = useRef<string | null>(null);
   const poseLandmarksRef = useRef<PoseLandmark[] | null>(null);
+  const tempCanvasRef = useRef<HTMLCanvasElement | null>(null);
 const hairSegmenterRef = useRef<ImageSegmenter | null>(null);
   const hairSegReadyRef  = useRef(false);
 const cachedHairMaskRef  = useRef<Float32Array | null>(null);
 const cachedMaskDimsRef  = useRef({ w: 0, h: 0 });
 const hairSegFrameRef    = useRef(0);
+
+const [hairSegReady, setHairSegReady] = useState(false);
+
 
   const applyMakeupRef   = useRef(false);
 
@@ -264,6 +276,7 @@ const hairSegFrameRef    = useRef(0);
     texturesRef.current.shimmer.src = "/textures/lip-shimmer.png";
   }, []);
 
+  
   // ── โหลด MediaPipe Hair Segmenter ─────────────────────────────────────
   useEffect(() => {
     if (hairSegReadyRef.current) return;
@@ -400,7 +413,6 @@ const hairSegFrameRef    = useRef(0);
 if (hairColorRef.current && hairSegmenterRef.current) {
   hairSegFrameRef.current = (hairSegFrameRef.current + 1) % 3;
 
-  // Re-segment ทุก 2 frame เท่านั้น
   if (hairSegFrameRef.current === 0 || !cachedHairMaskRef.current) {
     const segResult = hairSegmenterRef.current.segmentForVideo(
       results.image as HTMLVideoElement,
@@ -417,8 +429,7 @@ if (hairColorRef.current && hairSegmenterRef.current) {
         cachedHairMaskRef.current &&
         cachedHairMaskRef.current.length === newRaw.length
       ) {
-        // EMA temporal smoothing — ขอบนิ่ม ไม่กระโดด
-        const ALPHA = 0.4; // สูง = ตามเร็ว, ต่ำ = smooth กว่า
+        const ALPHA = 0.55;
         for (let i = 0; i < newRaw.length; i++) {
           cachedHairMaskRef.current[i] =
             cachedHairMaskRef.current[i] * (1 - ALPHA) + newRaw[i] * ALPHA;
@@ -437,6 +448,18 @@ if (hairColorRef.current && hairSegmenterRef.current) {
   const maskH        = cachedMaskDimsRef.current.h;
 
   if (smoothedMask && maskW > 0) {
+    // ── 1. Snapshot frame ก่อนทาสี (ใช้ restore หน้า) ──────────────
+    if (!tempCanvasRef.current) {
+      tempCanvasRef.current = document.createElement("canvas");
+    }
+    const tmpC = tempCanvasRef.current;
+    if (tmpC.width !== canvas.width || tmpC.height !== canvas.height) {
+      tmpC.width  = canvas.width;
+      tmpC.height = canvas.height;
+    }
+    tmpC.getContext("2d")!.drawImage(canvas, 0, 0);
+
+    // ── 2. ทาสีผม per-pixel ────────────────────────────────────────
     const hex = hairColorRef.current.replace("#", "");
     const tR  = parseInt(hex.slice(0, 2), 16);
     const tG  = parseInt(hex.slice(2, 4), 16);
@@ -463,8 +486,7 @@ if (hairColorRef.current && hairSegmenterRef.current) {
         const my   = Math.min(maskH - 1, Math.round(relY * maskH));
         const conf = smoothedMask[my * maskW + mx];
 
-        // ขยาย range เพื่อให้ mask ครอบผมมากขึ้น
-        const edgeMask = smoothstep(0.38, 0.70, conf);
+        const edgeMask = smoothstep(0.18, 0.58, conf);
         if (edgeMask < 0.01) continue;
 
         const idx = (y * cW + x) * 4;
@@ -473,8 +495,6 @@ if (hairColorRef.current && hairSegmenterRef.current) {
         const b   = pixels[idx + 2];
 
         const [, , l] = rgbToHsl(r, g, b);
-
-        // Highlight ผม (l > 0.65) รับสีน้อย → เส้น shine ยังโผล่
         const highlightFade =
           l > 0.65 ? Math.pow(1 - (l - 0.65) / 0.35, 1.8) : 1.0;
 
@@ -488,6 +508,21 @@ if (hairColorRef.current && hairSegmenterRef.current) {
     }
 
     ctx.putImageData(imgData, 0, 0);
+
+    // ── 3. Face Shield — restore pixel ในโซนใบหน้ากลับ ───────────
+    // สร้าง face oval path จาก landmarks ปัจจุบัน (update ทุก frame)
+    const faceOvalPath = new Path2D();
+    FACE_OVAL.forEach((fIdx, i) => {
+      const pt = getXY(fIdx);
+      if (i === 0) faceOvalPath.moveTo(pt.x, pt.y);
+      else         faceOvalPath.lineTo(pt.x, pt.y);
+    });
+    faceOvalPath.closePath();
+
+    ctx.save();
+    ctx.clip(faceOvalPath);
+    ctx.drawImage(tmpC, 0, 0); // restore หน้าเดิม ไม่มีสีผม
+    ctx.restore();
   }
 }
 
