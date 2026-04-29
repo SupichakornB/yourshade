@@ -201,13 +201,18 @@ const handleBack = () => {
       <img src={backIcon} alt="back" className="w-9 h-9" />
     </button>
   </div>
-    <Link to="/">
-      <img
-        src={logo}
-        alt="logo"
-        className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-10 h-8 md:w-28 md:h-20 z-10"
-      />
-    </Link>
+<Link to="/" onClick={() => {
+  dispatch({ type: "SET_VEIN", payload: null })
+  dispatch({ type: "SET_CONTRAST", payload: null })
+  dispatch({ type: "SET_BRIGHTNESS", payload: null })
+  dispatch({ type: "SET_SATURATION", payload: null })
+}}>
+  <img
+    src={logo}
+    alt="logo"
+    className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-10 h-8 md:w-28 md:h-20 z-10"
+  />
+</Link>
   </div>
 </div>
 
