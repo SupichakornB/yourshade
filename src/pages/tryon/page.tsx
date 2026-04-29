@@ -960,12 +960,11 @@ if (hairColorRef.current && hairSegmenterRef.current) {
 </div>
 
       {/* Controls */}
-      <div className="mx-auto w-[382px] h-[200px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[330px] bg-white rounded-2xl shadow-md px-4 py-4 xl:px-6 xl:py-6 2xl:py-6 2xl:px-6 mt-4 xl:mt-6 2xl:mt-6 flex flex-col">
-        {/* Tabs */}
-        <div className="flex gap-2 mb-3 xl:px-32 2xl:px-32">
+    <div className="mx-auto w-[382px] h-[220px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[330px] bg-white rounded-2xl shadow-md  px-4 py-4 xl:px-6 xl:py-6 2xl:py-6 2xl:px-6 mt-4 xl:mt-6 2xl:mt-6 flex flex-col overflow-hidden">        {/* Tabs */}
+        <div className="flex gap-2 mb-2 xl:px-32 2xl:px-32">
           {tabConfig.map(({ key, label}) => (
             <button key={key} onClick={() => handleSetActiveTab(key)}
-              className={`flex-1 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
+              className={`p-1 flex-1 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
                 activeTab === key ? "bg-[#8E1616] text-white" : "bg-gray-100 text-gray-400 hover:bg-gray-200"
               }`}
             >
@@ -1039,11 +1038,10 @@ if (hairColorRef.current && hairSegmenterRef.current) {
                 No {activeTab} products for {season} season
               </p>
             ) : (
-              <div className="flex gap-3 overflow-x-auto py-4 xl:py-6 2xl:py-6 scrollbar-hide mx-auto px-4">
-                {/* No Filter card */}
+           <div className="flex gap-3 overflow-x-auto py-4  2xl:py-6 scrollbar-hide px-1 flex-shrink-0">               {/* No Filter card */}
                 <button
                   onClick={handleClearMakeup}
-                  className={`flex-none flex flex-col items-center gap-1 p-1 rounded-xl transition ${
+                  className={`flex-none flex flex-col items-center gap-1 px-1 rounded-xl transition ${
                     selectedProduct === null
                       ? "ring-2 ring-[#8E1616] bg-red-50"
                       : "hover:bg-gray-50"
@@ -1055,8 +1053,8 @@ if (hairColorRef.current && hairSegmenterRef.current) {
                       <line x1="7" y1="29" x2="29" y2="7" stroke="#9CA3AF" strokeWidth="2.2" strokeLinecap="round"/>
                     </svg>
                   </div>
-                  <span className="text-[10px] text-gray-600 max-w-[60px] text-center leading-tight">
-                    No Filter
+<span className="text-[10px] text-gray-600 max-w-[60px] text-center leading-tight block h-8 overflow-hidden">
+                  No Filter
                   </span>
                 </button>
                 {products.map((product) => (
@@ -1069,18 +1067,20 @@ if (hairColorRef.current && hairSegmenterRef.current) {
                     }`}
                   >
                     <img src={product.primaryImage} alt={product.name}
-                      className="w-[75px] h-[75px] rounded-lg object-cover border border-gray-100" />
-                    <span className="text-[10px] max-w-[60px] text-center leading-tight line-clamp-2">
-                      {product.name.replace(/^4U2 /i, "")}
+                      className="w-[75px] h-[75px] rounded-lg object-cover border border-gray-100 " />
+<span className="text-[10px] max-w-[70px] text-center leading-tight block h-8 overflow-hidden">
+                     {product.name.replace(/^4U2 /i, "")}
                     </span>
                   </button>
-                ))}
+                )
+                )}
+                
               </div>
             )}
 
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
-              <div className="pt-4 xl:pt-6 2xl:pt-6 border-t border-gray-100">
+              <div className="pt-4 2xl:pt-6 pb-0  border-t border-gray-100">
       <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
   Color : {selectedProduct.variants[activeVariantIdx] && (
           <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">

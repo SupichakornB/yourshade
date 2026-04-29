@@ -290,8 +290,8 @@ const handleBack = () => {
 </div>
 </div>
 
-<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-cover min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-15 xl:pb-0 2xl:pt-6">
-      <div className="px-2 md:px-32">
+
+<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-[length:100%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-15 xl:pb-0 2xl:pt-6">      <div className="px-2 md:px-32">
             <h3 className="text-[#8E1616] text-center font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] py-4 xl:py-6 2xl:py-6">
               Your Personal Color Guide
             </h3>
@@ -457,8 +457,7 @@ const handleBack = () => {
           />
       </div>
 
-
-<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-cover min-h-180 xl:min-h-230 2xl:min-h-330 pb-20 xl:pb-24 2xl:pb-32">
+<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-[length:150%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-30 xl:pb-24 2xl:pb-32 2xl:pt-6">
 <div className="w-full mx-auto mt-10 pt-6 px-10 xl:px-32 2xl:px-32 ">
 
     <h3 className="text-center text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] pt-4 xl:pt-6 2xl:pt-6">
