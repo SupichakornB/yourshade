@@ -1,6 +1,5 @@
 import uploadImageIcon from "@/assets/icon/upload-image.svg";
-import { useRef } from "react";
-import { useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import CameraModal from "./camera";
 import ConsentModal from "@/components/consentModal";
 import "@/styles/uploadImage.css";
@@ -27,6 +26,8 @@ export default function ImageUpload({
   const inputRef = useRef<HTMLInputElement | null>(null);
   const [openConsentModal, setOpenConsentModal] = useState(true);
 
+
+  
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
     if (file) onSelect(file);

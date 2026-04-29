@@ -34,9 +34,11 @@ export default function UploadPage() {
 }, []);
 
   const handleSelectImage = async (file: File) => {
-    setNoDetectFaceAlert(false);
-    setUnsupportFileAlert(false);
+   setNoDetectFaceAlert(false);
+  setUnsupportFileAlert(false);
+  setShowConsent(false);
 
+  
     if (!ready) return;
 
     dispatch({ type: "SET_IMAGE", payload: file });
@@ -74,7 +76,7 @@ export default function UploadPage() {
 // เปิด camera พร้อม consent เลย
 const handleSnap = () => {
   setStartCamera(true);
-  setShowConsent(true);
+  // setShowConsent(true);
 };
 
 
@@ -98,9 +100,9 @@ const handleSnap = () => {
       <h1 className="font-playfair font-semibold py-4 xl:py-4 2xl:py-6 text-center text-[24px] xl:text-[32px] 2xl:text-[40px] text-[#8E1616]">
   {state.image ? "Review your photo" : "Get ready and take your photo"}
       </h1>
-{showConsent && (
+{/* {showConsent && (
   <div className="fixed inset-0 z-40 bg-black/60" />
-)}
+)} */}
       <ImageUpload
         value={state.image}
         noDetectFaceAlert={noDetectFaceAlert}
