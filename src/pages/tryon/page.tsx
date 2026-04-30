@@ -1178,11 +1178,6 @@ if (finish === "contour") {
     setSelectedHairColor(null);
   };
 
-  const handleClearMakeup = () => {
-    applyMakeupRef.current = false;
-    setSelectedProduct(null);
-    setActiveVariantIdx(null);
-  };
 
   const tabConfig: { key: Tab; label: string;}[] = [
     { key: "makeup",      label: "Makeup"},
@@ -1193,7 +1188,19 @@ if (finish === "contour") {
   const seasonHairColors = getSeasonHairColors(season);
   const seasonClothesColors: ClothesColor[] = SEASON_CLOTHES_COLORS[season] ?? [];
 
+const [showColorSheet, setShowColorSheet] = useState(false);
+
+// handleClearMakeup — เพิ่ม setShowColorSheet(false)
+const handleClearMakeup = () => {
+  applyMakeupRef.current = false;
+  setSelectedProduct(null);
+  setActiveVariantIdx(null);
+  setShowColorSheet(false); // ← ADD
+};
+
+
   return (
+    <>
     <div className="min-h-screen bg-gray-50 flex flex-col">
       {/* Header */}
       <div className="grid grid-cols-3">
@@ -1204,7 +1211,7 @@ if (finish === "contour") {
           </div>
           <Link to="/">
             <div className="py-4 xl:py-6 2xl:py-6 2xl:py-6 flex justify-center">
-              <img src={logo} alt="logo" className="w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13" />
+<img src={logo} alt="logo" className="w-40 xl:w-60 2xl:w-60 object-contain" />
             </div>
           </Link>
         </div>
@@ -1212,7 +1219,7 @@ if (finish === "contour") {
       {/* Camera */}
       <div>
 <div
-  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[976px] 2xl:h-[674px] mx-auto rounded-3xl overflow-hidden"
+  className="relative w-[376px] h-[492px] xl:w-[660px] xl:h-[440px] 2xl:w-[916px] 2xl:h-[634px] mx-auto rounded-3xl overflow-hidden"
 >
   <video
     ref={videoRef}
@@ -1243,8 +1250,7 @@ if (finish === "contour") {
 </div>
 
       {/* Controls */}
-    <div className="mx-auto w-[382px] h-[220px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[330px] bg-white rounded-2xl shadow-md  px-4 py-4 xl:px-6 xl:py-6 2xl:py-6 2xl:px-6 mt-4 xl:mt-6 2xl:mt-6 flex flex-col overflow-hidden">        {/* Tabs */}
-        <div className="flex gap-2 mb-2 xl:px-32 2xl:px-32">
+<div className="mx-auto w-[382px] h-[220px] xl:w-[1276px] xl:h-[328px] 2xl:w-[1276px] 2xl:h-[362px] bg-white rounded-2xl shadow-md my-10 px-4 py-4 xl:px-6 xl:py-6 2xl:py-6 2xl:px-6 mt-auto xl:mt-6 2xl:mt-6 flex flex-col overflow-hidden">    <div className="flex gap-2 mb-2 xl:px-32 2xl:px-32">
           {tabConfig.map(({ key, label}) => (
             <button key={key} onClick={() => handleSetActiveTab(key)}
               className={`p-1 flex-1 rounded-full font-inter text-[20px] xl:text-[20px] 2xl:text-[24px] font-semibold capitalize transition ${
@@ -1268,7 +1274,7 @@ if (finish === "contour") {
         )}
       </p>
     </div>
-    <div className="flex-1 flex items-center justify-center overflow-x-auto scrollbar-hide">
+<div className="flex-1 flex items-center justify-start overflow-x-auto scrollbar-hide">
       <div className="flex gap-3 px-4 min-w-max">
         <button
           title="No Filter"
@@ -1335,7 +1341,12 @@ if (finish === "contour") {
                 </button>
                 {products.map((product) => (
                   <button key={product.id}
-                    onClick={() => { setSelectedProduct(product); setActiveVariantIdx(null); }}
+                    onClick={() => {
+  setSelectedProduct(product);
+  setActiveVariantIdx(null);
+  applyMakeupRef.current = false;
+  setShowColorSheet(true);
+}}
                     className={`flex-none flex flex-col items-center gap-1 p-1 rounded-xl transition ${
                       selectedProduct?.id === product.id
                         ? "ring-2 ring-[#8E1616] bg-red-50"
@@ -1356,7 +1367,7 @@ if (finish === "contour") {
 
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
-              <div className="pt-4 2xl:pt-6 pb-0  border-t border-gray-100">
+  <div className="hidden xl:block pt-4 2xl:pt-6 pb-0 border-t border-gray-100">
       <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
   Color : {activeVariantIdx !== null && selectedProduct.variants[activeVariantIdx] && (
           <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
@@ -1384,11 +1395,6 @@ if (finish === "contour") {
               </div>
             )}
 
-            {selectedProduct && selectedProduct.variants.length === 0 && (
-              <div className="mt-3 pt-3 border-t border-gray-100 text-center text-xs text-gray-400">
-                AR try-on for accessories coming soon
-              </div>
-            )}
           </>
         )}
 
@@ -1404,7 +1410,7 @@ if (finish === "contour") {
         )}
       </p>
     </div>
-    <div className="flex-1 flex items-center justify-center overflow-x-auto scrollbar-hide">
+<div className="flex-1 flex items-center justify-start overflow-x-auto scrollbar-hide">
       <div className="flex gap-3 px-4 min-w-max">
         {/* No Color */}
               {/* No Color */}
@@ -1449,5 +1455,70 @@ if (finish === "contour") {
         )}
       </div>
     </div>
+    {/* ── Backdrop ── */}
+  {showColorSheet && selectedProduct && (
+    <div
+      className="xl:hidden fixed inset-0 z-40"
+      onClick={() => setShowColorSheet(false)}
+    />
+  )}
+
+  {/* ── Mobile Color Sheet ── */}
+  <div
+    className={`xl:hidden fixed z-50 inset-x-0 bottom-0 transition-all duration-300 ease-out ${
+      showColorSheet && selectedProduct
+        ? "translate-y-0 opacity-100 pointer-events-auto"
+        : "translate-y-full opacity-0 pointer-events-none"
+    }`}
+  >
+    <div className="bg-white rounded-t-2xl shadow-2xl px-6 py-5">
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <p className="text-[14px] font-semibold text-[#14110F]">
+          Color :{" "}
+          {activeVariantIdx !== null && selectedProduct?.variants[activeVariantIdx] && (
+            <span className="text-[#8E1616]">
+              {selectedProduct.variants[activeVariantIdx].name}
+            </span>
+          )}
+        </p>
+        <button
+          onClick={() => setShowColorSheet(false)}
+          className="w-6 h-6 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 text-xs font-bold"
+        >
+          ✕
+        </button>
+      </div>
+
+      {/* Swatches */}
+      {selectedProduct && selectedProduct.variants.length > 0 && (
+        <div className="flex flex-wrap gap-3 justify-center pb-2">
+          {selectedProduct.variants.map((variant, idx) => (
+            <button
+              key={idx}
+              title={variant.name}
+              onClick={() => handleSelectVariant(selectedProduct, idx)}
+              className={`relative w-9 h-9 rounded-full border-[3px] shadow-sm transition-transform active:scale-110 ${
+                activeVariantIdx === idx ? "border-[#8E1616] scale-110" : "border-white"
+              }`}
+              style={{ backgroundColor: variant.colorHex }}
+            >
+              {activeVariantIdx === idx && (
+                <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
+              )}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {selectedProduct && selectedProduct.variants.length === 0 && (
+        <p className="text-center text-xs text-gray-400 py-2">
+          AR try-on for accessories coming soon
+        </p>
+      )}
+    </div>
+  </div>
+
+</> 
   );
 }

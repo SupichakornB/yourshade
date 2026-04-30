@@ -213,7 +213,7 @@ const handleBack = () => {
     className="absolute top-4 xl:top-6 2xl:top-6 left-1/2 -translate-x-1/2 w-10 h-8 md:w-28 md:h-20 z-10"
   />
 </Link>
-  </div>c
+  </div>
 </div>
 
 
@@ -561,7 +561,7 @@ const handleBack = () => {
     </div>
   )}
 </div>
-<div className=" flex flex-col items-center gap-y-4 xl:gap-y-6 2xl:gap-6">      
+<div className=" flex flex-col items-center gap-y-4 px-4 xl:gap-y-6 2xl:gap-6">      
 <h3 className="w-full text-center text-[#8E1616] font-bold text-[24px] xl:text-[36px] 2xl:text-[48px]">
   Don't lose your colors
   <br />

@@ -27,15 +27,24 @@ export default function VeinsPage() {
   }, []);
 
   
-  useEffect(() => {
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = "";
-    };
-  }, []);
+useEffect(() => {
+  const mediaQuery = window.matchMedia('(min-width: 1440px)'); // xl breakpoint
+
+  const handleChange = (e: MediaQueryList | MediaQueryListEvent) => {
+    document.body.style.overflow = e.matches ? 'hidden' : '';
+  };
+
+  handleChange(mediaQuery); // เช็คตอน mount
+  mediaQuery.addEventListener('change', handleChange); // เช็คตอน resize
+
+  return () => {
+    mediaQuery.removeEventListener('change', handleChange);
+    document.body.style.overflow = ''; // cleanup
+  };
+}, []);
 
   return (
-    <div className="min-h-screen overflow-hidden p-6 pb-20 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
+    <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 pb-20 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       {" "}
       <div>
 <img

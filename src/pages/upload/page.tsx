@@ -26,10 +26,19 @@ export default function UploadPage() {
   }, []);
 
 
-  useEffect(() => {
-  document.body.style.overflow = 'hidden';
+useEffect(() => {
+  const mediaQuery = window.matchMedia('(min-width: 1440px)'); // xl breakpoint
+
+  const handleChange = (e: MediaQueryList | MediaQueryListEvent) => {
+    document.body.style.overflow = e.matches ? 'hidden' : '';
+  };
+
+  handleChange(mediaQuery); // เช็คตอน mount
+  mediaQuery.addEventListener('change', handleChange); // เช็คตอน resize
+
   return () => {
-    document.body.style.overflow = '';
+    mediaQuery.removeEventListener('change', handleChange);
+    document.body.style.overflow = ''; // cleanup
   };
 }, []);
 
@@ -85,9 +94,8 @@ const handleSnap = () => {
     !ready ||
     (state.image ? noDetectFaceAlert || unsupportFileAlert : false);
 
-  return (
-  <div className="min-h-screen overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
-      
+return (
+  <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       <div>
         <img
           src={backIcon}

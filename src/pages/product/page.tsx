@@ -92,7 +92,7 @@ const ProductPage = () => {
           </div>
           <Link to="/">
             <div className="py-4 xl:py-6 2xl:py-6 2xl:py-6 flex justify-center">
-              <img src={logo} alt="logo" className="w-40 h-7 xl:w-60 xl:h-13 2xl:w-60 2xl:h-13" />
+<img src={logo} alt="logo" className="w-40 xl:w-60 2xl:w-60 object-contain" />
             </div>
           </Link>
         </div>
