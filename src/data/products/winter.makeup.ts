@@ -135,8 +135,8 @@ export const WINTER_MAKEUP: Product[] = [
    { url: "/products/winter/makeup/4u2-jewelry-box-2.jpg" },
    { url: "/products/winter/makeup/4u2-jewelry-box-3.jpg" },
    { url: "/products/winter/makeup/4u2-jewelry-box-4.jpg" },
-   { url: "/products/winter/makeup/4u2-jewelry-box-diamond.jpg", color: "Diamond", colorHex: "#c4e5ff" },
-   { url: "/products/winter/makeup/4u2-jewelry-box-mother-of-pearl.jpg", color: "Mother of pearl", colorHex: "#ffc8d7" },
+   { url: "/products/winter/makeup/4u2-jewelry-box-diamond.jpg", color: "Diamond", colorHex: "#c4e5ff", finish: "eye", },
+   { url: "/products/winter/makeup/4u2-jewelry-box-mother-of-pearl.jpg", color: "Mother of pearl", colorHex: "#ffc8d7", finish: "eye", },
  ],
 },
 {
@@ -203,7 +203,7 @@ export const WINTER_MAKEUP: Product[] = [
    { url: "/products/winter/makeup/4u2-skin-contour-stick-1.jpg", isPrimary: true },
    { url: "/products/winter/makeup/4u2-skin-contour-stick-2.jpg" },
    { url: "/products/winter/makeup/4u2-skin-contour-stick-3.jpg" },
-   { url: "/products/winter/makeup/4u2-skin-contour-stick-cool-tone.jpg", color: "Cool tone", colorHex: "#9E8C82" },
+   { url: "/products/winter/makeup/4u2-skin-contour-stick-cool-tone.jpg", color: "Cool tone", colorHex: "#9E8C82", finish: "contour", },
  ],
 },
 {
@@ -219,8 +219,8 @@ export const WINTER_MAKEUP: Product[] = [
    { url: "/products/winter/makeup/4u2-the-glittering-2.jpg" },
    { url: "/products/winter/makeup/4u2-the-glittering-3.jpg" },
    { url: "/products/winter/makeup/4u2-the-glittering-4.jpg" },
-   { url: "/products/winter/makeup/4u2-the-glittering-pony-glitter.jpg", color: "Pony glitter", colorHex: "#C98BCF" },
-   { url: "/products/winter/makeup/4u2-the-glittering-bling-sisters.jpg", color: "Bling sisters", colorHex: "#f9f7f8" },
+   { url: "/products/winter/makeup/4u2-the-glittering-pony-glitter.jpg", color: "Pony glitter", finish: "eye", colorHex: "#C98BCF" },
+   { url: "/products/winter/makeup/4u2-the-glittering-bling-sisters.jpg", color: "Bling sisters", finish: "eye", colorHex: "#f9f7f8" },
  ],
 },
 ];

@@ -33,7 +33,7 @@ const SEASON_CLOTHES_COLORS: Record<string, ClothesColor[]> = {
 // ─── Types ────────────────────────────────────────────────────────────────────
 type Season = "spring" | "summer" | "autumn" | "winter";
 type Tab = "makeup" | "clothes" | "accessories" | "haircolor";
-type Finish = "matte" | "gloss" | "shimmer" | "blush" | "liner";
+type Finish = "matte" | "gloss" | "shimmer" | "blush" | "liner" | "eye" | "contour";
 
 interface ColorVariant {
   color: string;
@@ -100,6 +100,14 @@ declare global {
 const OUTER_LIP = [61, 146, 91, 181, 84, 17, 314, 405, 321, 375, 291, 409, 270, 269, 267, 0, 37, 39, 40, 185];
 const INNER_LIP = [78, 95, 88, 178, 87, 14, 317, 402, 318, 324, 308, 415, 310, 311, 312, 13, 82, 81, 80, 191];
 
+// ─── Eye Shadow Landmarks ─────────────────────────────────────────────────────
+const LEFT_EYE_UPPER  = [246, 161, 160, 159, 158, 157, 173];
+const LEFT_EYE_INNER  = 133;
+const LEFT_EYE_OUTER  = 33;
+
+const RIGHT_EYE_UPPER = [466, 388, 387, 386, 385, 384, 398];
+const RIGHT_EYE_INNER = 362;
+const RIGHT_EYE_OUTER = 263;
 
 const FACE_OVAL = [
   10, 338, 297, 332, 284, 251, 389, 356, 454, 323, 361, 288,
@@ -107,6 +115,25 @@ const FACE_OVAL = [
   172, 58, 132, 93, 234, 127, 162, 21, 54, 103, 67, 109,
 ];
 
+// ─── Contour / Highlight Landmarks ───────────────────────────────────────────
+const NOSE_TIP_IDX       = 4;
+const NOSE_BRIDGE_IDX    = 168;
+const LEFT_NOSE_ALA_IDX  = 129;
+const RIGHT_NOSE_ALA_IDX = 358;
+const LEFT_TEMPLE_IDX    = 21;
+const RIGHT_TEMPLE_IDX   = 251;
+const FOREHEAD_TOP_IDX   = 10;
+const CHIN_IDX           = 152;
+const LEFT_JAW_IDX       = 172;
+const RIGHT_JAW_IDX      = 397;
+const LEFT_CHEEK_HL_IDX  = 116;
+const RIGHT_CHEEK_HL_IDX = 345;
+const LEFT_EYE_IN_IDX    = 133;
+const RIGHT_EYE_IN_IDX   = 362;
+const LEFT_CHEEK_SHADOW_OUTER_IDX  = 123;
+const LEFT_CHEEK_SHADOW_INNER_IDX  = 205;
+const RIGHT_CHEEK_SHADOW_OUTER_IDX = 352;
+const RIGHT_CHEEK_SHADOW_INNER_IDX = 425;
 
 // ─── Cheek Landmarks ──────────────────────────────────────────────────────────
 const LEFT_CHEEK_INNER  = [117, 118, 101, 36,  205, 187];
@@ -160,7 +187,9 @@ function guessFinish(name: string, productName: string): Finish {
   if (combined.includes("liner") || combined.includes("lip liner")) return "liner";
   if (combined.includes("blush") || combined.includes("liquid blush")) return "blush";
   if (combined.includes("gloss") || combined.includes("oil") || combined.includes("glassy") || combined.includes("water tint")) return "gloss";
-  if (combined.includes("shimmer") || combined.includes("glitter") || combined.includes("jewelry")) return "shimmer";
+  if (combined.includes("shimmer")) return "shimmer";
+  if (combined.includes("jewelry") || combined.includes("glitter")) return "eye";
+  if (combined.includes("contour")) return "contour";
   return "matte";
 }
 
@@ -292,7 +321,7 @@ const [hairSegReady, setHairSegReady] = useState(false);
           baseOptions: {
             modelAssetPath:
               "https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/latest/hair_segmenter.tflite",
-            delegate: "GPU",
+            delegate: "CPU",
           },
           outputCategoryMask:    false,
           outputConfidenceMasks: true,
@@ -625,6 +654,190 @@ if (hairColorRef.current && hairSegmenterRef.current) {
     const finish = lipFinishRef.current;
     const color  = lipColorRef.current;
 
+
+
+
+    // ════════════════════════════════════
+// 🎨 CONTOUR + HIGHLIGHT
+// ════════════════════════════════════
+if (finish === "contour") {
+  // ── parse contour RGB จาก color string ──────────────────────────────
+  const cMatch = color.match(/rgba?\((\d+),\s*(\d+),\s*(\d+)/);
+  const cR = cMatch ? +cMatch[1] : 130;
+  const cG = cMatch ? +cMatch[2] : 80;
+  const cB = cMatch ? +cMatch[3] : 40;
+
+  // ── helper: วาด radial gradient ellipse (contour หรือ highlight) ────
+  const drawZone = (
+    cx: number, cy: number,
+    rx: number, ry: number,
+    angle: number,
+    rgba: string,
+    blurPx: number,
+    composite: GlobalCompositeOperation,
+    stops?: [number, string][]           // optional custom stops
+  ) => {
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    ctx.scale(1, ry / rx);
+
+    const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
+    if (stops) {
+      stops.forEach(([pos, c]) => grad.addColorStop(pos, c));
+    } else {
+      const base    = parseFloat(rgba.match(/[\d.]+(?=\))/)?.[0] ?? "0.4");
+      grad.addColorStop(0,    rgba);
+      grad.addColorStop(0.35, rgba.replace(/[\d.]+(?=\))/, String(+(base * 0.55).toFixed(2))));
+      grad.addColorStop(1,    rgba.replace(/[\d.]+(?=\))/, "0"));
+    }
+
+    ctx.globalCompositeOperation = composite;
+    ctx.filter = `blur(${blurPx}px)`;
+    ctx.fillStyle = grad;
+    ctx.fillRect(-rx * 1.3, -rx * 1.3, rx * 2.6, rx * 2.6);
+    ctx.restore();
+  };
+
+  // ── geometry ─────────────────────────────────────────────────────────
+  const noseTip    = getXY(NOSE_TIP_IDX);
+  const noseBridge = getXY(NOSE_BRIDGE_IDX);
+  const leftAla    = getXY(LEFT_NOSE_ALA_IDX);
+  const rightAla   = getXY(RIGHT_NOSE_ALA_IDX);
+  const leftTemple = getXY(LEFT_TEMPLE_IDX);
+  const rightTemple= getXY(RIGHT_TEMPLE_IDX);
+  const forehead   = getXY(FOREHEAD_TOP_IDX);
+  const chin       = getXY(CHIN_IDX);
+  const jawL       = getXY(LEFT_JAW_IDX);
+  const jawR_pt    = getXY(RIGHT_JAW_IDX);
+  const cheekHL_L  = getXY(LEFT_CHEEK_HL_IDX);
+  const cheekHL_R  = getXY(RIGHT_CHEEK_HL_IDX);
+  const eyeIn_L    = getXY(LEFT_EYE_IN_IDX);
+  const eyeIn_R    = getXY(RIGHT_EYE_IN_IDX);
+  const cShadowOL  = getXY(LEFT_CHEEK_SHADOW_OUTER_IDX);
+  const cShadowIL  = getXY(LEFT_CHEEK_SHADOW_INNER_IDX);
+  const cShadowOR  = getXY(RIGHT_CHEEK_SHADOW_OUTER_IDX);
+  const cShadowIR  = getXY(RIGHT_CHEEK_SHADOW_INNER_IDX);
+
+  const noseH  = Math.abs(noseTip.y - noseBridge.y);
+  const faceW  = Math.abs(rightTemple.x - leftTemple.x);
+  const unit   = faceW * 0.08;  // base sizing unit
+
+  // ════════ CONTOUR ZONES (multiply = darkening) ════════
+
+  // 1. ข้างจมูก (slim nose)
+  [
+    { cx: leftAla.x + unit * 0.4,  cy: (leftAla.y  + noseBridge.y) / 2 + noseH * 0.15, angle:  0.15 },
+    { cx: rightAla.x - unit * 0.4, cy: (rightAla.y + noseBridge.y) / 2 + noseH * 0.15, angle: -0.15 },
+  ].forEach(({ cx, cy, angle }) =>
+    drawZone(cx, cy, unit * 0.9, noseH * 0.55, angle,
+      `rgba(${cR},${cG},${cB},0.42)`, 9, "multiply")
+  );
+
+  // 2. Cheek hollows (ใต้โหนกแก้ม)
+  [
+    {
+      cx: cShadowOL.x * 0.5 + cShadowIL.x * 0.5,
+      cy: cShadowOL.y * 0.45 + cShadowIL.y * 0.55 + unit * 0.5,
+      angle: -0.28,
+    },
+    {
+      cx: cShadowOR.x * 0.5 + cShadowIR.x * 0.5,
+      cy: cShadowOR.y * 0.45 + cShadowIR.y * 0.55 + unit * 0.5,
+      angle: 0.28,
+    },
+  ].forEach(({ cx, cy, angle }) =>
+    drawZone(cx, cy, unit * 2.2, unit * 0.85, angle,
+      `rgba(${cR},${cG},${cB},0.35)`, 20, "multiply")
+  );
+
+  // 3. Temples (ขมับ)
+  [
+    { pt: leftTemple,  angle:  0.55 },
+    { pt: rightTemple, angle: -0.55 },
+  ].forEach(({ pt, angle }) =>
+    drawZone(pt.x, pt.y + unit * 0.3, unit * 1.6, unit * 1.1, angle,
+      `rgba(${cR},${cG},${cB},0.24)`, 22, "multiply")
+  );
+
+  // 4. Jawline corners
+  [jawL, jawR_pt].forEach((pt) =>
+    drawZone(pt.x, pt.y, unit * 1.3, unit * 0.9, 0,
+      `rgba(${cR},${cG},${cB},0.22)`, 14, "multiply")
+  );
+
+  // ════════ HIGHLIGHT ZONES (screen = brightening) ════════
+
+  const HL = "rgba(255,248,228";   // warm champagne
+
+  // 5. สันจมูก (nose bridge center)
+  drawZone(
+    (noseBridge.x + noseTip.x) / 2,
+    (noseBridge.y + noseTip.y) / 2,
+    unit * 0.55, noseH * 0.48, 0,
+    `${HL},0.6)`, 5, "screen"
+  );
+
+  // 6. Under-eye triangle / cheek highlight
+  [
+    { x: (eyeIn_L.x + cheekHL_L.x) / 2, y: (eyeIn_L.y + cheekHL_L.y) / 2 + unit * 0.6 },
+    { x: (eyeIn_R.x + cheekHL_R.x) / 2, y: (eyeIn_R.y + cheekHL_R.y) / 2 + unit * 0.6 },
+  ].forEach(({ x, y }) =>
+    drawZone(x, y, unit * 1.8, unit * 1.3, 0, `${HL},0.42)`, 13, "screen")
+  );
+
+  // 7. กลางหน้าผาก (forehead center)
+  drawZone(
+    forehead.x,
+    forehead.y + unit * 0.5,
+    unit * 1.3, unit * 1.0, 0,
+    `${HL},0.28)`, 20, "screen"
+  );
+
+  // 8. คางกลาง (chin)
+  drawZone(chin.x, chin.y, unit * 1.0, unit * 0.7, 0,
+    `${HL},0.33)`, 11, "screen"
+  );
+
+  // 9. สร้าง path จาก FACE_OVAL landmarks
+  // landmark แนว jaw ด้านล่าง (ไม่เอาหน้าผาก)
+  const JAW_INDICES = [
+    172, 136, 150, 149, 176, 148, 152,   // คางกลาง
+    377, 400, 378, 379, 365, 397,         // ขากรรไกรขวา
+    132, 93, 234, 127,                    // แก้มซ้ายล่าง
+    352, 280, 261, 448,                   // แก้มขวาล่าง
+  ];
+
+  const jawPath = new Path2D();
+  // เริ่มจากแก้มซ้าย → คาง → แก้มขวา
+  const jawPts = [
+    getXY(127), getXY(234), getXY(93), getXY(132),
+    getXY(172), getXY(136), getXY(150), getXY(149),
+    getXY(176), getXY(148), getXY(152),
+    getXY(377), getXY(400), getXY(378), getXY(379),
+    getXY(365), getXY(397), getXY(448), getXY(261), getXY(280), getXY(352),
+  ];
+  jawPts.forEach((pt, i) => {
+    if (i === 0) jawPath.moveTo(pt.x, pt.y);
+    else         jawPath.lineTo(pt.x, pt.y);
+  });
+  // ไม่ closePath — วาดแค่เส้นโค้งล่าง ไม่ปิดด้านบน
+
+  ctx.save();
+  ctx.globalCompositeOperation = "multiply";
+  ctx.filter = `blur(${unit * 1.2}px)`;
+  ctx.strokeStyle = `rgba(${cR},${cG},${cB},0.30)`;
+  ctx.lineWidth   = unit * 1.6;
+  ctx.lineJoin    = "round";
+  ctx.lineCap     = "round";
+  ctx.stroke(jawPath);
+  ctx.restore();
+
+
+  return;
+}
+
+
     // ════════════════════════════════════
     // 🌸 BLUSH
     // ════════════════════════════════════
@@ -669,6 +882,76 @@ if (hairColorRef.current && hairSegmenterRef.current) {
 
       return;
     }
+
+
+    if (finish === "eye") {
+  const eyes = [
+    { upper: LEFT_EYE_UPPER,  innerIdx: LEFT_EYE_INNER,  outerIdx: LEFT_EYE_OUTER  },
+    { upper: RIGHT_EYE_UPPER, innerIdx: RIGHT_EYE_INNER, outerIdx: RIGHT_EYE_OUTER },
+  ];
+
+  eyes.forEach(({ upper, innerIdx, outerIdx }) => {
+    const innerPt  = getXY(innerIdx);
+    const outerPt  = getXY(outerIdx);
+    const upperPts = upper.map((i) => getXY(i));
+
+    const eyeWidth     = Math.abs(outerPt.x - innerPt.x);
+    const shadowHeight = eyeWidth * 0.55; // ความสูง shadow เหนือ lid
+    const lidTopY      = Math.min(...upperPts.map((p) => p.y));
+    const lidBotY      = (innerPt.y + outerPt.y) / 2;
+
+    // ── Path: ขอบล่าง = lash line, ขอบบน = เหนือ crease ──
+    const path = new Path2D();
+    path.moveTo(innerPt.x, innerPt.y);
+
+    // ขึ้นไปตาม upper lid (lash line)
+    upper.forEach((i) => {
+      const pt = getXY(i);
+      path.lineTo(pt.x, pt.y);
+    });
+    path.lineTo(outerPt.x, outerPt.y);
+
+    // วนกลับด้านบน (offset ขึ้นไป) outer → inner
+    const TAPER = 0.6; // ปลายตาหน้าและหลังเรียวกว่ากลาง
+    path.lineTo(outerPt.x, outerPt.y - shadowHeight * TAPER);
+    [...upper].reverse().forEach((i) => {
+      const pt = getXY(i);
+      path.lineTo(pt.x, pt.y - shadowHeight);
+    });
+    path.lineTo(innerPt.x, innerPt.y - shadowHeight * TAPER);
+    path.closePath();
+
+    // ── Gradient: เข้มที่ lash line → จางขึ้นด้านบน ──
+    const grad = ctx.createLinearGradient(0, lidBotY, 0, lidTopY - shadowHeight);
+    grad.addColorStop(0,    color.replace(/[\d.]+\)$/, "0.72)"));
+    grad.addColorStop(0.2,  color.replace(/[\d.]+\)$/, "0.48)"));
+    grad.addColorStop(0.55, color.replace(/[\d.]+\)$/, "0.18)"));
+    grad.addColorStop(1,    color.replace(/[\d.]+\)$/, "0)"));
+
+    // ── Pass 1: base shadow ──
+    ctx.save();
+    ctx.globalCompositeOperation = "multiply";
+    ctx.filter = "blur(7px)";
+    ctx.fillStyle = grad;
+    ctx.fill(path);
+    ctx.restore();
+
+    // ── Pass 2: ขอบ lash เข้มขึ้นเล็กน้อย (depth) ──
+    const lashGrad = ctx.createLinearGradient(0, lidBotY, 0, lidTopY);
+    lashGrad.addColorStop(0,   color.replace(/[\d.]+\)$/, "0.35)"));
+    lashGrad.addColorStop(0.3, color.replace(/[\d.]+\)$/, "0)"));
+    ctx.save();
+    ctx.globalCompositeOperation = "multiply";
+    ctx.filter = "blur(3px)";
+    ctx.fillStyle = lashGrad;
+    ctx.fill(path);
+    ctx.restore();
+    
+  });
+
+
+  return;
+}
 
     // ════════════════════════════════════
     // 💋 LINER
@@ -929,7 +1212,7 @@ if (hairColorRef.current && hairSegmenterRef.current) {
       {/* Camera */}
       <div>
 <div
-  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[976px] 2xl:h-[674px] mx-auto rounded-3xl overflow-hidden border border-gray"
+  className="relative w-[384px] h-[512px] xl:w-[660px] xl:h-[440px] 2xl:w-[976px] 2xl:h-[674px] mx-auto rounded-3xl overflow-hidden"
 >
   <video
     ref={videoRef}
@@ -987,48 +1270,41 @@ if (hairColorRef.current && hairSegmenterRef.current) {
     </div>
     <div className="flex-1 flex items-center justify-center overflow-x-auto scrollbar-hide">
       <div className="flex gap-3 px-4 min-w-max">
-        {/* No Filter */}
-              {/* No Filter swatch */}
-              <button
-                title="No Filter"
-                onClick={handleClearHairColor}
-                className={`relative w-10 h-10 rounded-full border-[3px] shadow-sm transition-transform hover:scale-110 flex items-center justify-center bg-gray-100 ${
-                  selectedHairColor === null
-                    ? "border-[#8E1616] scale-110"
-                    : "border-white"
-                }`}
-              >
-                <svg viewBox="0 0 36 36" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="18" cy="18" r="14" stroke="#9CA3AF" strokeWidth="2.5"/>
-                  <line x1="7" y1="29" x2="29" y2="7" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round"/>
-                </svg>
-                {selectedHairColor === null && (
-                  <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
-                )}
-              </button>
-              {seasonHairColors.map((hc) => (
-                <button
-                  key={hc.id}
-                  title={hc.name}
-                  onClick={() => handleSelectHairColor(hc)}
-                  className={`relative w-10 h-10 rounded-full border-[3px] shadow-sm transition-transform hover:scale-110 ${
-                    selectedHairColor?.id === hc.id
-                      ? "border-[#8E1616] scale-110"
-                      : "border-white"
-                  }`}
-                  style={{ backgroundColor: hc.colorHex }}
-                >
-                  {selectedHairColor?.id === hc.id && (
-                    <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
-                  )}
-                </button>
-              ))}
-            </div>
-            </div>
+        <button
+          title="No Filter"
+          onClick={handleClearHairColor}
+          className={`relative w-10 h-10 rounded-full border-[3px] shadow-sm transition-transform hover:scale-110 flex items-center justify-center bg-gray-100 ${
+            selectedHairColor === null ? "border-[#8E1616] scale-110" : "border-white"
+          }`}
+        >
+          <svg viewBox="0 0 36 36" width="22" height="22" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="18" cy="18" r="14" stroke="#9CA3AF" strokeWidth="2.5"/>
+            <line x1="7" y1="29" x2="29" y2="7" stroke="#9CA3AF" strokeWidth="2.5" strokeLinecap="round"/>
+          </svg>
+          {selectedHairColor === null && (
+            <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
+          )}
+        </button>
 
-            
-          </div>
-        )}
+        {seasonHairColors.map((hc) => (
+          <button
+            key={hc.id}
+            title={hc.name}
+            onClick={() => handleSelectHairColor(hc)}
+            className={`relative w-10 h-10 rounded-full border-[3px] shadow-sm transition-transform hover:scale-110 ${
+              selectedHairColor?.id === hc.id ? "border-[#8E1616] scale-110" : "border-white"
+            }`}
+            style={{ backgroundColor: hc.colorHex }}
+          >
+            {selectedHairColor?.id === hc.id && (
+              <span className="absolute inset-0 rounded-full ring-2 ring-[#8E1616] ring-offset-1" />
+            )}
+          </button>
+        ))}
+      </div>
+    </div>
+  </div>
+)}
 
         {/* ── Makeup / Accessories Panel ── */}
         {activeTab !== "haircolor" && activeTab !== "clothes" && (
@@ -1082,7 +1358,7 @@ if (hairColorRef.current && hairSegmenterRef.current) {
             {selectedProduct && selectedProduct.variants.length > 0 && (
               <div className="pt-4 2xl:pt-6 pb-0  border-t border-gray-100">
       <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
-  Color : {selectedProduct.variants[activeVariantIdx] && (
+  Color : {activeVariantIdx !== null && selectedProduct.variants[activeVariantIdx] && (
           <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
       {selectedProduct.variants[activeVariantIdx].name}
     </span>

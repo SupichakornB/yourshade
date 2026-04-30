@@ -22,6 +22,8 @@ export default function Home() {
         <img
           src={banner}
           alt="banner"
+          fetchPriority="high"
+          loading="eager"
           className="w-full h-full object-cover md:object-fill"
         />
 

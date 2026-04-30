@@ -6,7 +6,7 @@ export type Season = (typeof SEASONS)[number];
 
 export type ProductType = (typeof PRODUCT_TYPES)[number];
 
-type Finish = "matte" | "gloss" | "shimmer" | "blush" | "liner" | "glitter" ;  // ← เพิ่ม blush
+type Finish = "matte" | "gloss" | "shimmer" | "blush" | "liner" | "glitter" | "eye" | "contour";  // ← เพิ่ม blush
 
 export type ProductImage = {
   url: string;
