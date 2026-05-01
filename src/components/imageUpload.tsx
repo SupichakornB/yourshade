@@ -94,11 +94,11 @@ export default function ImageUpload({
                   </div>
                 )}
 
-                <img
-                  src={URL.createObjectURL(value)}
-                  className="relative h-full w-full mx-auto rounded-3xl object-cover"
-                  alt="preview"
-                />
+<img
+  src={URL.createObjectURL(value)}
+  className="relative h-full w-full mx-auto rounded-3xl object-contain bg-black"
+  alt="preview"
+/>
 <button
   onClick={onClear}
   className="absolute bottom-4 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full bg-white text-[#8E1616] border border-[#8E1616] z-20"
