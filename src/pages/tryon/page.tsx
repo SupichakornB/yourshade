@@ -1368,7 +1368,7 @@ const handleClearMakeup = () => {
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
   <div className="hidden xl:flex flex-col items-center justify-center flex-1 border-t border-gray-100 gap-3">
-      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold text-center">
+    <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold w-full text-left">
   Color : {activeVariantIdx !== null && selectedProduct.variants[activeVariantIdx] && (
           <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
       {selectedProduct.variants[activeVariantIdx].name}
