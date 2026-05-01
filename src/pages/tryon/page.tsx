@@ -1274,8 +1274,8 @@ const handleClearMakeup = () => {
         )}
       </p>
     </div>
-<div className="flex-1 flex items-center justify-start overflow-x-auto scrollbar-hide">
-      <div className="flex gap-3 px-4 min-w-max">
+<div className="flex-1 flex items-center justify-start xl:justify-center overflow-x-auto scrollbar-hide">
+  <div className="flex gap-3 px-4 xl:px-0 min-w-max xl:flex-wrap xl:justify-center xl:min-w-0">
         <button
           title="No Filter"
           onClick={handleClearHairColor}
@@ -1367,8 +1367,8 @@ const handleClearMakeup = () => {
 
 
             {selectedProduct && selectedProduct.variants.length > 0 && (
-  <div className="hidden xl:block pt-4 2xl:pt-6 pb-0 border-t border-gray-100">
-      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold">
+  <div className="hidden xl:flex flex-col items-center justify-center flex-1 border-t border-gray-100 gap-3">
+      <p className="text-[#14110F] text-[16px] xl:text-[24px] 2xl:text-[24px] font-semibold text-center">
   Color : {activeVariantIdx !== null && selectedProduct.variants[activeVariantIdx] && (
           <span className="text-[16px] xl:text-[24px] 2xl:text-[24px] text-[#8E1616] font-semibold">
       {selectedProduct.variants[activeVariantIdx].name}
@@ -1410,8 +1410,8 @@ const handleClearMakeup = () => {
         )}
       </p>
     </div>
-<div className="flex-1 flex items-center justify-start overflow-x-auto scrollbar-hide">
-      <div className="flex gap-3 px-4 min-w-max">
+<div className="flex-1 flex items-center justify-start xl:justify-center overflow-x-auto scrollbar-hide">
+  <div className="flex gap-3 px-4 xl:px-0 min-w-max xl:flex-wrap xl:justify-center xl:min-w-0">
         {/* No Color */}
               {/* No Color */}
               <button
