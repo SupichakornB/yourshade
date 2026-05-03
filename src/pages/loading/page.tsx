@@ -7,7 +7,7 @@ import { analyzeResult } from "@/lib/analyze";
 import { loadFaceModels } from "@/lib/faceApi";
 import { detectFace } from "@/lib/detectFace";
 import { fileToImage } from "@/lib/fileToImage";
-import type { ToneType } from "@/types/analyze";
+import type { ToneType, LevelType } from "@/types/analyze";
 
 // ─────────────────────────────────────────────
 // Color Math Utilities
@@ -119,6 +119,42 @@ function averageSkinLab(
 }
 
 // ─────────────────────────────────────────────
+// Hair Zone Lightness (สำหรับ contrast)
+// ─────────────────────────────────────────────
+
+function averageHairLab(
+  img: HTMLImageElement,
+  box: { x: number; y: number; width: number; height: number }
+): number | null {
+  const cropX = box.x + box.width * 0.20;
+  const cropY = box.y;
+  const cropW = box.width * 0.60;
+  const cropH = box.height * 0.20;
+
+  if (cropW < 10 || cropH < 10) return null;
+
+  const canvas = document.createElement("canvas");
+  canvas.width = Math.round(cropW);
+  canvas.height = Math.round(cropH);
+  const ctx = canvas.getContext("2d")!;
+  ctx.drawImage(img, Math.round(cropX), Math.round(cropY),
+    Math.round(cropW), Math.round(cropH),
+    0, 0, canvas.width, canvas.height);
+
+  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
+  const Ls: number[] = [];
+
+  for (let i = 0; i < data.length; i += 16) {
+    const r = data[i], g = data[i + 1], b = data[i + 2], alpha = data[i + 3];
+    if (alpha < 128) continue;
+    const [L] = rgbToLab(r, g, b);
+    Ls.push(L);
+  }
+
+  return Ls.length > 0 ? trimmedMean(Ls) : null;
+}
+
+// ─────────────────────────────────────────────
 // Crop Skin Zone
 // ─────────────────────────────────────────────
 
@@ -144,7 +180,7 @@ function cropSkinRegion(
 }
 
 // ─────────────────────────────────────────────
-// Tone Classifier
+// Classifiers
 // ─────────────────────────────────────────────
 
 function classifyTone(L: number, a: number, b: number): ToneType {
@@ -162,6 +198,34 @@ function classifyTone(L: number, a: number, b: number): ToneType {
 
   // กลาง → ใช้ a* ตัดสิน
   return a >= 11 ? "bright" : "soft";
+}
+
+// โชว์เท่านั้น ไม่ได้ใช้คำนวณ season
+function classifyBrightness(skinL: number): LevelType {
+  console.log(`[Brightness] skinL*=${skinL.toFixed(2)}`);
+  if (skinL < 55) return "low";
+  if (skinL > 70) return "high";
+  return "medium";
+}
+
+function classifySaturation(a: number, b: number): LevelType {
+  const C = chroma(a, b);
+  console.log(`[Saturation] C*=${C.toFixed(2)}`);
+  if (C < 14) return "low";
+  if (C > 22) return "high";
+  return "medium";
+}
+
+function classifyContrast(skinL: number, hairL: number | null): LevelType {
+  if (hairL === null) {
+    console.log(`[Contrast] no hair zone → medium`);
+    return "medium";
+  }
+  const delta = Math.abs(skinL - hairL);
+  console.log(`[Contrast] skinL=${skinL.toFixed(2)}, hairL=${hairL.toFixed(2)}, ΔL*=${delta.toFixed(2)}`);
+  if (delta < 20) return "low";
+  if (delta > 40) return "high";
+  return "medium";
 }
 
 // ─────────────────────────────────────────────
@@ -218,11 +282,20 @@ export default function LoadingPage() {
             const lab = averageSkinLab(skinCtx, skinCanvas.width, skinCanvas.height);
             if (!lab) throw new Error("ตรวจจับสีผิวไม่เพียงพอ");
 
-            // ── Classify tone ────────────────────────────────
-            const detectedTone = classifyTone(lab.L, lab.a, lab.b);
+            // ── Hair zone สำหรับ contrast ────────────────────
+            const hairL = detection
+              ? averageHairLab(img, detection.detection.box)
+              : null;
 
-            console.log(`[Result] tone=${detectedTone}, L=${lab.L.toFixed(2)}, a=${lab.a.toFixed(2)}, b=${lab.b.toFixed(2)}, C*=${chroma(lab.a, lab.b).toFixed(2)}`);
+            // ── Classify ─────────────────────────────────────
+            const detectedTone       = classifyTone(lab.L, lab.a, lab.b);
+            const detectedBrightness = classifyBrightness(lab.L);
+            const detectedSaturation = classifySaturation(lab.a, lab.b);
+            const detectedContrast   = classifyContrast(lab.L, hairL);
 
+            console.log(`[Result] tone=${detectedTone}, brightness=${detectedBrightness}, saturation=${detectedSaturation}, contrast=${detectedContrast}`);
+
+            // ── Season: ใช้แค่ vein + tone ───────────────────
             const result = analyzeResult({
               ...state,
               tone: detectedTone,
@@ -232,9 +305,9 @@ export default function LoadingPage() {
               type: "SET_ANALYSIS",
               payload: {
                 tone:       detectedTone,
-                brightness: "medium",
-                saturation: "medium",
-                contrast:   "medium",
+                brightness: detectedBrightness, // โชว์เท่านั้น
+                saturation: detectedSaturation, // โชว์เท่านั้น
+                contrast:   detectedContrast,   // โชว์เท่านั้น
                 result,
               },
             });
