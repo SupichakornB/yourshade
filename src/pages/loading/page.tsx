@@ -7,7 +7,7 @@ import { analyzeResult } from "@/lib/analyze";
 import { loadFaceModels } from "@/lib/faceApi";
 import { detectFace } from "@/lib/detectFace";
 import { fileToImage } from "@/lib/fileToImage";
-import type { ToneType, LevelType } from "@/types/analyze";
+import type { ToneType } from "@/types/analyze";
 
 // ─────────────────────────────────────────────
 // Color Math Utilities
@@ -49,15 +49,42 @@ function chroma(a: number, b: number): number {
 // Skin Pixel Detection
 // ─────────────────────────────────────────────
 
+function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
+  const rn = r / 255, gn = g / 255, bn = b / 255;
+  const max = Math.max(rn, gn, bn), min = Math.min(rn, gn, bn);
+  const l = (max + min) / 2;
+  if (max === min) return [0, 0, l];
+  const d = max - min;
+  const s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+  const h = max === rn
+    ? ((gn - bn) / d + (gn < bn ? 6 : 0)) / 6
+    : max === gn
+    ? ((bn - rn) / d + 2) / 6
+    : ((rn - gn) / d + 4) / 6;
+  return [h * 360, s, l];
+}
+
+function trimmedMean(arr: number[], trimRatio = 0.10): number {
+  if (arr.length === 0) return 0;
+  const sorted = [...arr].sort((a, b) => a - b);
+  const cut = Math.floor(sorted.length * trimRatio);
+  const trimmed = sorted.slice(cut, sorted.length - cut);
+  return trimmed.reduce((s, v) => s + v, 0) / trimmed.length;
+}
+
 function isSkinPixel(r: number, g: number, b: number): boolean {
+  if (r > 235 && g > 215 && b > 200) return false;
   if (r < 45 || g < 20 || b < 10) return false;
-  if (r > 250 && g > 250 && b > 250) return false;
-  if (Math.max(r, g, b) - Math.min(r, g, b) < 8) return false;
-  return r > g && r > b && r - b > 15;
+  const [h, s, l] = rgbToHsl(r, g, b);
+  if (s < 0.08) return false;
+  if (l > 0.88) return false;
+  if (l < 0.15) return false;
+  if (h > 50 && h < 330) return false;
+  return r > g && r > b && r - b > 10;
 }
 
 // ─────────────────────────────────────────────
-// Skin Lab Sampling (ใช้สำหรับ tone + saturation)
+// Skin Lab Sampling
 // ─────────────────────────────────────────────
 
 interface LabResult {
@@ -73,81 +100,22 @@ function averageSkinLab(
   height: number
 ): LabResult | null {
   const data = ctx.getImageData(0, 0, width, height).data;
-  let sumL = 0, sumA = 0, sumB = 0, count = 0;
+  const Ls: number[] = [], As: number[] = [], Bs: number[] = [];
 
   for (let i = 0; i < data.length; i += 16) {
     const r = data[i], g = data[i + 1], b = data[i + 2], alpha = data[i + 3];
     if (alpha < 128 || !isSkinPixel(r, g, b)) continue;
     const [L, a, bv] = rgbToLab(r, g, b);
-    sumL += L; sumA += a; sumB += bv; count++;
+    Ls.push(L); As.push(a); Bs.push(bv);
   }
 
-  if (count < 50) return null;
-  return { L: sumL / count, a: sumA / count, b: sumB / count, count };
-}
-
-// ─────────────────────────────────────────────
-// Overall Image Brightness (ใช้สำหรับ brightness)
-// วัดจาก L* เฉลี่ยของทั้งภาพ (ไม่กรอง skin)
-// ─────────────────────────────────────────────
-
-function averageImageLightness(
-  ctx: CanvasRenderingContext2D,
-  width: number,
-  height: number
-): number {
-  const data = ctx.getImageData(0, 0, width, height).data;
-  let sumL = 0, count = 0;
-
-  for (let i = 0; i < data.length; i += 32) {
-    const r = data[i], g = data[i + 1], b = data[i + 2], alpha = data[i + 3];
-    if (alpha < 128) continue;
-    const [L] = rgbToLab(r, g, b);
-    sumL += L;
-    count++;
-  }
-
-  return count > 0 ? sumL / count : 50;
-}
-
-// ─────────────────────────────────────────────
-// Hair Zone Lightness (ใช้สำหรับ contrast)
-// ─────────────────────────────────────────────
-
-function averageHairLab(
-  img: HTMLImageElement,
-  box: { x: number; y: number; width: number; height: number }
-): number | null {
-  const cropX = box.x + box.width * 0.20;
-  const cropY = box.y;
-  const cropW = box.width * 0.60;
-  const cropH = box.height * 0.20;
-
-  if (cropW < 10 || cropH < 10) return null;
-
-  const canvas = document.createElement("canvas");
-  canvas.width = Math.round(cropW);
-  canvas.height = Math.round(cropH);
-  const ctx = canvas.getContext("2d")!;
-  ctx.drawImage(
-    img,
-    Math.round(cropX), Math.round(cropY),
-    Math.round(cropW), Math.round(cropH),
-    0, 0, canvas.width, canvas.height
-  );
-
-  const data = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-  let sumL = 0, count = 0;
-
-  for (let i = 0; i < data.length; i += 16) {
-    const r = data[i], g = data[i + 1], b = data[i + 2], alpha = data[i + 3];
-    if (alpha < 128) continue;
-    const [L] = rgbToLab(r, g, b);
-    sumL += L;
-    count++;
-  }
-
-  return count > 0 ? sumL / count : null;
+  if (Ls.length < 50) return null;
+  return {
+    L: trimmedMean(Ls),
+    a: trimmedMean(As),
+    b: trimmedMean(Bs),
+    count: Ls.length,
+  };
 }
 
 // ─────────────────────────────────────────────
@@ -176,45 +144,24 @@ function cropSkinRegion(
 }
 
 // ─────────────────────────────────────────────
-// Classifiers
+// Tone Classifier
 // ─────────────────────────────────────────────
-
-const CHROMA_THRESHOLD = 18;
-const LIGHTNESS_THRESHOLD = 65;
 
 function classifyTone(L: number, a: number, b: number): ToneType {
   const C = chroma(a, b);
   console.log(`[Tone] L=${L.toFixed(2)}, a=${a.toFixed(2)}, b=${b.toFixed(2)}, C*=${C.toFixed(2)}`);
-  if (C >= CHROMA_THRESHOLD) return "bright";
-  if (L >= LIGHTNESS_THRESHOLD && C >= 14) return "bright";
-  return "soft";
-}
 
-function classifyBrightness(imageLightness: number): LevelType {
-  console.log(`[Brightness] imageL*=${imageLightness.toFixed(2)}`);
-  if (imageLightness < 40) return "low";
-  if (imageLightness > 70) return "high";
-  return "medium";
-}
+  // C* สูงมาก + a* สูงมากพร้อมกัน = warm lighting inflate ค่า → soft
+  if (C >= 26 && a >= 17) return "soft";
 
-function classifySaturation(a: number, b: number): LevelType {
-  const C = chroma(a, b);
-  console.log(`[Saturation] C*=${C.toFixed(2)}`);
-  if (C < 14) return "low";
-  if (C > 20) return "high";
-  return "medium";
-}
+  // C* สูง = vivid/bright
+  if (C >= 18) return "bright";
 
-function classifyContrast(skinL: number, hairL: number | null): LevelType {
-  if (hairL === null) {
-    console.log(`[Contrast] no hair zone detected → fallback medium`);
-    return "medium";
-  }
-  const delta = Math.abs(skinL - hairL);
-  console.log(`[Contrast] skinL=${skinL.toFixed(2)}, hairL=${hairL.toFixed(2)}, ΔL*=${delta.toFixed(2)}`);
-  if (delta < 20) return "low";
-  if (delta > 40) return "high";
-  return "medium";
+  // C* ต่ำมาก = muted/soft
+  if (C < 14) return "soft";
+
+  // กลาง → ใช้ a* ตัดสิน
+  return a >= 11 ? "bright" : "soft";
 }
 
 // ─────────────────────────────────────────────
@@ -225,17 +172,12 @@ export default function LoadingPage() {
   const { state, dispatch } = useAnalyze();
   const navigate = useNavigate();
 
-  // ── Guard: กัน StrictMode double-run ──────────────────────────────────
-  // ไม่ reset ใน cleanup เพราะเราต้องการให้ run แค่ครั้งเดียวตลอด lifecycle
   const hasRun = useRef(false);
 
-  // สร้าง objectURL ครั้งเดียว และ revoke ตอน component unmount จริงๆ
-  // (ไม่ใช่ตอน StrictMode cleanup ที่ยังไม่ได้ unmount จริง)
   const imageUrl = useMemo(() => {
     return state.image ? URL.createObjectURL(state.image) : null;
   }, [state.image]);
 
-  // Revoke เฉพาะตอน unmount จริง (แยกออกมาเป็น effect ของตัวเอง)
   useEffect(() => {
     return () => {
       if (imageUrl) URL.revokeObjectURL(imageUrl);
@@ -248,7 +190,6 @@ export default function LoadingPage() {
       return;
     }
 
-    // ── กัน double-run: ถ้ารันไปแล้วให้ข้าม ────────────────────────────
     if (hasRun.current) return;
     hasRun.current = true;
 
@@ -261,7 +202,7 @@ export default function LoadingPage() {
             const img = await fileToImage(state.image!);
             const detection = await detectFace(img);
 
-            // ── 1. Skin zone canvas ──────────────────────────
+            // ── Skin zone canvas ─────────────────────────────
             let skinCanvas: HTMLCanvasElement;
             if (detection) {
               skinCanvas = cropSkinRegion(img, detection.detection.box);
@@ -272,54 +213,28 @@ export default function LoadingPage() {
               skinCanvas.getContext("2d")!.drawImage(img, 0, 0);
             }
 
-            // ── 2. Full image canvas (สำหรับ brightness) ────
-            const fullCanvas = document.createElement("canvas");
-            fullCanvas.width = img.naturalWidth || img.width;
-            fullCanvas.height = img.naturalHeight || img.height;
-            fullCanvas.getContext("2d")!.drawImage(img, 0, 0);
-
-            // ── 3. คำนวณ skin Lab ────────────────────────────
+            // ── คำนวณ skin Lab ───────────────────────────────
             const skinCtx = skinCanvas.getContext("2d")!;
             const lab = averageSkinLab(skinCtx, skinCanvas.width, skinCanvas.height);
             if (!lab) throw new Error("ตรวจจับสีผิวไม่เพียงพอ");
 
-            // ── 4. คำนวณ image brightness ────────────────────
-            const fullCtx = fullCanvas.getContext("2d")!;
-            const imageLightness = averageImageLightness(fullCtx, fullCanvas.width, fullCanvas.height);
+            // ── Classify tone ────────────────────────────────
+            const detectedTone = classifyTone(lab.L, lab.a, lab.b);
 
-            // ── 5. คำนวณ hair zone สำหรับ contrast ──────────
-            const hairL = detection
-              ? averageHairLab(img, detection.detection.box)
-              : null;
+            console.log(`[Result] tone=${detectedTone}, L=${lab.L.toFixed(2)}, a=${lab.a.toFixed(2)}, b=${lab.b.toFixed(2)}, C*=${chroma(lab.a, lab.b).toFixed(2)}`);
 
-            // ── 6. Classify ทุกค่า ────────────────────────────
-            const detectedTone       = classifyTone(lab.L, lab.a, lab.b);
-            const detectedBrightness = classifyBrightness(imageLightness);
-            const detectedSaturation = classifySaturation(lab.a, lab.b);
-            const detectedContrast   = classifyContrast(lab.L, hairL);
-
-            console.log(`[Result] tone=${detectedTone}, brightness=${detectedBrightness}, saturation=${detectedSaturation}, contrast=${detectedContrast}`);
-
-            // ── 7. คำนวณ season result ────────────────────────
             const result = analyzeResult({
               ...state,
-              tone:       detectedTone,
-              brightness: detectedBrightness,
-              saturation: detectedSaturation,
-              contrast:   detectedContrast,
+              tone: detectedTone,
             });
 
-            // ── 8. Dispatch ครั้งเดียว (SET_ANALYSIS ครอบทุกค่า) ────────
-            // ไม่ต้อง dispatch SET_TONE/BRIGHTNESS/SATURATION/CONTRAST แยก
-            // เพราะ SET_ANALYSIS มีทุกค่าครบอยู่แล้ว → ลด re-render และ
-            // ป้องกัน result page อ่าน state ที่ยังไม่ครบ
             dispatch({
               type: "SET_ANALYSIS",
               payload: {
                 tone:       detectedTone,
-                brightness: detectedBrightness,
-                saturation: detectedSaturation,
-                contrast:   detectedContrast,
+                brightness: "medium",
+                saturation: "medium",
+                contrast:   "medium",
                 result,
               },
             });
@@ -347,20 +262,20 @@ export default function LoadingPage() {
           <img src={imageUrl} className="w-full h-full object-cover" alt="analyzing" />
         </div>
       )}
-<p className="text-[24px] xl:text-[48px] 2xl:text-[72px] text-white mt-8">
-  Loading
-  <span className="inline-flex gap-1 ml-1">
-    {[0, 1, 2].map((i) => (
-      <span
-        key={i}
-        className="animate-bounce"
-        style={{ animationDelay: `${i * 0.2}s` }}
-      >
-        .
-      </span>
-    ))}
-  </span>
-</p>
+      <p className="text-[24px] xl:text-[48px] 2xl:text-[72px] text-white mt-8">
+        Loading
+        <span className="inline-flex gap-1 ml-1">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="animate-bounce"
+              style={{ animationDelay: `${i * 0.2}s` }}
+            >
+              .
+            </span>
+          ))}
+        </span>
+      </p>
     </div>
   );
 }

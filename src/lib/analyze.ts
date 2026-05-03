@@ -3,8 +3,16 @@ import type { AnalyzeState } from "@/types/analyze";
 type Season = "winter" | "summer" | "autumn" | "spring";
 
 export function analyzeResult(state: AnalyzeState): Season {
-  if (state.vein === "cool" && state.tone === "bright") return "winter";
-  if (state.vein === "cool" && state.tone === "soft")   return "summer";
-  if (state.vein === "warm" && state.tone === "bright") return "autumn";
-  return "spring"; // warm + soft
+  if (state.vein === "cool") {
+    // winter = bright + high contrast
+    // summer = soft + low contrast
+    if (state.tone === "bright") return "winter";
+    if (state.tone === "soft")   return "summer";
+  } else {
+    // spring = bright + high brightness  
+    // autumn = soft + low brightness
+    if (state.tone === "bright") return "spring";
+    if (state.tone === "soft")   return "autumn";
+  }
+  return state.vein === "cool" ? "summer" : "autumn";
 }
