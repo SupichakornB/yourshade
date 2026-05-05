@@ -616,36 +616,41 @@ export default function TryOnPage() {
       const cB = cMatch ? +cMatch[3] : 40;
 
       // helper วาด ellipse gradient (shadow หรือ highlight)
-      const drawZone = (
-        cx: number, cy: number,
-        rx: number, ry: number,
-        angle: number,
-        rgba: string,
-        blurPx: number,
-        composite: GlobalCompositeOperation,
-        stops?: [number, string][]
-      ) => {
-        ctx.save();
-        ctx.translate(cx, cy);
-        ctx.rotate(angle);
-        ctx.scale(1, ry / rx); // ทำให้เป็น ellipse
+     const drawZone = (
+  cx: number, cy: number,
+  rx: number, ry: number,
+  angle: number,
+  rgba: string,
+  blurPx: number,
+  composite: GlobalCompositeOperation,
+  stops?: [number, string][]
+) => {
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(angle);
+  ctx.scale(1, ry / rx);
 
-        const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, rx);
-        if (stops) {
-          stops.forEach(([pos, c]) => grad.addColorStop(pos, c));
-        } else {
-          const base = parseFloat(rgba.match(/[\d.]+(?=\))/)?.[0] ?? "0.4");
-          grad.addColorStop(0,    rgba);
-          grad.addColorStop(0.35, rgba.replace(/[\d.]+(?=\))/, String(+(base * 0.55).toFixed(2))));
-          grad.addColorStop(1,    rgba.replace(/[\d.]+(?=\))/, "0"));
-        }
+  // ขยาย radius แทน blur เพื่อให้ขอบนุ่ม
+  const r = rx + blurPx * 0.7;
 
-        ctx.globalCompositeOperation = composite;
-        ctx.filter = `blur(${blurPx}px)`;
-        ctx.fillStyle = grad;
-        ctx.fillRect(-rx * 1.3, -rx * 1.3, rx * 2.6, rx * 2.6);
-        ctx.restore();
-      };
+  const grad = ctx.createRadialGradient(0, 0, 0, 0, 0, r);
+  if (stops) {
+    stops.forEach(([pos, c]) => grad.addColorStop(pos, c));
+  } else {
+    const base = parseFloat(rgba.match(/[\d.]+(?=\))/)?.[0] ?? "0.4");
+    grad.addColorStop(0,    rgba);
+    grad.addColorStop(0.20, rgba.replace(/[\d.]+(?=\))/, String(+(base * 0.75).toFixed(2))));
+    grad.addColorStop(0.45, rgba.replace(/[\d.]+(?=\))/, String(+(base * 0.40).toFixed(2))));
+    grad.addColorStop(0.70, rgba.replace(/[\d.]+(?=\))/, String(+(base * 0.12).toFixed(2))));
+    grad.addColorStop(1,    rgba.replace(/[\d.]+(?=\))/, "0"));
+  }
+
+  ctx.globalCompositeOperation = composite;
+  // ไม่ใช้ ctx.filter เลย — ไม่ support บน mobile
+  ctx.fillStyle = grad;
+  ctx.fillRect(-r * 1.4, -r * 1.4, r * 2.8, r * 2.8);
+  ctx.restore();
+};
 
       // ดึง landmark ที่จำเป็น
       const noseTip    = getXY(NOSE_TIP_IDX);
@@ -718,8 +723,8 @@ export default function TryOnPage() {
       drawZone(
         (noseBridge.x + noseTip.x) / 2,
         (noseBridge.y + noseTip.y) / 2,
-        unit * 0.5, noseH * 0.6, 0,
-        `${HL},0.9)`, 4, "screen"
+        unit * 0.5, noseH * 0.5, 0,
+        `${HL},0.5)`, 4, "screen"
       );
 
       // Highlight แก้ม
@@ -727,29 +732,23 @@ export default function TryOnPage() {
         { x: (eyeIn_L.x + cheekHL_L.x) / 2, y: (eyeIn_L.y + cheekHL_L.y) / 2 + unit * 1.4 },
         { x: (eyeIn_R.x + cheekHL_R.x) / 2, y: (eyeIn_R.y + cheekHL_R.y) / 2 + unit * 1.4 },
       ].forEach(({ x, y }) =>
-        drawZone(x, y, unit * 2.8, unit * 1.6, 0, `${HL},0.60)`, 12, "screen")
+        drawZone(x, y, unit * 2.8, unit * 2.6, 0, `${HL},0.40)`, 14, "screen")
       );
 
       // Highlight หน้าผาก
       drawZone(
         forehead.x,
-        forehead.y + unit * 0.5,
+        forehead.y + unit * 0.9,
         unit * 1.8, unit * 1.4, 0,
-        `${HL},0.45)`, 16, "screen"
+        `${HL},0.45)`, 40, "screen"
       );
 
       // Highlight คาง
-      drawZone(chin.x, chin.y, unit * 1.3, unit * 0.9, 0,
-        `${HL},0.50)`, 9, "screen"
+      drawZone(chin.x, chin.y, unit * 2.6, unit * 0.9, 0,
+        `${HL},0.30)`, 9, "screen"
       );
 
-      // Highlight ข้างจมูก
-      [
-        { x: leftAla.x  - unit * 1.2, y: leftAla.y  + unit * 0.8 },
-        { x: rightAla.x + unit * 1.2, y: rightAla.y + unit * 0.8 },
-      ].forEach(({ x, y }) =>
-        drawZone(x, y, unit * 1.4, unit * 1.2, 0, `${HL},0.35)`, 10, "screen")
-      );
+
 
       // เส้นกราม contour (stroke)
       const jawPath = new Path2D();
@@ -834,60 +833,63 @@ export default function TryOnPage() {
         { upper: RIGHT_EYE_UPPER, innerIdx: RIGHT_EYE_INNER, outerIdx: RIGHT_EYE_OUTER },
       ];
 
-      eyes.forEach(({ upper, innerIdx, outerIdx }) => {
-        const innerPt  = getXY(innerIdx);
-        const outerPt  = getXY(outerIdx);
-        const upperPts = upper.map((i) => getXY(i));
+    eyes.forEach(({ upper, innerIdx, outerIdx }) => {
+  const innerPt      = getXY(innerIdx);
+  const outerPt      = getXY(outerIdx);
+  const upperPts     = upper.map((i) => getXY(i));
+  const eyeWidth     = Math.abs(outerPt.x - innerPt.x);
+  const shadowHeight = eyeWidth * 0.55;
+  const lidTopY      = Math.min(...upperPts.map((p) => p.y));
+  const lidBotY      = (innerPt.y + outerPt.y) / 2;
+  const TAPER        = 0.6;
 
-        const eyeWidth     = Math.abs(outerPt.x - innerPt.x);
-        const shadowHeight = eyeWidth * 0.55;
-        const lidTopY      = Math.min(...upperPts.map((p) => p.y));
-        const lidBotY      = (innerPt.y + outerPt.y) / 2;
+  // Path เหมือนเดิม (ไม่ต้องขยับ offscreen)
+  const path = new Path2D();
+  path.moveTo(innerPt.x, innerPt.y);
+  upper.forEach((i) => { const pt = getXY(i); path.lineTo(pt.x, pt.y); });
+  path.lineTo(outerPt.x, outerPt.y);
+  path.lineTo(outerPt.x, outerPt.y - shadowHeight * TAPER);
+  [...upper].reverse().forEach((i) => { const pt = getXY(i); path.lineTo(pt.x, pt.y - shadowHeight); });
+  path.lineTo(innerPt.x, innerPt.y - shadowHeight * TAPER);
+  path.closePath();
 
-        // path รูปร่างตา (เส้นบนตา + เส้นสมมติด้านบน)
-        const path = new Path2D();
-        path.moveTo(innerPt.x, innerPt.y);
-        upper.forEach((i) => {
-          const pt = getXY(i);
-          path.lineTo(pt.x, pt.y);
-        });
-        path.lineTo(outerPt.x, outerPt.y);
+  // ── Offscreen canvas ──
+const off = document.createElement("canvas");
+off.width  = ctx.canvas.width;
+off.height = ctx.canvas.height;
+const offCtx = off.getContext("2d");
+if (!offCtx) return; // ← เพิ่มบรรทัดนี้
 
-        const TAPER = 0.6;
-        path.lineTo(outerPt.x, outerPt.y - shadowHeight * TAPER);
-        [...upper].reverse().forEach((i) => {
-          const pt = getXY(i);
-          path.lineTo(pt.x, pt.y - shadowHeight);
-        });
-        path.lineTo(innerPt.x, innerPt.y - shadowHeight * TAPER);
-        path.closePath();
+  // Layer 1: main eyeshadow → วาดบน offscreen ก่อน
+  const grad = offCtx.createLinearGradient(0, lidBotY, 0, lidTopY - shadowHeight);
+  grad.addColorStop(0,    color.replace(/[\d.]+\)$/, "0.72)"));
+  grad.addColorStop(0.2,  color.replace(/[\d.]+\)$/, "0.48)"));
+  grad.addColorStop(0.55, color.replace(/[\d.]+\)$/, "0.18)"));
+  grad.addColorStop(1,    color.replace(/[\d.]+\)$/, "0)"));
+  offCtx.fillStyle = grad;
+  offCtx.fill(path);
 
-        // gradient: เข้มที่เปลือกตา → จางขึ้นด้านบน
-        const grad = ctx.createLinearGradient(0, lidBotY, 0, lidTopY - shadowHeight);
-        grad.addColorStop(0,    color.replace(/[\d.]+\)$/, "0.72)"));
-        grad.addColorStop(0.2,  color.replace(/[\d.]+\)$/, "0.48)"));
-        grad.addColorStop(0.55, color.replace(/[\d.]+\)$/, "0.18)"));
-        grad.addColorStop(1,    color.replace(/[\d.]+\)$/, "0)"));
+  // drawImage พร้อม blur → blur follow รูปตา ไม่เป็นสี่เหลี่ยม
+  ctx.save();
+  ctx.globalCompositeOperation = "multiply";
+  ctx.filter = "blur(7px)";
+  ctx.drawImage(off, 0, 0);
+  ctx.restore();
 
-        ctx.save();
-        ctx.globalCompositeOperation = "multiply";
-        ctx.filter = "blur(7px)";
-        ctx.fillStyle = grad;
-        ctx.fill(path);
-        ctx.restore();
+  // Layer 2: lash line
+  offCtx.clearRect(0, 0, off.width, off.height);
+  const lashGrad = offCtx.createLinearGradient(0, lidBotY, 0, lidBotY - shadowHeight * 0.35);
+  lashGrad.addColorStop(0,   color.replace(/[\d.]+\)$/, "0.38)"));
+  lashGrad.addColorStop(1,   color.replace(/[\d.]+\)$/, "0)"));
+  offCtx.fillStyle = lashGrad;
+  offCtx.fill(path);
 
-        // gradient เส้นขนตา (얇고 dense ที่ขอบล่าง)
-        const lashGrad = ctx.createLinearGradient(0, lidBotY, 0, lidTopY);
-        lashGrad.addColorStop(0,   color.replace(/[\d.]+\)$/, "0.35)"));
-        lashGrad.addColorStop(0.3, color.replace(/[\d.]+\)$/, "0)"));
-        ctx.save();
-        ctx.globalCompositeOperation = "multiply";
-        ctx.filter = "blur(3px)";
-        ctx.fillStyle = lashGrad;
-        ctx.fill(path);
-        ctx.restore();
-      });
-
+  ctx.save();
+  ctx.globalCompositeOperation = "multiply";
+  ctx.filter = "blur(3px)";
+  ctx.drawImage(off, 0, 0);
+  ctx.restore();
+});
       return;
     }
 
