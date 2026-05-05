@@ -3,21 +3,21 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
 import { PRODUCT_TYPES, type ProductType, type Season } from "@/types/product";
 import { PRODUCTS } from "@/data/products";
-import logo from "@/assets/full-logo.png";
+import logo from "@/assets/full-logo.webp";
 import backIcon from "@/assets/icon/ep_back.svg";
 import { FiGrid, FiList } from 'react-icons/fi';
 
 import ScrollToTop from "@/components/ScrollToTop";
 
-import springBanner from "@/assets/product/product-spring-banner.png";
-import summerBanner from "@/assets/product/product-summer-banner.png";
-import autumnBanner from "@/assets/product/product-autumn-banner.png";
-import winterBanner from "@/assets/product/product-winter-banner.png";
+import springBanner from "@/assets/product/product-spring-banner.webp";
+import summerBanner from "@/assets/product/product-summer-banner.webp";
+import autumnBanner from "@/assets/product/product-autumn-banner.webp";
+import winterBanner from "@/assets/product/product-winter-banner.webp";
 
-import springBannerMb from "@/assets/product/product-spring-banner-mobile.png";
-import summerBannerMb from "@/assets/product/product-summer-banner-mobile.png";
-import autumnBannerMb from "@/assets/product/product-autumn-banner-mobile.png";
-import winterBannerMb from "@/assets/product/product-winter-banner-mobile.png";
+import springBannerMb from "@/assets/product/product-spring-banner-mobile.webp";
+import summerBannerMb from "@/assets/product/product-summer-banner-mobile.webp";
+import autumnBannerMb from "@/assets/product/product-autumn-banner-mobile.webp";
+import winterBannerMb from "@/assets/product/product-winter-banner-mobile.webp";
 
 import { motion } from "framer-motion";
 import { capitalizeFirst } from "@/lib/string";

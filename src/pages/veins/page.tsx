@@ -7,10 +7,10 @@ import { useNavigate } from "react-router-dom";
 import backIcon from "@/assets/icon/ep_back.svg";
 import clsx from "clsx";
 import { useEffect } from "react";
-import veinCoolTone from "@/assets/veins-cool-tone.png";
-import veinWarmTone from "@/assets/veins-warm-tone.png";
-import veinCoolToneMb from "@/assets/veins-cool-tone-mb.png";
-import veinWarmToneMb from "@/assets/veins-warm-tone-mb.png";
+import veinCoolTone from "@/assets/veins-cool-tone.webp";
+import veinWarmTone from "@/assets/veins-warm-tone.webp";
+import veinCoolToneMb from "@/assets/veins-cool-tone-mb.webp";
+import veinWarmToneMb from "@/assets/veins-warm-tone-mb.webp";
 
 export default function VeinsPage() {
   const { state, dispatch } = useAnalyze();
@@ -44,7 +44,7 @@ useEffect(() => {
 }, []);
 
   return (
-    <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 pb-20 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
+    <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 pb-20 md:bg-[url(@/assets/bg-upload-image.webp)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       {" "}
       <div>
 <img

@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import banner from "@/assets/home-banner.png";
-import autumnImage from "@/assets/home-autumn-tone-banner.png";
-import springImage from "@/assets/home-spring-tone-banner.png";
-import summerImage from "@/assets/home-summer-tone-banner.png";
-import winterImage from "@/assets/home-winter-tone-banner.png";
-import autumnImageMb from "@/assets/home-autumn-tone-banner-mb.png";
-import springImageMb from "@/assets/home-spring-tone-banner-mb.png";
-import summerImageMb from "@/assets/home-summer-tone-banner-mb.png";
-import winterImageMb from "@/assets/home-winter-tone-banner-mb.png";
+import banner from "@/assets/home-banner.webp";
+import autumnImage from "@/assets/home-autumn-tone-banner.webp";
+import springImage from "@/assets/home-spring-tone-banner.webp";
+import summerImage from "@/assets/home-summer-tone-banner.webp";
+import winterImage from "@/assets/home-winter-tone-banner.webp";
+import autumnImageMb from "@/assets/home-autumn-tone-banner-mb.webp";
+import springImageMb from "@/assets/home-spring-tone-banner-mb.webp";
+import summerImageMb from "@/assets/home-summer-tone-banner-mb.webp";
+import winterImageMb from "@/assets/home-winter-tone-banner-mb.webp";
 import { useAnalyze } from "@/context/useAnalyze";
-import logo from "@/assets/full-logo.png";
+import logo from "@/assets/full-logo.webp";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Home() {

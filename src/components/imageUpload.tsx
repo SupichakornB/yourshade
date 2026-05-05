@@ -1,5 +1,5 @@
 import uploadImageIcon from "@/assets/icon/upload-image.svg";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState} from "react";
 import CameraModal from "./camera";
 import ConsentModal from "@/components/consentModal";
 import "@/styles/uploadImage.css";
@@ -108,7 +108,7 @@ export default function ImageUpload({
               </div>
             ) : (
   <div className="relative">
-    <CameraModal startCapture={openCamera} onCapture={onSelect} onClear={onClear} />
+    <CameraModal startCapture={openCamera} onCapture={onSelect} />
     {openConsentModal && (
       <ConsentModal onClose={() => {
         setOpenConsentModal(false);

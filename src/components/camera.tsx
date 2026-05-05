@@ -1,13 +1,12 @@
 import { useEffect, useRef, useState } from "react";
-import frame from "@/assets/face-frame.png";
+import frame from "@/assets/face-frame.webp";
 
 type Props = {
   startCapture: boolean;
   onCapture: (file: File) => void;
-  onClear: () => void;
 };
 
-export default function CameraModal({ startCapture, onCapture, onClear }: Props) {
+export default function CameraModal({ startCapture, onCapture }: Props) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -78,7 +77,7 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
     canvas.toBlob((blob) => {
       if (!blob) return;
 
-      const file = new File([blob], "camera.jpg", {
+      const file = new File([blob], "camera.webp", {
         type: "image/jpeg",
       });
 
@@ -108,7 +107,6 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
       )}
       <div className="pointer-events-none absolute inset-0 rounded-3xl" />
       
-{/* Frame - centered overlay */}
 <div className="opacity-100 absolute inset-0 z-10 flex items-center justify-center pointer-events-none">
   <img
     src={frame}
@@ -117,7 +115,6 @@ export default function CameraModal({ startCapture, onCapture, onClear }: Props)
   />
 </div>
 
-{/* Tips - top overlay */}
 {showTips && (
   <div className="absolute inset-0 z-20 flex items-start justify-center p-4">
     <div className="relative bg-white/60 rounded-[24px] py-4 px-4 xl:py-4 2xl:py-6 xl:px-6 2xl:px-6 shadow-lg text-left flex flex-col justify-center max-h-[84px] xl:max-h-[120px] 2xl:max-h-[170px] w-full max-w-[372px] xl:max-w-[484px] 2xl:max-w-[660px]">

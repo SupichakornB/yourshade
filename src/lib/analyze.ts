@@ -9,8 +9,6 @@ export function analyzeResult(state: AnalyzeState): Season {
     if (state.tone === "bright") return "winter";
     if (state.tone === "soft")   return "summer";
   } else {
-    // spring = bright + high brightness  
-    // autumn = soft + low brightness
     if (state.tone === "bright") return "spring";
     if (state.tone === "soft")   return "autumn";
   }

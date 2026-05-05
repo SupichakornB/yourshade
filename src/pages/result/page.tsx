@@ -8,106 +8,106 @@ import backIcon from "@/assets/icon/ep_back.svg";
 
 import ScrollToTop from "@/components/ScrollToTop";
 
-import summer from "@/assets/result/banner-summer.png";
-import autumn from "@/assets/result/banner-autumn.png";
-import winter from "@/assets/result/banner-winter.png";
-import spring from "@/assets/result/banner-spring.png";
-import summerMb from "@/assets/result/banner-summer-mobile.png";
-import autumnMb from "@/assets/result/banner-autumn-mobile.png";
-import winterMb from "@/assets/result/banner-winter-mobile.png";
-import springMb from "@/assets/result/banner-spring-mobile.png";
+import summer from "@/assets/result/banner-summer.webp";
+import autumn from "@/assets/result/banner-autumn.webp";
+import winter from "@/assets/result/banner-winter.webp";
+import spring from "@/assets/result/banner-spring.webp";
+import summerMb from "@/assets/result/banner-summer-mobile.webp";
+import autumnMb from "@/assets/result/banner-autumn-mobile.webp";
+import winterMb from "@/assets/result/banner-winter-mobile.webp";
+import springMb from "@/assets/result/banner-spring-mobile.webp";
 
 
-import summerRecommended1 from "@/assets/result/summer-recommend-1.png";
-import summerRecommended2 from "@/assets/result/summer-recommend-2.png";
-import summerRecommended3 from "@/assets/result/summer-recommend-3.png";
-import summerRecommended4 from "@/assets/result/summer-recommend-4.png";
-import summerRecommended5 from "@/assets/result/summer-recommend-5.png";
-import summerRecommended6 from "@/assets/result/summer-recommend-6.png";
-import autumnRecommended1 from "@/assets/result/autumn-recommend-1.png";
-import autumnRecommended2 from "@/assets/result/autumn-recommend-2.png";
-import autumnRecommended3 from "@/assets/result/autumn-recommend-3.png";
-import autumnRecommended4 from "@/assets/result/autumn-recommend-4.png";
-import autumnRecommended5 from "@/assets/result/autumn-recommend-5.png";
-import autumnRecommended6 from "@/assets/result/autumn-recommend-6.png";
-import winterRecommended1 from "@/assets/result/winter-recommend-1.png";
-import winterRecommended2 from "@/assets/result/winter-recommend-2.png";
-import winterRecommended3 from "@/assets/result/winter-recommend-3.png";
-import winterRecommended4 from "@/assets/result/winter-recommend-4.png";
-import winterRecommended5 from "@/assets/result/winter-recommend-5.png";
-import winterRecommended6 from "@/assets/result/winter-recommend-6.png";
-import springRecommended1 from "@/assets/result/spring-recommend-1.png";
-import springRecommended2 from "@/assets/result/spring-recommend-2.png";
-import springRecommended3 from "@/assets/result/spring-recommend-3.png";
-import springRecommended4 from "@/assets/result/spring-recommend-4.png";
-import springRecommended5 from "@/assets/result/spring-recommend-5.png";
-import springRecommended6 from "@/assets/result/spring-recommend-6.png";
+import summerRecommended1 from "@/assets/result/summer-recommend-1.webp";
+import summerRecommended2 from "@/assets/result/summer-recommend-2.webp";
+import summerRecommended3 from "@/assets/result/summer-recommend-3.webp";
+import summerRecommended4 from "@/assets/result/summer-recommend-4.webp";
+import summerRecommended5 from "@/assets/result/summer-recommend-5.webp";
+import summerRecommended6 from "@/assets/result/summer-recommend-6.webp";
+import autumnRecommended1 from "@/assets/result/autumn-recommend-1.webp";
+import autumnRecommended2 from "@/assets/result/autumn-recommend-2.webp";
+import autumnRecommended3 from "@/assets/result/autumn-recommend-3.webp";
+import autumnRecommended4 from "@/assets/result/autumn-recommend-4.webp";
+import autumnRecommended5 from "@/assets/result/autumn-recommend-5.webp";
+import autumnRecommended6 from "@/assets/result/autumn-recommend-6.webp";
+import winterRecommended1 from "@/assets/result/winter-recommend-1.webp";
+import winterRecommended2 from "@/assets/result/winter-recommend-2.webp";
+import winterRecommended3 from "@/assets/result/winter-recommend-3.webp";
+import winterRecommended4 from "@/assets/result/winter-recommend-4.webp";
+import winterRecommended5 from "@/assets/result/winter-recommend-5.webp";
+import winterRecommended6 from "@/assets/result/winter-recommend-6.webp";
+import springRecommended1 from "@/assets/result/spring-recommend-1.webp";
+import springRecommended2 from "@/assets/result/spring-recommend-2.webp";
+import springRecommended3 from "@/assets/result/spring-recommend-3.webp";
+import springRecommended4 from "@/assets/result/spring-recommend-4.webp";
+import springRecommended5 from "@/assets/result/spring-recommend-5.webp";
+import springRecommended6 from "@/assets/result/spring-recommend-6.webp";
 
-import springresultclothe from "@/assets/result/spring-result-clothe.png"
-import summerresultclothe from "@/assets/result/summer-result-clothe.png"
-import autumnresultclothe from "@/assets/result/autumn-result-clothe.png"
-import winterresultclothe from "@/assets/result/winter-result-clothe.png"
+import springresultclothe from "@/assets/result/spring-result-clothe.webp"
+import summerresultclothe from "@/assets/result/summer-result-clothe.webp"
+import autumnresultclothe from "@/assets/result/autumn-result-clothe.webp"
+import winterresultclothe from "@/assets/result/winter-result-clothe.webp"
 
-import summerLip1 from "@/assets/result/summer-lip-1.png";
-import summerLip2 from "@/assets/result/summer-lip-2.png";
-import summerLip3 from "@/assets/result/summer-lip-3.png";
-import summerLip4 from "@/assets/result/summer-lip-4.png";
-import summerLip5 from "@/assets/result/summer-lip-5.png";
-import autumnLip1 from "@/assets/result/autumn-lip-1.png";
-import autumnLip2 from "@/assets/result/autumn-lip-2.png";
-import autumnLip3 from "@/assets/result/autumn-lip-3.png";
-import autumnLip4 from "@/assets/result/autumn-lip-4.png";
-import autumnLip5 from "@/assets/result/autumn-lip-5.png";
-import winterLip1 from "@/assets/result/winter-lip-1.png";
-import winterLip2 from "@/assets/result/winter-lip-2.png";
-import winterLip3 from "@/assets/result/winter-lip-3.png";
-import winterLip4 from "@/assets/result/winter-lip-4.png";
-import winterLip5 from "@/assets/result/winter-lip-5.png";
-import springLip1 from "@/assets/result/spring-lip-1.png";
-import springLip2 from "@/assets/result/spring-lip-2.png";
-import springLip3 from "@/assets/result/spring-lip-3.png";
-import springLip4 from "@/assets/result/spring-lip-4.png";
-import springLip5 from "@/assets/result/spring-lip-5.png";
-
-
-import springmakeup from "@/assets/result/spring-result-makeup.png"
-import wintermakeup from "@/assets/result/winter-result-makeup.png"
-import summermakeup from "@/assets/result/summer-result-makeup.png"
-import autumnmakeup from "@/assets/result/autumn-result-makeup.png"
+import summerLip1 from "@/assets/result/summer-lip-1.webp";
+import summerLip2 from "@/assets/result/summer-lip-2.webp";
+import summerLip3 from "@/assets/result/summer-lip-3.webp";
+import summerLip4 from "@/assets/result/summer-lip-4.webp";
+import summerLip5 from "@/assets/result/summer-lip-5.webp";
+import autumnLip1 from "@/assets/result/autumn-lip-1.webp";
+import autumnLip2 from "@/assets/result/autumn-lip-2.webp";
+import autumnLip3 from "@/assets/result/autumn-lip-3.webp";
+import autumnLip4 from "@/assets/result/autumn-lip-4.webp";
+import autumnLip5 from "@/assets/result/autumn-lip-5.webp";
+import winterLip1 from "@/assets/result/winter-lip-1.webp";
+import winterLip2 from "@/assets/result/winter-lip-2.webp";
+import winterLip3 from "@/assets/result/winter-lip-3.webp";
+import winterLip4 from "@/assets/result/winter-lip-4.webp";
+import winterLip5 from "@/assets/result/winter-lip-5.webp";
+import springLip1 from "@/assets/result/spring-lip-1.webp";
+import springLip2 from "@/assets/result/spring-lip-2.webp";
+import springLip3 from "@/assets/result/spring-lip-3.webp";
+import springLip4 from "@/assets/result/spring-lip-4.webp";
+import springLip5 from "@/assets/result/spring-lip-5.webp";
 
 
-import summerAccsessoriesMb from "@/assets/result/summer-accessories.png";
-import springAccsessoriesMb from "@/assets/result/spring-accessories.png";
-import autumnAccsessoriesMb from "@/assets/result/autumn-accessories.png";
-import winterAccsessoriesMb from "@/assets/result/winter-accessories.png";
+import springmakeup from "@/assets/result/spring-result-makeup.webp"
+import wintermakeup from "@/assets/result/winter-result-makeup.webp"
+import summermakeup from "@/assets/result/summer-result-makeup.webp"
+import autumnmakeup from "@/assets/result/autumn-result-makeup.webp"
 
-import summerAccsessories from "@/assets/result/accessories-summer.png";
-import springAccsessories from "@/assets/result/accessories-spring.png";
-import autumnAccsessories from "@/assets/result/accessories-autumn.png";
-import winterAccsessories from "@/assets/result/accessories-winter.png";
+
+import summerAccsessoriesMb from "@/assets/result/summer-accessories.webp";
+import springAccsessoriesMb from "@/assets/result/spring-accessories.webp";
+import autumnAccsessoriesMb from "@/assets/result/autumn-accessories.webp";
+import winterAccsessoriesMb from "@/assets/result/winter-accessories.webp";
+
+import summerAccsessories from "@/assets/result/accessories-summer.webp";
+import springAccsessories from "@/assets/result/accessories-spring.webp";
+import autumnAccsessories from "@/assets/result/accessories-autumn.webp";
+import winterAccsessories from "@/assets/result/accessories-winter.webp";
 import { Link, useNavigate } from "react-router-dom";
 import { COLOR_SETS, isColorSetKey } from "@/types/colorSets";
-import logo from "@/assets/logo.png";
-import bannerShopping from "@/assets/result/banner-shopping.png";
-import bannerShoppingMb from "@/assets/result/banner-shopping-mobile.png";
-import springCareer from "@/assets/result/spring-fortune-career.png";
+import logo from "@/assets/logo.webp";
+import bannerShopping from "@/assets/result/banner-shopping.webp";
+import bannerShoppingMb from "@/assets/result/banner-shopping-mobile.webp";
+import springCareer from "@/assets/result/spring-fortune-career.webp";
 
-import springLove from "@/assets/result/spring-fortune-love.png";
-import springWealth from "@/assets/result/spring-fortune-wealth.png";
-import summerCareer from "@/assets/result/summer-fortune-career.png";
-import summerLove from "@/assets/result/summer-fortune-love.png";
-import summerWealth from "@/assets/result/summer-fortune-wealth.png";
-import autumnCareer from "@/assets/result/autumn-fortune-career.png";
-import autumnLove from "@/assets/result/autumn-fortune-love.png";
-import autumnWealth from "@/assets/result/autumn-fortune-wealth.png";
-import winterCareer from "@/assets/result/winter-fortune-career.png";
-import winterLove from "@/assets/result/winter-fortune-love.png";
-import winterWealth from "@/assets/result/winter-fortune-wealth.png";
+import springLove from "@/assets/result/spring-fortune-love.webp";
+import springWealth from "@/assets/result/spring-fortune-wealth.webp";
+import summerCareer from "@/assets/result/summer-fortune-career.webp";
+import summerLove from "@/assets/result/summer-fortune-love.webp";
+import summerWealth from "@/assets/result/summer-fortune-wealth.webp";
+import autumnCareer from "@/assets/result/autumn-fortune-career.webp";
+import autumnLove from "@/assets/result/autumn-fortune-love.webp";
+import autumnWealth from "@/assets/result/autumn-fortune-wealth.webp";
+import winterCareer from "@/assets/result/winter-fortune-career.webp";
+import winterLove from "@/assets/result/winter-fortune-love.webp";
+import winterWealth from "@/assets/result/winter-fortune-wealth.webp";
 
-import springresult from "@/assets/result/spring-result.png"
-import summerresult from "@/assets/result/summer-result.png"
-import autumnresult from "@/assets/result/autumn-result.png"
-import winterresult from "@/assets/result/winter-result.png"
+import springresult from "@/assets/result/spring-result.webp"
+import summerresult from "@/assets/result/summer-result.webp"
+import autumnresult from "@/assets/result/autumn-result.webp"
+import winterresult from "@/assets/result/winter-result.webp"
 
 
 export default function ResultPage() {
@@ -296,7 +296,7 @@ const handleBack = () => {
 </div>
 
 
-<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-[length:100%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-15 xl:pb-0 2xl:pt-6">      <div className="px-2 md:px-32">
+<div className="mt-12 bg-[url(@/assets/result/bg.webp)] bg-center bg-no-repeat bg-[length:100%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-15 xl:pb-0 2xl:pt-6">      <div className="px-2 md:px-32">
             <h3 className="text-[#8E1616] text-center font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] py-4 xl:py-6 2xl:py-6">
               Your Personal Color Guide
             </h3>
@@ -462,7 +462,7 @@ const handleBack = () => {
           />
       </div>
 
-<div className="mt-12 bg-[url(@/assets/result/bg.png)] bg-center bg-no-repeat bg-[length:150%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-30 xl:pb-24 2xl:pb-32 2xl:pt-6">
+<div className="mt-12 bg-[url(@/assets/result/bg.webp)] bg-center bg-no-repeat bg-[length:150%_100%] min-h-95 xl:min-h-180 2xl:min-h-280 pt-6 pb-30 xl:pb-24 2xl:pb-32 2xl:pt-6">
 <div className="w-full mx-auto mt-10 pt-6 px-10 xl:px-32 2xl:px-32 ">
 
     <h3 className="text-center text-[#8E1616] font-semibold text-[24px] xl:text-[36px] 2xl:text-[48px] pt-4 xl:pt-6 2xl:pt-6">
@@ -576,7 +576,7 @@ const handleBack = () => {
           : state.result === "winter" ? winterresult
           : springresult
         }
-     download="my-personal-color.png"
+     download="my-personal-color.webp"
     className="self-center flex items-center gap-2 bg-[#8E1616] text-white font-normal text-[16px] xl:text-[24px] 2xl:text-[32px] px-6 py-3 rounded-full shadow-lg hover:scale-105 transition-transform cursor-pointer whitespace-nowrap"
   >
        <svg xmlns="http://www.w3.org/2000/svg"viewBox="0 0 24 24"

@@ -18,20 +18,20 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/180710-194504/4u2-blending-lip-liner",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-blending-lip-liner-1.jpg",
+     url: "/products/autumn/makeup/4u2-blending-lip-liner-1.webp",
    },
-   { url: "/products/autumn/makeup/4u2-blending-lip-liner-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-blending-lip-liner-3.jpg",
+   { url: "/products/autumn/makeup/4u2-blending-lip-liner-2.webp" },
+   { url: "/products/autumn/makeup/4u2-blending-lip-liner-3.webp",
            isPrimary: true, },
-   { url: "/products/autumn/makeup/4u2-blending-lip-liner-4.jpg" },
+   { url: "/products/autumn/makeup/4u2-blending-lip-liner-4.webp" },
    {
-     url: "/products/autumn/makeup/4u2-blending-lip-liner-gypso.jpg",
+     url: "/products/autumn/makeup/4u2-blending-lip-liner-gypso.webp",
      color: "Gypso",
      colorHex: "#C9856F",
      finish: "liner",
    },
    {
-     url: "/products/autumn/makeup/4u2-blending-lip-liner-hibiscus.jpg",
+     url: "/products/autumn/makeup/4u2-blending-lip-liner-hibiscus.webp",
      color: "Hibiscus",
      colorHex: "#ce5b59",
      finish: "liner",
@@ -48,21 +48,21 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/190695-199634/4u2-blush-on-matte",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-blush-on-matte-1.jpg"
+     url: "/products/autumn/makeup/4u2-blush-on-matte-1.webp"
    },
-   { url: "/products/autumn/makeup/4u2-blush-on-matte-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-blush-on-matte-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-blush-on-matte-4.jpg",
+   { url: "/products/autumn/makeup/4u2-blush-on-matte-2.webp" },
+   { url: "/products/autumn/makeup/4u2-blush-on-matte-3.webp" },
+   { url: "/products/autumn/makeup/4u2-blush-on-matte-4.webp",
    isPrimary: true,
     },
    {
-     url: "/products/autumn/makeup/4u2-blush-on-matte-teddy-bear.jpg",
+     url: "/products/autumn/makeup/4u2-blush-on-matte-teddy-bear.webp",
      color: "Teddy bear",
      colorHex: "#D7A28A",
      finish: "blush",
    },
    {
-     url: "/products/autumn/makeup/4u2-blush-on-matte-cookie-monster.jpg",
+     url: "/products/autumn/makeup/4u2-blush-on-matte-cookie-monster.webp",
      color: "Cookie monster",
      colorHex: "#EFA08F",
      finish: "blush",
@@ -79,13 +79,13 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/190696-197925/4u2-blush-on-shimmer",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-blush-on-shimmer-1.jpg",
+     url: "/products/autumn/makeup/4u2-blush-on-shimmer-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-blush-on-shimmer-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-blush-on-shimmer-3.jpg" },
+   { url: "/products/autumn/makeup/4u2-blush-on-shimmer-2.webp" },
+   { url: "/products/autumn/makeup/4u2-blush-on-shimmer-3.webp" },
    {
-     url: "/products/autumn/makeup/4u2-blush-on-shimmer-honey-bunny.jpg",
+     url: "/products/autumn/makeup/4u2-blush-on-shimmer-honey-bunny.webp",
      color: "Honey bunny",
      colorHex: "#E8B59B",
      finish: "blush",
@@ -102,14 +102,14 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/179978-199632/4u2-dear-me-liquid-blush",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-1.jpg",
+     url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-4.jpg" },
+   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-2.webp" },
+   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-3.webp" },
+   { url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-4.webp" },
    {
-     url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-be-kind.jpg",
+     url: "/products/autumn/makeup/4u2-dear-me-liquid-blush-be-kind.webp",
      color: "Be kind",
      colorHex: "#EF8F7C",
      finish: "blush",
@@ -126,15 +126,15 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/189324-195074/4u2-fruity-tint",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-fruity-tint-1.jpg"
+     url: "/products/autumn/makeup/4u2-fruity-tint-1.webp"
    },
-   { url: "/products/autumn/makeup/4u2-fruity-tint-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-fruity-tint-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-fruity-tint-4.jpg" ,
+   { url: "/products/autumn/makeup/4u2-fruity-tint-2.webp" },
+   { url: "/products/autumn/makeup/4u2-fruity-tint-3.webp" },
+   { url: "/products/autumn/makeup/4u2-fruity-tint-4.webp" ,
    isPrimary: true,
    },
    {
-     url: "/products/autumn/makeup/4u2-fruity-tint-lychee.jpg",
+     url: "/products/autumn/makeup/4u2-fruity-tint-lychee.webp",
      color: "Lychee",
      colorHex: "#B93C3F",
      finish: "gloss",
@@ -151,15 +151,15 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/185860-189330/4u2-girlfriends039-mousse-lip-cup",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-1.jpg",
+     url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-4.jpg" },
-   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-5.jpg" },
+   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-2.webp" },
+   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-3.webp" },
+   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-4.webp" },
+   { url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-5.webp" },
    {
-     url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-dessert-time.jpg",
+     url: "/products/autumn/makeup/4u2-girlfriends-mousse-lip-cup-dessert-time.webp",
      color: "Dessert time",
      colorHex: "#C48A6A",
      finish: "matte",
@@ -176,21 +176,21 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/189886-196337/4u2-glassy-babe",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-glassy-babe-1.jpg",
+     url: "/products/autumn/makeup/4u2-glassy-babe-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-glassy-babe-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-glassy-babe-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-glassy-babe-4.jpg" },
-   { url: "/products/autumn/makeup/4u2-glassy-babe-5.jpg" },
+   { url: "/products/autumn/makeup/4u2-glassy-babe-2.webp" },
+   { url: "/products/autumn/makeup/4u2-glassy-babe-3.webp" },
+   { url: "/products/autumn/makeup/4u2-glassy-babe-4.webp" },
+   { url: "/products/autumn/makeup/4u2-glassy-babe-5.webp" },
    {
-     url: "/products/autumn/makeup/4u2-glassy-babe-tan-lines.jpg",
+     url: "/products/autumn/makeup/4u2-glassy-babe-tan-lines.webp",
      color: "Tan lines",
      colorHex: "#7B3F34",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-glassy-babe-tropic-glow.jpg",
+     url: "/products/autumn/makeup/4u2-glassy-babe-tropic-glow.webp",
      color: "Tropic glow",
      colorHex: "#A86A54",
      finish: "gloss",
@@ -207,20 +207,20 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/183290-185541/4u2-jewelry-box",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-jewelry-box-1.jpg",
+     url: "/products/autumn/makeup/4u2-jewelry-box-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-jewelry-box-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-jewelry-box-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-jewelry-box-4.jpg" },
+   { url: "/products/autumn/makeup/4u2-jewelry-box-2.webp" },
+   { url: "/products/autumn/makeup/4u2-jewelry-box-3.webp" },
+   { url: "/products/autumn/makeup/4u2-jewelry-box-4.webp" },
    {
-     url: "/products/autumn/makeup/4u2-jewelry-box-tiger-eyes.jpg",
+     url: "/products/autumn/makeup/4u2-jewelry-box-tiger-eyes.webp",
      color: "Tiger eyes",
      colorHex: "#774130",
      finish: "eye",
    },
    {
-     url: "/products/autumn/makeup/4u2-jewelry-box-sun-stone.jpg",
+     url: "/products/autumn/makeup/4u2-jewelry-box-sun-stone.webp",
      color: "Sun stone",
      colorHex: "#cf6b55",
      finish: "eye",
@@ -237,16 +237,16 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/183562-185974/4u2-lip-oil",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-lip-oil-1.jpg"
+     url: "/products/autumn/makeup/4u2-lip-oil-1.webp"
    },
-   { url: "/products/autumn/makeup/4u2-lip-oil-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-lip-oil-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-lip-oil-4.jpg" },
-   { url: "/products/autumn/makeup/4u2-lip-oil-5.jpg",
+   { url: "/products/autumn/makeup/4u2-lip-oil-2.webp" },
+   { url: "/products/autumn/makeup/4u2-lip-oil-3.webp" },
+   { url: "/products/autumn/makeup/4u2-lip-oil-4.webp" },
+   { url: "/products/autumn/makeup/4u2-lip-oil-5.webp",
    isPrimary: true,
    },
    {
-     url: "/products/autumn/makeup/4u2-lip-oil-red-paws.jpg",
+     url: "/products/autumn/makeup/4u2-lip-oil-red-paws.webp",
      color: "Red paws",
      colorHex: "#E84A4A",
      finish: "gloss",
@@ -263,26 +263,26 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/190330-199635/4u2-make-me-water-tint",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-make-me-water-tint-1.jpg",
+     url: "/products/autumn/makeup/4u2-make-me-water-tint-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-make-me-water-tint-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-make-me-water-tint-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-make-me-water-tint-4.jpg" },
+   { url: "/products/autumn/makeup/4u2-make-me-water-tint-2.webp" },
+   { url: "/products/autumn/makeup/4u2-make-me-water-tint-3.webp" },
+   { url: "/products/autumn/makeup/4u2-make-me-water-tint-4.webp" },
    {
-     url: "/products/autumn/makeup/4u2-make-me-water-tint-the-bossman.jpg",
+     url: "/products/autumn/makeup/4u2-make-me-water-tint-the-bossman.webp",
      color: "The bossman",
      colorHex: "#9A352D",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-make-me-water-tint-hot-humid.jpg",
+     url: "/products/autumn/makeup/4u2-make-me-water-tint-hot-humid.webp",
      color: "Hot & Humid",
      colorHex: "#B0584F",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-make-me-water-tint-after-shower.jpg",
+     url: "/products/autumn/makeup/4u2-make-me-water-tint-after-shower.webp",
      color: "After shower",
      colorHex: "#E6717A",
      finish: "gloss",
@@ -299,13 +299,13 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/188381-193247/4u2-mellow-oil-balm",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-mellow-oil-balm-1.jpg",
+     url: "/products/autumn/makeup/4u2-mellow-oil-balm-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-mellow-oil-balm-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-mellow-oil-balm-3.jpg" },
+   { url: "/products/autumn/makeup/4u2-mellow-oil-balm-2.webp" },
+   { url: "/products/autumn/makeup/4u2-mellow-oil-balm-3.webp" },
    {
-     url: "/products/autumn/makeup/4u2-mellow-oil-balm-rose-mood.jpg",
+     url: "/products/autumn/makeup/4u2-mellow-oil-balm-rose-mood.webp",
      color: "Rose mood",
      colorHex: "#E06A6A",
      finish: "gloss",
@@ -322,37 +322,37 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/177280-174046/4u2-serum-tint-oil",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-1.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-serum-tint-oil-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-serum-tint-oil-3.jpg" },
+   { url: "/products/autumn/makeup/4u2-serum-tint-oil-2.webp" },
+   { url: "/products/autumn/makeup/4u2-serum-tint-oil-3.webp" },
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-sweet-burgundy.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-sweet-burgundy.webp",
      color: "Sweet burgundy",
      colorHex: "#7C1F2A",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-classic-again.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-classic-again.webp",
      color: "Classic again",
      colorHex: "#8E4A4E",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-sugar-club.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-sugar-club.webp",
      color: "Sugar club",
      colorHex: "#9E3F3F",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-feel-so-good.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-feel-so-good.webp",
      color: "Feel So good",
      colorHex: "#B65B55",
      finish: "gloss",
    },
    {
-     url: "/products/autumn/makeup/4u2-serum-tint-oil-lychee-syrup.jpg",
+     url: "/products/autumn/makeup/4u2-serum-tint-oil-lychee-syrup.webp",
      color: "Lychee syrup",
      colorHex: "#C45A4A",
      finish: "gloss",
@@ -369,23 +369,23 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/180943-179977/4u2-skin-blush-amp-highlight-duo-cream",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-1.jpg"
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-1.webp"
    },
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-2.jpg",
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-2.webp",
    },
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-3.jpg",
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-3.webp",
    },
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-4.jpg",
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-4.webp",
      isPrimary: true,
    },
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-5.jpg",
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-5.webp",
    },
    {
-     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-1.jpg",
+     url: "/products/autumn/makeup/4u2-skin-blush-highlight-duo-cream-1.webp",
      color: "Warm tone",
      colorHex: "#f1b0a2",
    },
@@ -401,13 +401,13 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/187662-192181/4u2-skin-contour-stick",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-skin-contour-stick-1.jpg",
+     url: "/products/autumn/makeup/4u2-skin-contour-stick-1.webp",
      isPrimary: true,
    },
-   { url: "/products/autumn/makeup/4u2-skin-contour-stick-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-skin-contour-stick-3.jpg" },
+   { url: "/products/autumn/makeup/4u2-skin-contour-stick-2.webp" },
+   { url: "/products/autumn/makeup/4u2-skin-contour-stick-3.webp" },
    {
-     url: "/products/autumn/makeup/4u2-skin-contour-stick-warm-tone.jpg",
+     url: "/products/autumn/makeup/4u2-skin-contour-stick-warm-tone.webp",
      color: "Warm tone",
      colorHex: "#B98A63",
      finish: "contour",
@@ -424,15 +424,15 @@ export const AUTUMN_MAKEUP: Product[] = [
  buttonlink: "https://www.4u2thailand.com/product/178474-176107/4u2-the-glittering",
  images: [
    {
-     url: "/products/autumn/makeup/4u2-the-glittering-1.jpg"
+     url: "/products/autumn/makeup/4u2-the-glittering-1.webp"
    },
-   { url: "/products/autumn/makeup/4u2-the-glittering-2.jpg" },
-   { url: "/products/autumn/makeup/4u2-the-glittering-3.jpg" },
-   { url: "/products/autumn/makeup/4u2-the-glittering-3.jpg",
+   { url: "/products/autumn/makeup/4u2-the-glittering-2.webp" },
+   { url: "/products/autumn/makeup/4u2-the-glittering-3.webp" },
+   { url: "/products/autumn/makeup/4u2-the-glittering-3.webp",
    isPrimary: true,
     },
    {
-     url: "/products/autumn/makeup/4u2-the-glittering-golden-bliss.jpg",
+     url: "/products/autumn/makeup/4u2-the-glittering-golden-bliss.webp",
      color: "Golden bliss",
      colorHex: "#E6C27A",
      finish: "eye",

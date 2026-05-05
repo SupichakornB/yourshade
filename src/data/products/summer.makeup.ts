@@ -14,14 +14,14 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/180710-194504/4u2-blending-lip-liner",
   images: [
     {
-      url: "/products/summer/makeup/4u2-blending-lip-liner-1.jpg",
+      url: "/products/summer/makeup/4u2-blending-lip-liner-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-blending-lip-liner-2.jpg" },
-    { url: "/products/summer/makeup/4u2-blending-lip-liner-3.jpg" },
-    { url: "/products/summer/makeup/4u2-blending-lip-liner-4.jpg" },
+    { url: "/products/summer/makeup/4u2-blending-lip-liner-2.webp" },
+    { url: "/products/summer/makeup/4u2-blending-lip-liner-3.webp" },
+    { url: "/products/summer/makeup/4u2-blending-lip-liner-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-blending-lip-liner-pink-lily.jpg",
+      url: "/products/summer/makeup/4u2-blending-lip-liner-pink-lily.webp",
       color: "Pink lily",
       colorHex: "#D38AA5",
       finish: "liner",
@@ -38,14 +38,14 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/190695-199634/4u2-blush-on-matte",
   images: [
     {
-      url: "/products/summer/makeup/4u2-blush-on-matte-1.jpg",
+      url: "/products/summer/makeup/4u2-blush-on-matte-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-blush-on-matte-2.jpg" },
-    { url: "/products/summer/makeup/4u2-blush-on-matte-3.jpg" },
-    { url: "/products/summer/makeup/4u2-blush-on-matte-4.jpg" },
+    { url: "/products/summer/makeup/4u2-blush-on-matte-2.webp" },
+    { url: "/products/summer/makeup/4u2-blush-on-matte-3.webp" },
+    { url: "/products/summer/makeup/4u2-blush-on-matte-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-blush-on-matte-sugar-cheeks.jpg",
+      url: "/products/summer/makeup/4u2-blush-on-matte-sugar-cheeks.webp",
       color: "Sugar cheeks",
       colorHex: "#E8A0B6",
       finish: "blush",
@@ -62,19 +62,19 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/190696-197925/4u2-blush-on-shimmer",
   images: [
     {
-      url: "/products/summer/makeup/4u2-blush-on-shimmer-1.jpg",
+      url: "/products/summer/makeup/4u2-blush-on-shimmer-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-blush-on-shimmer-2.jpg" },
-    { url: "/products/summer/makeup/4u2-blush-on-shimmer-3.jpg" },
+    { url: "/products/summer/makeup/4u2-blush-on-shimmer-2.webp" },
+    { url: "/products/summer/makeup/4u2-blush-on-shimmer-3.webp" },
     {
-      url: "/products/summer/makeup/4u2-blush-on-shimmer-berry-boo.jpg",
+      url: "/products/summer/makeup/4u2-blush-on-shimmer-berry-boo.webp",
       color: "Berry boo",
       colorHex: "#D39BC7",
       finish: "blush",
     },
     {
-      url: "/products/summer/makeup/4u2-blush-on-shimmer-lively-lily.jpg",
+      url: "/products/summer/makeup/4u2-blush-on-shimmer-lively-lily.webp",
       color: "Lively lily",
       colorHex: "#F2C2CF",
       finish: "blush",
@@ -91,15 +91,15 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/179978-199632/4u2-dear-me-liquid-blush",
   images: [
     {
-      url: "/products/summer/makeup/4u2-dear-me-liquid-blush-1.jpg",
+      url: "/products/summer/makeup/4u2-dear-me-liquid-blush-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-2.jpg" },
-    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-3.jpg" },
-    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-4.jpg" },
-    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-5.jpg" },
+    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-2.webp" },
+    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-3.webp" },
+    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-4.webp" },
+    { url: "/products/summer/makeup/4u2-dear-me-liquid-blush-5.webp" },
     {
-      url: "/products/summer/makeup/4u2-dear-me-liquid-blush-work-hard.jpg",
+      url: "/products/summer/makeup/4u2-dear-me-liquid-blush-work-hard.webp",
       color: "Work hard",
       colorHex: "#E8A1A8",
       finish: "blush",
@@ -116,14 +116,14 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/189324-195070/4u2-fruity-tint",
   images: [
     {
-      url: "/products/summer/makeup/4u2-fruity-tint-1.jpg",
+      url: "/products/summer/makeup/4u2-fruity-tint-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-fruity-tint-2.jpg" },
-    { url: "/products/summer/makeup/4u2-fruity-tint-3.jpg" },
-    { url: "/products/summer/makeup/4u2-fruity-tint-4.jpg" },
+    { url: "/products/summer/makeup/4u2-fruity-tint-2.webp" },
+    { url: "/products/summer/makeup/4u2-fruity-tint-3.webp" },
+    { url: "/products/summer/makeup/4u2-fruity-tint-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-fruity-tint-fig.jpg",
+      url: "/products/summer/makeup/4u2-fruity-tint-fig.webp",
       color: "Fig",
       colorHex: "#C97A7E",
       finish: "gloss",
@@ -140,15 +140,15 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/185860-189325/4u2-girlfriends039-mousse-lip-cup",
   images: [
     {
-      url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-1.jpg",
+      url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-2.jpg" },
-    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-3.jpg" },
-    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-4.jpg" },
-    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-5.jpg" },
+    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-2.webp" },
+    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-3.webp" },
+    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-4.webp" },
+    { url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-5.webp" },
     {
-      url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-fig.jpg",
+      url: "/products/summer/makeup/4u2-girlfriends-mousse-lip-cup-fig.webp",
       color: "MLBB",
       colorHex: "#C97A7E",
       finish: "matte",
@@ -166,21 +166,21 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/189886-196337/4u2-glassy-babe",
   images: [
     {
-      url: "/products/summer/makeup/4u2-glassy-babe-1.jpg",
+      url: "/products/summer/makeup/4u2-glassy-babe-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-glassy-babe-2.jpg" },
-    { url: "/products/summer/makeup/4u2-glassy-babe-3.jpg" },
-    { url: "/products/summer/makeup/4u2-glassy-babe-4.jpg" },
-    { url: "/products/summer/makeup/4u2-glassy-babe-5.jpg" },
+    { url: "/products/summer/makeup/4u2-glassy-babe-2.webp" },
+    { url: "/products/summer/makeup/4u2-glassy-babe-3.webp" },
+    { url: "/products/summer/makeup/4u2-glassy-babe-4.webp" },
+    { url: "/products/summer/makeup/4u2-glassy-babe-5.webp" },
     {
-      url: "/products/summer/makeup/4u2-glassy-babe-moonlit-waves.jpg",
+      url: "/products/summer/makeup/4u2-glassy-babe-moonlit-waves.webp",
       color: "Moonlit waves",
       colorHex: "#C86A6A",
       finish: "gloss",
     },
     {
-      url: "/products/summer/makeup/4u2-glassy-babe-fruit-punch.jpg",
+      url: "/products/summer/makeup/4u2-glassy-babe-fruit-punch.webp",
       color: "Fruit punch",
       colorHex: "#E35C6E",
       finish: "gloss",
@@ -197,21 +197,21 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/183290-185537/4u2-jewelry-box",
   images: [
     {
-      url: "/products/summer/makeup/4u2-jewelry-box-1.jpg",
+      url: "/products/summer/makeup/4u2-jewelry-box-1.webp",
       isPrimary: true,
            finish: "eye",
     },
-    { url: "/products/summer/makeup/4u2-jewelry-box-2.jpg" },
-    { url: "/products/summer/makeup/4u2-jewelry-box-3.jpg" },
-    { url: "/products/summer/makeup/4u2-jewelry-box-4.jpg" },
+    { url: "/products/summer/makeup/4u2-jewelry-box-2.webp" },
+    { url: "/products/summer/makeup/4u2-jewelry-box-3.webp" },
+    { url: "/products/summer/makeup/4u2-jewelry-box-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-jewelry-box-rose-quartz.jpg",
+      url: "/products/summer/makeup/4u2-jewelry-box-rose-quartz.webp",
       color: "Rose quartz",
       colorHex: "#fea0ab",
            finish: "eye",
     },
     {
-      url: "/products/summer/makeup/4u2-jewelry-box-pink-star.jpg",
+      url: "/products/summer/makeup/4u2-jewelry-box-pink-star.webp",
       color: "Pink star",
       colorHex: "#ffdfe7",
            finish: "eye",
@@ -228,14 +228,14 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/183562-185971/4u2-lip-oil",
   images: [
     {
-      url: "/products/summer/makeup/4u2-lip-oil-1.jpg",
+      url: "/products/summer/makeup/4u2-lip-oil-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-lip-oil-2.jpg" },
-    { url: "/products/summer/makeup/4u2-lip-oil-3.jpg" },
-    { url: "/products/summer/makeup/4u2-lip-oil-4.jpg" },
+    { url: "/products/summer/makeup/4u2-lip-oil-2.webp" },
+    { url: "/products/summer/makeup/4u2-lip-oil-3.webp" },
+    { url: "/products/summer/makeup/4u2-lip-oil-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-lip-oil-meow-meow.jpg",
+      url: "/products/summer/makeup/4u2-lip-oil-meow-meow.webp",
       color: "Meow meow",
       colorHex: "#F6DDE6",
       finish: "gloss",
@@ -252,20 +252,20 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/190330-199635/4u2-make-me-water-tint",
   images: [
     {
-      url: "/products/summer/makeup/4u2-make-me-water-tint-1.jpg",
+      url: "/products/summer/makeup/4u2-make-me-water-tint-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-make-me-water-tint-2.jpg" },
-    { url: "/products/summer/makeup/4u2-make-me-water-tint-3.jpg" },
-    { url: "/products/summer/makeup/4u2-make-me-water-tint-4.jpg" },
+    { url: "/products/summer/makeup/4u2-make-me-water-tint-2.webp" },
+    { url: "/products/summer/makeup/4u2-make-me-water-tint-3.webp" },
+    { url: "/products/summer/makeup/4u2-make-me-water-tint-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-make-me-water-tint-daily-dew.jpg",
+      url: "/products/summer/makeup/4u2-make-me-water-tint-daily-dew.webp",
       color: "Daily dew",
       colorHex: "#D35A6B",
       finish: "gloss",
     },
     {
-      url: "/products/summer/makeup/4u2-make-me-water-tint-after-shower.jpg",
+      url: "/products/summer/makeup/4u2-make-me-water-tint-after-shower.webp",
       color: "After shower",
       colorHex: "#E16C75",
       finish: "gloss",
@@ -282,17 +282,17 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/188381-193246/4u2-mellow-oil-balm",
   images: [
     {
-      url: "/products/summer/makeup/4u2-mellow-oil-balm-1.jpg",
+      url: "/products/summer/makeup/4u2-mellow-oil-balm-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-mellow-oil-balm-2.jpg" },
-    { url: "/products/summer/makeup/4u2-mellow-oil-balm-3.jpg" },
+    { url: "/products/summer/makeup/4u2-mellow-oil-balm-2.webp" },
+    { url: "/products/summer/makeup/4u2-mellow-oil-balm-3.webp" },
 
 
 
 
     {
-      url: "/products/summer/makeup/4u2-mellow-oil-balm-universal-pink.jpg",
+      url: "/products/summer/makeup/4u2-mellow-oil-balm-universal-pink.webp",
       color: "Universal pink",
       colorHex: "#F26C9A",
       finish: "gloss",
@@ -309,21 +309,21 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/177280-174049/4u2-serum-tint-oil",
   images: [
     {
-      url: "/products/summer/makeup/4u2-serum-tint-oil-1.jpg",
+      url: "/products/summer/makeup/4u2-serum-tint-oil-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-serum-tint-oil-2.jpg" },
-    { url: "/products/summer/makeup/4u2-serum-tint-oil-3.jpg" },
-    { url: "/products/summer/makeup/4u2-serum-tint-oil-4.jpg" },
-    { url: "/products/summer/makeup/4u2-serum-tint-oil-5.jpg" },
+    { url: "/products/summer/makeup/4u2-serum-tint-oil-2.webp" },
+    { url: "/products/summer/makeup/4u2-serum-tint-oil-3.webp" },
+    { url: "/products/summer/makeup/4u2-serum-tint-oil-4.webp" },
+    { url: "/products/summer/makeup/4u2-serum-tint-oil-5.webp" },
     {
-      url: "/products/summer/makeup/4u2-serum-tint-oil-most-favorite.jpg",
+      url: "/products/summer/makeup/4u2-serum-tint-oil-most-favorite.webp",
       color: "Most favorite",
       colorHex: "#C94E6A",
       finish: "gloss",
     },
     {
-      url: "/products/summer/makeup/4u2-serum-tint-oil-dewy-mode.jpg",
+      url: "/products/summer/makeup/4u2-serum-tint-oil-dewy-mode.webp",
       color: "Dewy mode",
       colorHex: "#F3A3B3",
       finish: "gloss",
@@ -340,13 +340,13 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/187662-192180/4u2-skin-contour-stick",
   images: [
     {
-      url: "/products/summer/makeup/4u2-skin-contour-stick-1.jpg",
+      url: "/products/summer/makeup/4u2-skin-contour-stick-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-skin-contour-stick-2.jpg" },
-    { url: "/products/summer/makeup/4u2-skin-contour-stick-3.jpg" },
+    { url: "/products/summer/makeup/4u2-skin-contour-stick-2.webp" },
+    { url: "/products/summer/makeup/4u2-skin-contour-stick-3.webp" },
     {
-      url: "/products/summer/makeup/4u2-skin-contour-stick-cool-tone.jpg",
+      url: "/products/summer/makeup/4u2-skin-contour-stick-cool-tone.webp",
       color: "Cool tone",
       colorHex: "#9E8C82",
                 finish: "contour",
@@ -363,14 +363,14 @@ export const SUMMER_MAKEUP: Product[] = [
   buttonlink: "https://www.4u2thailand.com/product/178474-176104/4u2-the-glittering",
   images: [
     {
-      url: "/products/summer/makeup/4u2-the-glittering-1.jpg",
+      url: "/products/summer/makeup/4u2-the-glittering-1.webp",
       isPrimary: true,
     },
-    { url: "/products/summer/makeup/4u2-the-glittering-2.jpg" },
-    { url: "/products/summer/makeup/4u2-the-glittering-3.jpg" },
-    { url: "/products/summer/makeup/4u2-the-glittering-4.jpg" },
+    { url: "/products/summer/makeup/4u2-the-glittering-2.webp" },
+    { url: "/products/summer/makeup/4u2-the-glittering-3.webp" },
+    { url: "/products/summer/makeup/4u2-the-glittering-4.webp" },
     {
-      url: "/products/summer/makeup/4u2-the-glittering-pink-panther.jpg",
+      url: "/products/summer/makeup/4u2-the-glittering-pink-panther.webp",
       color: "Pink panther",
       colorHex: "#F3B6CF",
            finish: "eye",

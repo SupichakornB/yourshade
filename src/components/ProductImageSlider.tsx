@@ -1,7 +1,6 @@
-// import { useState } from "react";
 import type { ProductImage } from "@/types/product";
-import arrowLeft from "@/assets/product/product-arrow-left.png";
-import arrowRight from "@/assets/product/product-arrow-right.png";
+import arrowLeft from "@/assets/product/product-arrow-left.webp";
+import arrowRight from "@/assets/product/product-arrow-right.webp";
 
 type Props = {
   images: ProductImage[];

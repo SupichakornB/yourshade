@@ -1,5 +1,5 @@
-import banner from "@/assets/home-banner.png";
-import logo from "@/assets/full-logo.png";
+import banner from "@/assets/home-banner.webp";
+import logo from "@/assets/full-logo.webp";
 import ScrollToTop from "@/components/ScrollToTop";
 
 export default function Privacy() {

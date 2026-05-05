@@ -18,7 +18,7 @@ export default function UploadPage() {
   const [ready, setReady] = useState(false);
   const [noDetectFaceAlert, setNoDetectFaceAlert] = useState(false);
   const [unsupportFileAlert, setUnsupportFileAlert] = useState(false);
-  const [showConsent, setShowConsent] = useState(false);
+  const [_showConsent, setShowConsent] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const handleSnap = () => {
     (state.image ? noDetectFaceAlert || unsupportFileAlert : false);
 
 return (
-  <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.png)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
+  <div className="min-h-screen xl:overflow-hidden 2xl:overflow-hidden p-6 md:bg-[url(@/assets/bg-upload-image.webp)] bg-[length:800px] md:bg-[length:1300px] bg-no-repeat bg-fixed bg-center">
       <div>
         <img
           src={backIcon}

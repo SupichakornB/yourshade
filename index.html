@@ -2,10 +2,58 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/src/assets/logo.png" />
+    <link rel="icon" type="image/png" href="/src/assets/logo.webp" />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
     <link rel="preload" as="fetch" crossorigin
   href="https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/latest/hair_segmenter.tflite" />
+   <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"
+      as="script"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"
+      as="script"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh_solution_simd_wasm_bin.wasm"
+      as="fetch"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh_solution_simd_wasm_bin.js"
+      as="script"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh@0.4.1633559619/face_mesh_solution_packed_assets.data"
+      as="fetch"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm/vision_wasm_internal.js"
+      as="script"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision/wasm/vision_wasm_internal.wasm"
+      as="fetch"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="prefetch"
+      href="https://storage.googleapis.com/mediapipe-models/image_segmenter/hair_segmenter/float32/latest/hair_segmenter.tflite"
+      as="fetch"
+      crossorigin="anonymous"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Personal color</title>
   </head>

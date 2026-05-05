@@ -9,10 +9,8 @@ export default function ScrollToTop() {
     const handleScroll = () => {
       setVisible(window.scrollY > 0);
 
-      // ตอน scroll → อ่อน
       setScrolling(true);
 
-      // หยุด scroll 500ms → กลับเข้ม
       if (scrollTimerRef.current) clearTimeout(scrollTimerRef.current);
       scrollTimerRef.current = setTimeout(() => {
         setScrolling(false);

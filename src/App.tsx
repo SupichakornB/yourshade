@@ -3,7 +3,6 @@ import Home from "./pages/home/page";
 import UploadPage from "@/pages/upload/page";
 import MainLayout from "@/layouts/MainLayout";
 import VeinsPage from "@/pages/veins/page";
-import StepsPage from "./pages/steps/page";
 import LoadingPage from "./pages/loading/page";
 import ResultPage from "./pages/result/page";
 import Privacy from "@/pages/upload/privacy";
@@ -20,7 +19,6 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/upload" element={<UploadPage />} />
           <Route path="/veins" element={<VeinsPage />} />
-          <Route path="/steps" element={<StepsPage />} />
           <Route path="/loading" element={<LoadingPage />} />
           <Route path="/result" element={<ResultPage />} />
 

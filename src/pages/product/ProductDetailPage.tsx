@@ -1,6 +1,6 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { PRODUCTS } from "@/data/products";
-import logo from "@/assets/full-logo.png";
+import logo from "@/assets/full-logo.webp";
 import backIcon from "@/assets/icon/ep_back.svg";
 import ProductImageSlider from "@/components/ProductImageSlider";
 import { useEffect, useMemo, useState } from "react";

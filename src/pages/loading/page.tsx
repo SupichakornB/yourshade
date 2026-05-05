@@ -9,9 +9,7 @@ import { detectFace } from "@/lib/detectFace";
 import { fileToImage } from "@/lib/fileToImage";
 import type { ToneType, LevelType } from "@/types/analyze";
 
-// ─────────────────────────────────────────────
-// Color Math Utilities
-// ─────────────────────────────────────────────
+
 
 function linearize(c: number): number {
   const s = c / 255;
@@ -45,9 +43,7 @@ function chroma(a: number, b: number): number {
   return Math.sqrt(a * a + b * b);
 }
 
-// ─────────────────────────────────────────────
 // Skin Pixel Detection
-// ─────────────────────────────────────────────
 
 function rgbToHsl(r: number, g: number, b: number): [number, number, number] {
   const rn = r / 255, gn = g / 255, bn = b / 255;
@@ -269,7 +265,7 @@ export default function LoadingPage() {
             // ── Skin zone canvas ─────────────────────────────
             let skinCanvas: HTMLCanvasElement;
             if (detection) {
-              skinCanvas = cropSkinRegion(img, detection.detection.box);
+              skinCanvas = cropSkinRegion(img, detection.box);
             } else {
               skinCanvas = document.createElement("canvas");
               skinCanvas.width = img.naturalWidth || img.width;
@@ -277,17 +273,17 @@ export default function LoadingPage() {
               skinCanvas.getContext("2d")!.drawImage(img, 0, 0);
             }
 
-            // ── คำนวณ skin Lab ───────────────────────────────
+            // คำนวณ skin Lab 
             const skinCtx = skinCanvas.getContext("2d")!;
             const lab = averageSkinLab(skinCtx, skinCanvas.width, skinCanvas.height);
             if (!lab) throw new Error("ตรวจจับสีผิวไม่เพียงพอ");
 
-            // ── Hair zone สำหรับ contrast ────────────────────
+            // Hair zone สำหรับ contrast 
             const hairL = detection
-              ? averageHairLab(img, detection.detection.box)
+              ? averageHairLab(img, detection.box)
               : null;
 
-            // ── Classify ─────────────────────────────────────
+            // Classify 
             const detectedTone       = classifyTone(lab.L, lab.a, lab.b);
             const detectedBrightness = classifyBrightness(lab.L);
             const detectedSaturation = classifySaturation(lab.a, lab.b);
@@ -295,7 +291,6 @@ export default function LoadingPage() {
 
             console.log(`[Result] tone=${detectedTone}, brightness=${detectedBrightness}, saturation=${detectedSaturation}, contrast=${detectedContrast}`);
 
-            // ── Season: ใช้แค่ vein + tone ───────────────────
             const result = analyzeResult({
               ...state,
               tone: detectedTone,
@@ -305,9 +300,9 @@ export default function LoadingPage() {
               type: "SET_ANALYSIS",
               payload: {
                 tone:       detectedTone,
-                brightness: detectedBrightness, // โชว์เท่านั้น
-                saturation: detectedSaturation, // โชว์เท่านั้น
-                contrast:   detectedContrast,   // โชว์เท่านั้น
+                brightness: detectedBrightness,
+                saturation: detectedSaturation,
+                contrast:   detectedContrast,   
                 result,
               },
             });

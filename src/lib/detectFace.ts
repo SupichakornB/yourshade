@@ -8,6 +8,5 @@ export async function detectFace(img: HTMLImageElement) {
         scoreThreshold: 0.5,
       })
     )
-    .withFaceLandmarks(true);
   return result ?? null;
 }

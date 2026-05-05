@@ -12,12 +12,12 @@ export const initialState: AnalyzeState = {
 
 export type Action =
   | { type: "SET_IMAGE";      payload: File | null }
-  | { type: "SET_VEIN";       payload: VeinType }
-  | { type: "SET_TONE";       payload: ToneType }
-  | { type: "SET_BRIGHTNESS"; payload: LevelType }
-  | { type: "SET_SATURATION"; payload: LevelType }
-  | { type: "SET_CONTRAST";   payload: LevelType }
-  | { type: "SET_RESULT";     payload: string }
+  | { type: "SET_VEIN";       payload: VeinType | null }
+  | { type: "SET_TONE";       payload: ToneType | null }
+  | { type: "SET_BRIGHTNESS"; payload: LevelType | null }
+  | { type: "SET_SATURATION"; payload: LevelType | null }
+  | { type: "SET_CONTRAST";   payload: LevelType | null  }
+  | { type: "SET_RESULT";     payload: string | null }
   | { type: "SET_ANALYSIS";   payload: {
       tone:       ToneType;
       brightness: LevelType;
